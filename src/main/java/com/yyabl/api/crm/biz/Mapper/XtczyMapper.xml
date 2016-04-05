@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.XtczyMapper">
+	<cache type="org.mybatis.caches.memcached.MemcachedCache" />
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Xtczy">
+		<id column="PERSON_ID" property="personId" jdbcType="INTEGER" />
+		<result column="OPER_STATION" property="operStation" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.yyabl.api.crm.biz.Domain.Xtczy"
+		extends="BaseResultMap">
+		<result column="LOGIN_PASSWORD" property="loginPassword"
+			jdbcType="VARBINARY" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		PERSON_ID, OPER_STATION
+	</sql>
+	<sql id="Blob_Column_List">
+		LOGIN_PASSWORD
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from BFPUB.XTCZY
+		where PERSON_ID = #{personId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		BFPUB.XTCZY
+		where PERSON_ID = #{personId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Xtczy">
+		insert into BFPUB.XTCZY
+		(PERSON_ID, OPER_STATION, LOGIN_PASSWORD
+		)
+		values
+		(#{personId,jdbcType=INTEGER}, #{operStation,jdbcType=VARCHAR},
+		#{loginPassword,jdbcType=VARBINARY}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Xtczy">
+		insert into BFPUB.XTCZY
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="personId != null">
+				PERSON_ID,
+			</if>
+			<if test="operStation != null">
+				OPER_STATION,
+			</if>
+			<if test="loginPassword != null">
+				LOGIN_PASSWORD,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="personId != null">
+				#{personId,jdbcType=INTEGER},
+			</if>
+			<if test="operStation != null">
+				#{operStation,jdbcType=VARCHAR},
+			</if>
+			<if test="loginPassword != null">
+				#{loginPassword,jdbcType=VARBINARY},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Xtczy">
+		update BFPUB.XTCZY
+		<set>
+			<if test="operStation != null">
+				OPER_STATION = #{operStation,jdbcType=VARCHAR},
+			</if>
+			<if test="loginPassword != null">
+				LOGIN_PASSWORD = #{loginPassword,jdbcType=VARBINARY},
+			</if>
+		</set>
+		where PERSON_ID = #{personId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yyabl.api.crm.biz.Domain.Xtczy">
+		update
+		BFPUB.XTCZY
+		set OPER_STATION = #{operStation,jdbcType=VARCHAR},
+		LOGIN_PASSWORD =
+		#{loginPassword,jdbcType=VARBINARY}
+		where PERSON_ID =
+		#{personId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Xtczy">
+		update BFPUB.XTCZY
+		set OPER_STATION = #{operStation,jdbcType=VARCHAR}
+		where PERSON_ID =
+		#{personId,jdbcType=INTEGER}
+	</update>
+</mapper>

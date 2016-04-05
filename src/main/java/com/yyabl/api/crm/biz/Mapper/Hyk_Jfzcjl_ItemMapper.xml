@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_Jfzcjl_ItemMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Jfzcjl_Item" >
+    <id column="JLBH" property="jlbh" jdbcType="INTEGER" />
+    <id column="HYID_ZC" property="hyidZc" jdbcType="INTEGER" />
+    <result column="ZCJF" property="zcjf" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JLBH, HYID_ZC, ZCJF
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfzcjl_ItemKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from BFCRM.HYK_JFZCJLITEM
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and HYID_ZC = #{hyidZc,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfzcjl_ItemKey" >
+    delete from BFCRM.HYK_JFZCJLITEM
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and HYID_ZC = #{hyidZc,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfzcjl_Item" >
+    insert into BFCRM.HYK_JFZCJLITEM (JLBH, HYID_ZC, ZCJF
+      )
+    values (#{jlbh,jdbcType=INTEGER}, #{hyidZc,jdbcType=INTEGER}, #{zcjf,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfzcjl_Item" >
+    insert into BFCRM.HYK_JFZCJLITEM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        JLBH,
+      </if>
+      <if test="hyidZc != null" >
+        HYID_ZC,
+      </if>
+      <if test="zcjf != null" >
+        ZCJF,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        #{jlbh,jdbcType=INTEGER},
+      </if>
+      <if test="hyidZc != null" >
+        #{hyidZc,jdbcType=INTEGER},
+      </if>
+      <if test="zcjf != null" >
+        #{zcjf,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfzcjl_Item" >
+    update BFCRM.HYK_JFZCJLITEM
+    <set >
+      <if test="zcjf != null" >
+        ZCJF = #{zcjf,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and HYID_ZC = #{hyidZc,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfzcjl_Item" >
+    update BFCRM.HYK_JFZCJLITEM
+    set ZCJF = #{zcjf,jdbcType=DOUBLE}
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and HYID_ZC = #{hyidZc,jdbcType=INTEGER}
+  </update>
+</mapper>

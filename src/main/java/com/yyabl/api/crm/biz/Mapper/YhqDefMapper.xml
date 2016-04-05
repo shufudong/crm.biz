@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.YhqDefMapper">
+	<cache type="org.mybatis.caches.memcached.MemcachedCache" />
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.YhqDef">
+		<id column="YHQID" property="yhqid" jdbcType="SMALLINT" />
+		<result column="YHQMC" property="yhqmc" jdbcType="CHAR" />
+		<result column="BJ_DZYHQ" property="bjDzyhq" jdbcType="SMALLINT" />
+		<result column="BJ_TY" property="bjTy" jdbcType="SMALLINT" />
+		<result column="BJ_FQ" property="bjFq" jdbcType="SMALLINT" />
+		<result column="FS_YQMDFW" property="fsYqmdfw" jdbcType="SMALLINT" />
+		<result column="FS_FQMDFW" property="fsFqmdfw" jdbcType="SMALLINT" />
+		<result column="YXQTS" property="yxqts" jdbcType="INTEGER" />
+		<result column="BJ_CXYHQ" property="bjCxyhq" jdbcType="SMALLINT" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.yyabl.api.crm.biz.Domain.YhqDef"
+		extends="BaseResultMap">
+		<result column="TM" property="tm" jdbcType="VARBINARY" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		YHQID, YHQMC, BJ_DZYHQ, BJ_TY, BJ_FQ, FS_YQMDFW, FS_FQMDFW, YXQTS, BJ_CXYHQ
+	</sql>
+	<sql id="Blob_Column_List">
+		TM
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Short">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from BFCRM.YHQDEF
+		where YHQID = #{yhqid,jdbcType=SMALLINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+		delete from BFCRM.YHQDEF
+		where YHQID = #{yhqid,jdbcType=SMALLINT}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.YhqDef">
+		insert into BFCRM.YHQDEF (YHQID, YHQMC, BJ_DZYHQ,
+		BJ_TY, BJ_FQ, FS_YQMDFW,
+		FS_FQMDFW, YXQTS, BJ_CXYHQ,
+		TM)
+		values (#{yhqid,jdbcType=SMALLINT}, #{yhqmc,jdbcType=CHAR},
+		#{bjDzyhq,jdbcType=SMALLINT},
+		#{bjTy,jdbcType=SMALLINT}, #{bjFq,jdbcType=SMALLINT}, #{fsYqmdfw,jdbcType=SMALLINT},
+		#{fsFqmdfw,jdbcType=SMALLINT}, #{yxqts,jdbcType=INTEGER},
+		#{bjCxyhq,jdbcType=SMALLINT},
+		#{tm,jdbcType=VARBINARY})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.YhqDef">
+		insert into BFCRM.YHQDEF
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="yhqid != null">
+				YHQID,
+			</if>
+			<if test="yhqmc != null">
+				YHQMC,
+			</if>
+			<if test="bjDzyhq != null">
+				BJ_DZYHQ,
+			</if>
+			<if test="bjTy != null">
+				BJ_TY,
+			</if>
+			<if test="bjFq != null">
+				BJ_FQ,
+			</if>
+			<if test="fsYqmdfw != null">
+				FS_YQMDFW,
+			</if>
+			<if test="fsFqmdfw != null">
+				FS_FQMDFW,
+			</if>
+			<if test="yxqts != null">
+				YXQTS,
+			</if>
+			<if test="bjCxyhq != null">
+				BJ_CXYHQ,
+			</if>
+			<if test="tm != null">
+				TM,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="yhqid != null">
+				#{yhqid,jdbcType=SMALLINT},
+			</if>
+			<if test="yhqmc != null">
+				#{yhqmc,jdbcType=CHAR},
+			</if>
+			<if test="bjDzyhq != null">
+				#{bjDzyhq,jdbcType=SMALLINT},
+			</if>
+			<if test="bjTy != null">
+				#{bjTy,jdbcType=SMALLINT},
+			</if>
+			<if test="bjFq != null">
+				#{bjFq,jdbcType=SMALLINT},
+			</if>
+			<if test="fsYqmdfw != null">
+				#{fsYqmdfw,jdbcType=SMALLINT},
+			</if>
+			<if test="fsFqmdfw != null">
+				#{fsFqmdfw,jdbcType=SMALLINT},
+			</if>
+			<if test="yxqts != null">
+				#{yxqts,jdbcType=INTEGER},
+			</if>
+			<if test="bjCxyhq != null">
+				#{bjCxyhq,jdbcType=SMALLINT},
+			</if>
+			<if test="tm != null">
+				#{tm,jdbcType=VARBINARY},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.YhqDef">
+		update BFCRM.YHQDEF
+		<set>
+			<if test="yhqmc != null">
+				YHQMC = #{yhqmc,jdbcType=CHAR},
+			</if>
+			<if test="bjDzyhq != null">
+				BJ_DZYHQ = #{bjDzyhq,jdbcType=SMALLINT},
+			</if>
+			<if test="bjTy != null">
+				BJ_TY = #{bjTy,jdbcType=SMALLINT},
+			</if>
+			<if test="bjFq != null">
+				BJ_FQ = #{bjFq,jdbcType=SMALLINT},
+			</if>
+			<if test="fsYqmdfw != null">
+				FS_YQMDFW = #{fsYqmdfw,jdbcType=SMALLINT},
+			</if>
+			<if test="fsFqmdfw != null">
+				FS_FQMDFW = #{fsFqmdfw,jdbcType=SMALLINT},
+			</if>
+			<if test="yxqts != null">
+				YXQTS = #{yxqts,jdbcType=INTEGER},
+			</if>
+			<if test="bjCxyhq != null">
+				BJ_CXYHQ = #{bjCxyhq,jdbcType=SMALLINT},
+			</if>
+			<if test="tm != null">
+				TM = #{tm,jdbcType=VARBINARY},
+			</if>
+		</set>
+		where YHQID = #{yhqid,jdbcType=SMALLINT}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yyabl.api.crm.biz.Domain.YhqDef">
+		update BFCRM.YHQDEF
+		set YHQMC = #{yhqmc,jdbcType=CHAR},
+		BJ_DZYHQ = #{bjDzyhq,jdbcType=SMALLINT},
+		BJ_TY = #{bjTy,jdbcType=SMALLINT},
+		BJ_FQ = #{bjFq,jdbcType=SMALLINT},
+		FS_YQMDFW = #{fsYqmdfw,jdbcType=SMALLINT},
+		FS_FQMDFW = #{fsFqmdfw,jdbcType=SMALLINT},
+		YXQTS = #{yxqts,jdbcType=INTEGER},
+		BJ_CXYHQ = #{bjCxyhq,jdbcType=SMALLINT},
+		TM = #{tm,jdbcType=VARBINARY}
+		where YHQID = #{yhqid,jdbcType=SMALLINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.YhqDef">
+		update BFCRM.YHQDEF
+		set YHQMC = #{yhqmc,jdbcType=CHAR},
+		BJ_DZYHQ = #{bjDzyhq,jdbcType=SMALLINT},
+		BJ_TY = #{bjTy,jdbcType=SMALLINT},
+		BJ_FQ = #{bjFq,jdbcType=SMALLINT},
+		FS_YQMDFW = #{fsYqmdfw,jdbcType=SMALLINT},
+		FS_FQMDFW = #{fsFqmdfw,jdbcType=SMALLINT},
+		YXQTS = #{yxqts,jdbcType=INTEGER},
+		BJ_CXYHQ = #{bjCxyhq,jdbcType=SMALLINT}
+		where YHQID = #{yhqid,jdbcType=SMALLINT}
+	</update>
+</mapper>

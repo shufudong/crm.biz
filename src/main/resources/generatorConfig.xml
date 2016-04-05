@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<classPathEntry location="E:\mysql-connector-java-5.1.7-bin.jar" />
+	<context id="jdbc">
+		<!--去除注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库连接 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/news" userId="root"
+			password="">
+		</jdbcConnection>
+		<!--默认false Java type resolver will always use java.math.BigDecimal if 
+			the database column is of type DECIMAL or NUMERIC. -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!--生成实体类 指定包名 以及生成的地址 （可以自定义地址，但是路径不存在不会自动创建 使用Maven生成在target目录下，会自动创建） -->
+		<javaModelGenerator targetPackage="com.yyabl.api.crm.biz.Domain" targetProject="crm.biz">
+			<property name="enableSubPackages" value="false" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!--生成SQLMAP文件 -->
+		<sqlMapGenerator targetPackage="com.yyabl.api.crm.biz.Mapper" targetProject="crm.biz">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<!--生成Dao文件 可以配置 type="XMLMAPPER"生成xml的dao实现 context id="DB2Tables" 修改targetRuntime="MyBatis3" -->
+		<javaClientGenerator type="SPRING" targetPackage="com.yyabl.api.crm.biz.Dao" targetProject="crm.biz">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<!-- 编号状态 -->
+		<table schema="BFCRM" tableName="BHZT" domainObjectName="Bhzt" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 人员信息 -->
+		<table schema="BFPUB" tableName="RYXX" domainObjectName="Ryxx" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 系统操作员 -->
+		<table schema="BFPUB" tableName="XTCZY" domainObjectName="Xtczy" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员信息 -->
+		<table schema="BFCRM" tableName="HYK_HYXX" domainObjectName="Hyk_Hyxx" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员档案 -->
+		<table schema="BFCRM" tableName="HYK_GKDA" domainObjectName="Hyk_Gkda" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡类型定义 -->
+		<table schema="BFCRM" tableName="HYKDEF" domainObjectName="HykDef" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 优惠券定义 -->
+		<table schema="BFCRM" tableName="YHQDEF" domainObjectName="YhqDef" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员积分账户 -->
+		<table schema="BFCRM" tableName="HYK_JFZH" domainObjectName="Hyk_Jfzh" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 门店积分 -->
+		<table schema="BFCRM" tableName="HYK_MDJF" domainObjectName="Hyk_Mdjf" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员优惠券账户 -->
+		<table schema="BFCRM" tableName="HYK_YHQZH" domainObjectName="Hyk_Yhqzh" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡积分变动单 -->
+		<table schema="BFCRM" tableName="HYK_JFBDD" domainObjectName="Hyk_Jfbdd" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员积分变动记录明细 -->
+		<table schema="BFCRM" tableName="HYK_JFBDJLMX" domainObjectName="Hyk_Jfbdjlmx" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员积分变动记录明细_门店 -->
+		<table schema="BFCRM" tableName="HYK_JFBDJLMX_MD" domainObjectName="Hyk_Jfbdjlmx_Md" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡VIP记录处理记录 -->
+		<table schema="BFCRM" tableName="HYK_VIPJLCLJL" domainObjectName="Hyk_Vipjlcljl" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡VIP记录处理记录明细 -->
+		<table schema="BFCRM" tableName="HYK_VIPJLCLJLMX" domainObjectName="Hyk_Vipjlcljlmx" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 优惠券处理记录 -->
+		<table schema="BFCRM" tableName="HYK_YHQCLJL" domainObjectName="Hyk_Yhqcljl" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 商户商品信息 -->
+		<table schema="BFCRM" tableName="SHSPXX" domainObjectName="ShSpxx" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 商户商品分类 -->
+		<table schema="BFCRM" tableName="SHSPFL" domainObjectName="ShSpfl" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 商户商品商标 -->
+		<table schema="BFCRM" tableName="SHSPSB" domainObjectName="ShSpsb" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 商户合同 -->
+		<table schema="BFCRM" tableName="SHHT" domainObjectName="Shht" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 商户商品信息_门店 -->
+		<table schema="BFCRM" tableName="SHSPXX_DM" domainObjectName="ShSpxx_Dm" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡积分定义单据 -->
+		<table schema="BFCRM" tableName="HYKJFDYDJ" domainObjectName="Hyk_Jfdydj" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡积分定义单 -->
+		<table schema="BFCRM" tableName="HYKJFDYD" domainObjectName="Hyk_Jfdyd" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡积分定义单_分单 -->
+		<table schema="BFCRM" tableName="HYKJFDYD_FD" domainObjectName="Hyk_Jfdyd_Fd" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡积分定义单_商品 -->
+		<table schema="BFCRM" tableName="HYKJFDYD_SP" domainObjectName="Hyk_Jfdyd_Sp" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡积分定义单_规则设定 -->
+		<table schema="BFCRM" tableName="HYKJFDYD_GZSD" domainObjectName="Hyk_Jfdyd_Gzsd" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡积分定义单_规则详情 -->
+		<table schema="BFCRM" tableName="HYKJFDYD_GZITEM" domainObjectName="Hyk_Jfdyd_GzItem" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员短信验证码 -->
+		<table schema="BFCRM" tableName="HYK_SMS_VERIFY_CODE" domainObjectName="Hyk_SMS_Verify_Code" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- API接口定义表 -->
+		<table schema="BFCRM" tableName="API_DEF" domainObjectName="ApiDef" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- API接口权限表 -->
+		<table schema="BFCRM" tableName="PRIV_API" domainObjectName="PrivApi" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/> 
+		<!-- 会员卡状态表 -->
+		<table schema="BFCRM" tableName="HYK_STATUS" domainObjectName="Hyk_Status" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 短信内容模板 -->
+		<table schema="BFCRM" tableName="SMS_CONTEXT_TEMPLATE" domainObjectName="SmsTemplate" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- O2O支付方式对照表 -->
+		<table schema="BFCRM" tableName="O2O_SKFS" domainObjectName="O2O_PayType" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- O2O门店对照表 -->
+		<table schema="BFCRM" tableName="O2O_FD" domainObjectName="O2O_Mall" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 积分处理类型枚举表 -->
+		<table schema="BFCRM" tableName="ENUM_HYK_JFBD_CLLX" domainObjectName="Enum_Hyk_Jfbd_Cllx" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 优惠券处理类型枚举表 -->
+		<table schema="BFCRM" tableName="ENUM_CZK_YHQ_CLLX" domainObjectName="Enum_Czk_Yhq_Cllx" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- API调用机构定义表 -->
+		<table schema="BFCRM" tableName="API_ORG_DEF" domainObjectName="ApiOrgDef" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- API调用者与加盟机构对应表对应表 -->
+		<table schema="BFCRM" tableName="API_PERSON_DEF" domainObjectName="ApiPersonDef" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡积分返利规则 -->
+		<table schema="BFCRM" tableName="HYK_JFFLGZ" domainObjectName="Hyk_Jfflgz" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 联名卡定义表 -->
+		<table schema="BFCRM" tableName="LMKDEF" domainObjectName="LmkDef" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- API接口调用Account/modifyPoint的流水记录 -->
+		<table schema="BFCRM" tableName="API_HYK_JFBDJL" domainObjectName="ApiModifyPointRecord" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- API接口调用Account/cutTicket的流水表 -->
+		<table schema="BFCRM" tableName="API_HYK_YHQCLJL" domainObjectName="ApiModifyTicketRecord" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- API接口调用Account/cutTicket的流水表明细表 -->
+		<table schema="BFCRM" tableName="API_HYK_YHQCLJL_ITEM" domainObjectName="ApiModifyTicketItemRecord" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡保管地点定义 -->
+		<table schema="BFCRM" tableName="HYK_BGDD" domainObjectName="Hyk_Bgdd" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡积分转储记录 -->
+		<table schema="BFCRM" tableName="HYK_JFZCJL" domainObjectName="Hyk_Jfzcjl" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡积分转储明细记录 -->
+		<table schema="BFCRM" tableName="HYK_JFZCJLITEM" domainObjectName="Hyk_Jfzcjl_Item" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡作废记录 -->
+		<table schema="BFCRM" tableName="HYK_ZFJL" domainObjectName="Hyk_Zfjl" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 会员卡作废明细记录 -->
+		<table schema="BFCRM" tableName="HYK_ZFJLITEM" domainObjectName="Hyk_Zfjl_Item" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- API接口调用Card/mergeCard的流水表 -->
+		<table schema="BFCRM" tableName="API_MERGE_CARD" domainObjectName="ApiMergeCard" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- API接口调用Card/mergeCard的流水明细表(优惠券转储记录) -->
+		<table schema="BFCRM" tableName="API_MERGE_CARD_ITEM_TICKET" domainObjectName="ApiMergeCardItemTicket" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- API接口调用Card/mergeCard的流水明细表(积分转储记录) -->
+		<table schema="BFCRM" tableName="API_MERGE_CARD_ITEM_POINT" domainObjectName="ApiMergeCardItemPoint" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 储值卡，优惠券转储记录 -->
+		<table schema="BFCRM" tableName="HYK_CZK_YHQ_ZC" domainObjectName="Hyk_Czk_Yhq_Zc" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- 储值卡，优惠券转储记录明细 -->
+		<table schema="BFCRM" tableName="HYK_CZK_YHQ_ZCITEM" domainObjectName="Hyk_Czk_Yhq_Zc_Item" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>	
+		<!-- 储值卡，优惠券转储记录明细 -->
+		<table schema="BFCRM" tableName="API_FLUSHES_POINT" domainObjectName="ApiFlushesPoint" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>	
+		<!-- 日处理记录表 -->
+		<table schema="BFPUB" tableName="RCL" domainObjectName="Rcl" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>	
+		<!-- 优惠券取款记录表 -->
+		<table schema="BFCRM" tableName="HYK_CZK_YHQ_QKJL" domainObjectName="Hyk_Czk_Yhq_Qkjl" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>	
+		<!-- API接口调用Account/cutTicket的流水表 -->
+		<table schema="BFCRM" tableName="API_HYK_YHQCLJL" domainObjectName="Api_Hyk_Yhqcljl" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+		<!-- API接口调用Account/cutTicket的流水表明细表 -->
+		<table schema="BFCRM" tableName="API_HYK_YHQCLJL_ITEM" domainObjectName="Api_Hyk_Yhqcljl_Item" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false"/>
+	</context>
+</generatorConfiguration>

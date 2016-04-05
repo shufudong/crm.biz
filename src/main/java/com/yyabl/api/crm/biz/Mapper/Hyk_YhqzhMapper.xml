@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_YhqzhMapper">
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Yhqzh">
+		<id column="HYID" property="hyid" jdbcType="INTEGER" />
+		<id column="YHQID" property="yhqid" jdbcType="SMALLINT" />
+		<id column="JSRQ" property="jsrq" jdbcType="TIMESTAMP" />
+		<id column="MDFWDM" property="mdfwdm" jdbcType="CHAR" />
+		<result column="JE" property="je" jdbcType="DECIMAL" />
+		<result column="JYDJJE" property="jydjje" jdbcType="DECIMAL" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.yyabl.api.crm.biz.Domain.Hyk_Yhqzh"
+		extends="BaseResultMap">
+		<result column="TM" property="tm" jdbcType="VARBINARY" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		HYID, YHQID, JSRQ, MDFWDM, JE, JYDJJE
+	</sql>
+	<sql id="Blob_Column_List">
+		TM
+	</sql>
+	
+	<select id="selectEffectTicketsByCardId" parameterType="int" resultType="int">
+		select
+			isnull(sum(JE),0)
+		from
+			BFCRM.HYK_YHQZH
+		where
+			HYID = #{cardId} 
+		and YHQID = 0 
+		and JSRQ >= convert(char,getdate(),102)
+		and JE>0
+	</select>
+	
+	<select id="selectTicketByParamMap" parameterType="map" resultMap="BaseResultMap">
+		select
+			<include refid="Base_Column_List"/>
+		from
+			BFCRM.HYK_YHQZH
+		where
+			1 = 1
+		<if test="cardId != null">
+			and HYID = #{cardId,jdbcType=INTEGER}
+		</if>
+		<if test="ticketType != null">
+			and YHQID in
+			<foreach collection="ticketType" item="ticketType" index="index" open="(" separator="," close=")">
+				#{ticketType}
+			</foreach>
+		</if>
+		<if test="validDate != null">
+			and JSRQ >= #{validDate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="useScope != null">
+			and MDFWDM = #{useScope,jdbcType=CHAR}
+		</if>
+			and JE>0
+		order by HYID,YHQID desc,JSRQ asc,MDFWDM desc
+	</select>
+	
+	<select id="selectEffectTicketListByCardId" parameterType="int" resultMap="BaseResultMap">
+		select
+			<include refid="Base_Column_List"/>
+		from
+			BFCRM.HYK_YHQZH
+		where
+			HYID = #{cardId,jdbcType=INTEGER}
+		and JSRQ >= convert(char,getdate(),102)
+		and YHQID = 0
+		and JE>0
+		order by JSRQ
+	</select>
+	
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="com.yyabl.api.crm.biz.Domain.Hyk_YhqzhKey">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from BFCRM.HYK_YHQZH
+		where HYID = #{hyid,jdbcType=INTEGER}
+		and YHQID = #{yhqid,jdbcType=SMALLINT}
+		and JSRQ = #{jsrq,jdbcType=TIMESTAMP}
+		and MDFWDM = #{mdfwdm,jdbcType=CHAR}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_YhqzhKey">
+		delete from BFCRM.HYK_YHQZH
+		where HYID = #{hyid,jdbcType=INTEGER}
+		and YHQID = #{yhqid,jdbcType=SMALLINT}
+		and JSRQ = #{jsrq,jdbcType=TIMESTAMP}
+		and MDFWDM = #{mdfwdm,jdbcType=CHAR}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Yhqzh">
+		insert into BFCRM.HYK_YHQZH (HYID, YHQID, JSRQ,
+		MDFWDM, JE, JYDJJE
+		)
+		values (#{hyid,jdbcType=INTEGER}, #{yhqid,jdbcType=SMALLINT},
+		#{jsrq,jdbcType=TIMESTAMP},
+		#{mdfwdm,jdbcType=CHAR}, #{je,jdbcType=DECIMAL}, #{jydjje,jdbcType=DECIMAL}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Yhqzh">
+		insert into BFCRM.HYK_YHQZH
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="hyid != null">
+				HYID,
+			</if>
+			<if test="yhqid != null">
+				YHQID,
+			</if>
+			<if test="jsrq != null">
+				JSRQ,
+			</if>
+			<if test="mdfwdm != null">
+				MDFWDM,
+			</if>
+			<if test="je != null">
+				JE,
+			</if>
+			<if test="jydjje != null">
+				JYDJJE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="hyid != null">
+				#{hyid,jdbcType=INTEGER},
+			</if>
+			<if test="yhqid != null">
+				#{yhqid,jdbcType=SMALLINT},
+			</if>
+			<if test="jsrq != null">
+				#{jsrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="mdfwdm != null">
+				#{mdfwdm,jdbcType=CHAR},
+			</if>
+			<if test="je != null">
+				#{je,jdbcType=DECIMAL},
+			</if>
+			<if test="jydjje != null">
+				#{jydjje,jdbcType=DECIMAL},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Yhqzh">
+		update BFCRM.HYK_YHQZH
+		<set>
+			<if test="je != null">
+				JE = #{je,jdbcType=DECIMAL},
+			</if>
+			<if test="jydjje != null">
+				JYDJJE = #{jydjje,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where HYID = #{hyid,jdbcType=INTEGER}
+		and YHQID = #{yhqid,jdbcType=SMALLINT}
+		and JSRQ = #{jsrq,jdbcType=TIMESTAMP}
+		and MDFWDM = #{mdfwdm,jdbcType=CHAR}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Yhqzh">
+		update BFCRM.HYK_YHQZH
+		set JE = #{je,jdbcType=DECIMAL},
+		JYDJJE = #{jydjje,jdbcType=DECIMAL},
+		TM = #{tm,jdbcType=VARBINARY}
+		where HYID = #{hyid,jdbcType=INTEGER}
+		and YHQID = #{yhqid,jdbcType=SMALLINT}
+		and JSRQ = #{jsrq,jdbcType=TIMESTAMP}
+		and MDFWDM = #{mdfwdm,jdbcType=CHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Yhqzh">
+		update BFCRM.HYK_YHQZH
+		set JE = #{je,jdbcType=DECIMAL},
+		JYDJJE = #{jydjje,jdbcType=DECIMAL}
+		where HYID = #{hyid,jdbcType=INTEGER}
+		and YHQID = #{yhqid,jdbcType=SMALLINT}
+		and JSRQ = #{jsrq,jdbcType=TIMESTAMP}
+		and MDFWDM = #{mdfwdm,jdbcType=CHAR}
+	</update>
+	
+	<update id="modifyTicketByMap" parameterType="map">
+		update BFCRM.HYK_YHQZH
+			set JE = JE + #{value,jdbcType=DECIMAL}
+		where
+			HYID = #{cardId,jdbcType=INTEGER}
+		and YHQID = #{ticketType,jdbcType=SMALLINT}
+		and JSRQ = #{validDate,jdbcType=TIMESTAMP}
+		and MDFWDM = #{useScope,jdbcType=CHAR}
+	</update>
+</mapper>

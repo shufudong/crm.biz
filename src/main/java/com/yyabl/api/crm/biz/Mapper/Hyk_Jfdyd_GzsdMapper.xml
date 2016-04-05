@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_Jfdyd_GzsdMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Gzsd" >
+    <id column="JLBH" property="jlbh" jdbcType="INTEGER" />
+    <id column="INX" property="inx" jdbcType="SMALLINT" />
+    <id column="GZBH" property="gzbh" jdbcType="SMALLINT" />
+    <result column="CLFS_BM" property="clfsBm" jdbcType="SMALLINT" />
+    <result column="CLFS_SPFL" property="clfsSpfl" jdbcType="SMALLINT" />
+    <result column="CLFS_SPSB" property="clfsSpsb" jdbcType="SMALLINT" />
+    <result column="CLFS_HT" property="clfsHt" jdbcType="SMALLINT" />
+    <result column="BJ_CJ" property="bjCj" jdbcType="TINYINT" />
+    <result column="FZ" property="fz" jdbcType="DOUBLE" />
+    <result column="CLFS_HYKLX" property="clfsHyklx" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JLBH, INX, GZBH, CLFS_BM, CLFS_SPFL, CLFS_SPSB, CLFS_HT, BJ_CJ, FZ, CLFS_HYKLX
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_GzsdKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from BFCRM.HYKJFDYD_GZSD
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and INX = #{inx,jdbcType=SMALLINT}
+      and GZBH = #{gzbh,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_GzsdKey" >
+    delete from BFCRM.HYKJFDYD_GZSD
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and INX = #{inx,jdbcType=SMALLINT}
+      and GZBH = #{gzbh,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Gzsd" >
+    insert into BFCRM.HYKJFDYD_GZSD (JLBH, INX, GZBH, 
+      CLFS_BM, CLFS_SPFL, CLFS_SPSB, 
+      CLFS_HT, BJ_CJ, FZ, CLFS_HYKLX
+      )
+    values (#{jlbh,jdbcType=INTEGER}, #{inx,jdbcType=SMALLINT}, #{gzbh,jdbcType=SMALLINT}, 
+      #{clfsBm,jdbcType=SMALLINT}, #{clfsSpfl,jdbcType=SMALLINT}, #{clfsSpsb,jdbcType=SMALLINT}, 
+      #{clfsHt,jdbcType=SMALLINT}, #{bjCj,jdbcType=TINYINT}, #{fz,jdbcType=DOUBLE}, #{clfsHyklx,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Gzsd" >
+    insert into BFCRM.HYKJFDYD_GZSD
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        JLBH,
+      </if>
+      <if test="inx != null" >
+        INX,
+      </if>
+      <if test="gzbh != null" >
+        GZBH,
+      </if>
+      <if test="clfsBm != null" >
+        CLFS_BM,
+      </if>
+      <if test="clfsSpfl != null" >
+        CLFS_SPFL,
+      </if>
+      <if test="clfsSpsb != null" >
+        CLFS_SPSB,
+      </if>
+      <if test="clfsHt != null" >
+        CLFS_HT,
+      </if>
+      <if test="bjCj != null" >
+        BJ_CJ,
+      </if>
+      <if test="fz != null" >
+        FZ,
+      </if>
+      <if test="clfsHyklx != null" >
+        CLFS_HYKLX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        #{jlbh,jdbcType=INTEGER},
+      </if>
+      <if test="inx != null" >
+        #{inx,jdbcType=SMALLINT},
+      </if>
+      <if test="gzbh != null" >
+        #{gzbh,jdbcType=SMALLINT},
+      </if>
+      <if test="clfsBm != null" >
+        #{clfsBm,jdbcType=SMALLINT},
+      </if>
+      <if test="clfsSpfl != null" >
+        #{clfsSpfl,jdbcType=SMALLINT},
+      </if>
+      <if test="clfsSpsb != null" >
+        #{clfsSpsb,jdbcType=SMALLINT},
+      </if>
+      <if test="clfsHt != null" >
+        #{clfsHt,jdbcType=SMALLINT},
+      </if>
+      <if test="bjCj != null" >
+        #{bjCj,jdbcType=TINYINT},
+      </if>
+      <if test="fz != null" >
+        #{fz,jdbcType=DOUBLE},
+      </if>
+      <if test="clfsHyklx != null" >
+        #{clfsHyklx,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Gzsd" >
+    update BFCRM.HYKJFDYD_GZSD
+    <set >
+      <if test="clfsBm != null" >
+        CLFS_BM = #{clfsBm,jdbcType=SMALLINT},
+      </if>
+      <if test="clfsSpfl != null" >
+        CLFS_SPFL = #{clfsSpfl,jdbcType=SMALLINT},
+      </if>
+      <if test="clfsSpsb != null" >
+        CLFS_SPSB = #{clfsSpsb,jdbcType=SMALLINT},
+      </if>
+      <if test="clfsHt != null" >
+        CLFS_HT = #{clfsHt,jdbcType=SMALLINT},
+      </if>
+      <if test="bjCj != null" >
+        BJ_CJ = #{bjCj,jdbcType=TINYINT},
+      </if>
+      <if test="fz != null" >
+        FZ = #{fz,jdbcType=DOUBLE},
+      </if>
+      <if test="clfsHyklx != null" >
+        CLFS_HYKLX = #{clfsHyklx,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and INX = #{inx,jdbcType=SMALLINT}
+      and GZBH = #{gzbh,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Gzsd" >
+    update BFCRM.HYKJFDYD_GZSD
+    set CLFS_BM = #{clfsBm,jdbcType=SMALLINT},
+      CLFS_SPFL = #{clfsSpfl,jdbcType=SMALLINT},
+      CLFS_SPSB = #{clfsSpsb,jdbcType=SMALLINT},
+      CLFS_HT = #{clfsHt,jdbcType=SMALLINT},
+      BJ_CJ = #{bjCj,jdbcType=TINYINT},
+      FZ = #{fz,jdbcType=DOUBLE},
+      CLFS_HYKLX = #{clfsHyklx,jdbcType=SMALLINT}
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and INX = #{inx,jdbcType=SMALLINT}
+      and GZBH = #{gzbh,jdbcType=SMALLINT}
+  </update>
+</mapper>

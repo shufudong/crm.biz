@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_MdjfMapper">
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Mdjf">
+		<id column="HYID" property="hyid" jdbcType="INTEGER" />
+		<id column="MDID" property="mdid" jdbcType="INTEGER" />
+		<result column="WCLJF" property="wcljf" jdbcType="DOUBLE" />
+		<result column="XFJE" property="xfje" jdbcType="DOUBLE" />
+		<result column="ZKJE" property="zkje" jdbcType="DECIMAL" />
+		<result column="BQJF" property="bqjf" jdbcType="DOUBLE" />
+		<result column="LJJF" property="ljjf" jdbcType="DOUBLE" />
+		<result column="LJXFJE" property="ljxfje" jdbcType="DECIMAL" />
+		<result column="LJZKJE" property="ljzkje" jdbcType="DECIMAL" />
+		<result column="XFCS" property="xfcs" jdbcType="INTEGER" />
+		<result column="THCS" property="thcs" jdbcType="INTEGER" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.yyabl.api.crm.biz.Domain.Hyk_Mdjf"
+		extends="BaseResultMap">
+		<result column="TM" property="tm" jdbcType="VARBINARY" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		HYID, MDID, WCLJF, XFJE, ZKJE, BQJF, LJJF, LJXFJE, LJZKJE,
+		XFCS, THCS
+	</sql>
+	<sql id="Blob_Column_List">
+		TM
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="com.yyabl.api.crm.biz.Domain.Hyk_MdjfKey">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from BFCRM.HYK_MDJF
+		where HYID = #{hyid,jdbcType=INTEGER}
+		and MDID =
+		#{mdid,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectEffectPointsByCardId" parameterType="int" resultType="int">
+		select
+			isnull(sum(WCLJF),0)
+		from
+			BFCRM.HYK_MDJF
+		where
+			HYID = #{cardId}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_MdjfKey">
+		delete from
+		BFCRM.HYK_MDJF
+		where HYID = #{hyid,jdbcType=INTEGER}
+		and MDID =
+		#{mdid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Mdjf">
+		insert into BFCRM.HYK_MDJF
+		(HYID, MDID, WCLJF,
+		XFJE, ZKJE, BQJF, LJJF,
+		LJXFJE, LJZKJE, XFCS,
+		THCS)
+		values (#{hyid,jdbcType=INTEGER}, #{mdid,jdbcType=INTEGER},
+		#{wcljf,jdbcType=DOUBLE},
+		#{xfje,jdbcType=DOUBLE},
+		#{zkje,jdbcType=DECIMAL}, #{bqjf,jdbcType=DOUBLE},
+		#{ljjf,jdbcType=DOUBLE},
+		#{ljxfje,jdbcType=DECIMAL},
+		#{ljzkje,jdbcType=DECIMAL}, #{xfcs,jdbcType=INTEGER},
+		#{thcs,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Mdjf">
+		insert into BFCRM.HYK_MDJF
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="hyid != null">
+				HYID,
+			</if>
+			<if test="mdid != null">
+				MDID,
+			</if>
+			<if test="wcljf != null">
+				WCLJF,
+			</if>
+			<if test="xfje != null">
+				XFJE,
+			</if>
+			<if test="zkje != null">
+				ZKJE,
+			</if>
+			<if test="bqjf != null">
+				BQJF,
+			</if>
+			<if test="ljjf != null">
+				LJJF,
+			</if>
+			<if test="ljxfje != null">
+				LJXFJE,
+			</if>
+			<if test="ljzkje != null">
+				LJZKJE,
+			</if>
+			<if test="xfcs != null">
+				XFCS,
+			</if>
+			<if test="thcs != null">
+				THCS,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="hyid != null">
+				#{hyid,jdbcType=INTEGER},
+			</if>
+			<if test="mdid != null">
+				#{mdid,jdbcType=INTEGER},
+			</if>
+			<if test="wcljf != null">
+				#{wcljf,jdbcType=DOUBLE},
+			</if>
+			<if test="xfje != null">
+				#{xfje,jdbcType=DOUBLE},
+			</if>
+			<if test="zkje != null">
+				#{zkje,jdbcType=DECIMAL},
+			</if>
+			<if test="bqjf != null">
+				#{bqjf,jdbcType=DOUBLE},
+			</if>
+			<if test="ljjf != null">
+				#{ljjf,jdbcType=DOUBLE},
+			</if>
+			<if test="ljxfje != null">
+				#{ljxfje,jdbcType=DECIMAL},
+			</if>
+			<if test="ljzkje != null">
+				#{ljzkje,jdbcType=DECIMAL},
+			</if>
+			<if test="xfcs != null">
+				#{xfcs,jdbcType=INTEGER},
+			</if>
+			<if test="thcs != null">
+				#{thcs,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Mdjf">
+		update BFCRM.HYK_MDJF
+		<set>
+			<if test="wcljf != null">
+				WCLJF = #{wcljf,jdbcType=DOUBLE},
+			</if>
+			<if test="xfje != null">
+				XFJE = #{xfje,jdbcType=DOUBLE},
+			</if>
+			<if test="zkje != null">
+				ZKJE = #{zkje,jdbcType=DECIMAL},
+			</if>
+			<if test="bqjf != null">
+				BQJF = #{bqjf,jdbcType=DOUBLE},
+			</if>
+			<if test="ljjf != null">
+				LJJF = #{ljjf,jdbcType=DOUBLE},
+			</if>
+			<if test="ljxfje != null">
+				LJXFJE = #{ljxfje,jdbcType=DECIMAL},
+			</if>
+			<if test="ljzkje != null">
+				LJZKJE = #{ljzkje,jdbcType=DECIMAL},
+			</if>
+			<if test="xfcs != null">
+				XFCS = #{xfcs,jdbcType=INTEGER},
+			</if>
+			<if test="thcs != null">
+				THCS = #{thcs,jdbcType=INTEGER},
+			</if>
+		</set>
+		where HYID = #{hyid,jdbcType=INTEGER}
+		and MDID =
+		#{mdid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Mdjf">
+		update
+		BFCRM.HYK_MDJF
+		set WCLJF = #{wcljf,jdbcType=DOUBLE},
+		XFJE =
+		#{xfje,jdbcType=DOUBLE},
+		ZKJE = #{zkje,jdbcType=DECIMAL},
+		BQJF =
+		#{bqjf,jdbcType=DOUBLE},
+		LJJF = #{ljjf,jdbcType=DOUBLE},
+		LJXFJE =
+		#{ljxfje,jdbcType=DECIMAL},
+		LJZKJE = #{ljzkje,jdbcType=DECIMAL},
+		XFCS =
+		#{xfcs,jdbcType=INTEGER},
+		THCS = #{thcs,jdbcType=INTEGER},
+		TM =
+		#{tm,jdbcType=VARBINARY}
+		where HYID = #{hyid,jdbcType=INTEGER}
+		and MDID
+		= #{mdid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Mdjf">
+		update
+		BFCRM.HYK_MDJF
+		set WCLJF = #{wcljf,jdbcType=DOUBLE},
+		XFJE =
+		#{xfje,jdbcType=DOUBLE},
+		ZKJE = #{zkje,jdbcType=DECIMAL},
+		BQJF =
+		#{bqjf,jdbcType=DOUBLE},
+		LJJF = #{ljjf,jdbcType=DOUBLE},
+		LJXFJE =
+		#{ljxfje,jdbcType=DECIMAL},
+		LJZKJE = #{ljzkje,jdbcType=DECIMAL},
+		XFCS =
+		#{xfcs,jdbcType=INTEGER},
+		THCS = #{thcs,jdbcType=INTEGER}
+		where HYID =
+		#{hyid,jdbcType=INTEGER}
+		and MDID = #{mdid,jdbcType=INTEGER}
+	</update>
+	
+	<select id="procHyxfMdjfFt" statementType="CALLABLE" parameterType="map">
+		{call BFCRM.HYXF_MDJF_FT(#{HYID,mode=IN,jdbcType=INTEGER},#{DJJF,mode=IN,jdbcType=FLOAT},#{JLBH,mode=IN,jdbcType=INTEGER},#{ProcDate,mode=IN,jdbcType=DATE})}
+	</select>
+</mapper>

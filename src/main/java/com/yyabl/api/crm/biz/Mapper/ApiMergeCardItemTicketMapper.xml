@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.ApiMergeCardItemTicketMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.ApiMergeCardItemTicket" >
+    <result column="JLBH" property="jlbh" jdbcType="INTEGER" />
+    <result column="ZC_JLBH" property="zcJlbh" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.ApiMergeCardItemTicket" >
+    insert into BFCRM.API_MERGE_CARD_ITEM_TICKET (JLBH, ZC_JLBH)
+    values (#{jlbh,jdbcType=INTEGER}, #{zcJlbh,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.ApiMergeCardItemTicket" >
+    insert into BFCRM.API_MERGE_CARD_ITEM_TICKET
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        JLBH,
+      </if>
+      <if test="zcJlbh != null" >
+        ZC_JLBH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        #{jlbh,jdbcType=INTEGER},
+      </if>
+      <if test="zcJlbh != null" >
+        #{zcJlbh,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.ApiMergeCardMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.ApiMergeCard" >
+    <id column="JLBH" property="jlbh" jdbcType="INTEGER" />
+    <result column="SOURCE_CARD_ID" property="sourceCardId" jdbcType="INTEGER" />
+    <result column="TARGET_CARD_ID" property="targetCardId" jdbcType="INTEGER" />
+    <result column="CALLER_ID" property="callerId" jdbcType="INTEGER" />
+    <result column="CALLER_NAME" property="callerName" jdbcType="VARCHAR" />
+    <result column="CALL_DATE" property="callDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JLBH, SOURCE_CARD_ID, TARGET_CARD_ID, CALLER_ID, CALLER_NAME, CALL_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from BFCRM.API_MERGE_CARD
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from BFCRM.API_MERGE_CARD
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.ApiMergeCard" >
+    insert into BFCRM.API_MERGE_CARD (JLBH, SOURCE_CARD_ID, TARGET_CARD_ID, 
+      CALLER_ID, CALLER_NAME, CALL_DATE
+      )
+    values (#{jlbh,jdbcType=INTEGER}, #{sourceCardId,jdbcType=INTEGER}, #{targetCardId,jdbcType=INTEGER}, 
+      #{callerId,jdbcType=INTEGER}, #{callerName,jdbcType=VARCHAR}, #{callDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.ApiMergeCard" >
+    insert into BFCRM.API_MERGE_CARD
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        JLBH,
+      </if>
+      <if test="sourceCardId != null" >
+        SOURCE_CARD_ID,
+      </if>
+      <if test="targetCardId != null" >
+        TARGET_CARD_ID,
+      </if>
+      <if test="callerId != null" >
+        CALLER_ID,
+      </if>
+      <if test="callerName != null" >
+        CALLER_NAME,
+      </if>
+      <if test="callDate != null" >
+        CALL_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        #{jlbh,jdbcType=INTEGER},
+      </if>
+      <if test="sourceCardId != null" >
+        #{sourceCardId,jdbcType=INTEGER},
+      </if>
+      <if test="targetCardId != null" >
+        #{targetCardId,jdbcType=INTEGER},
+      </if>
+      <if test="callerId != null" >
+        #{callerId,jdbcType=INTEGER},
+      </if>
+      <if test="callerName != null" >
+        #{callerName,jdbcType=VARCHAR},
+      </if>
+      <if test="callDate != null" >
+        #{callDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.ApiMergeCard" >
+    update BFCRM.API_MERGE_CARD
+    <set >
+      <if test="sourceCardId != null" >
+        SOURCE_CARD_ID = #{sourceCardId,jdbcType=INTEGER},
+      </if>
+      <if test="targetCardId != null" >
+        TARGET_CARD_ID = #{targetCardId,jdbcType=INTEGER},
+      </if>
+      <if test="callerId != null" >
+        CALLER_ID = #{callerId,jdbcType=INTEGER},
+      </if>
+      <if test="callerName != null" >
+        CALLER_NAME = #{callerName,jdbcType=VARCHAR},
+      </if>
+      <if test="callDate != null" >
+        CALL_DATE = #{callDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.ApiMergeCard" >
+    update BFCRM.API_MERGE_CARD
+    set SOURCE_CARD_ID = #{sourceCardId,jdbcType=INTEGER},
+      TARGET_CARD_ID = #{targetCardId,jdbcType=INTEGER},
+      CALLER_ID = #{callerId,jdbcType=INTEGER},
+      CALLER_NAME = #{callerName,jdbcType=VARCHAR},
+      CALL_DATE = #{callDate,jdbcType=TIMESTAMP}
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </update>
+</mapper>

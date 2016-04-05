@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.HykDefMapper">
+	<cache type="org.mybatis.caches.memcached.MemcachedCache" />
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.HykDef">
+		<id column="HYKTYPE" property="hyktype" jdbcType="SMALLINT" />
+		<result column="HYKKZID" property="hykkzid" jdbcType="SMALLINT" />
+		<result column="HYKNAME" property="hykname" jdbcType="VARCHAR" />
+		<result column="FXFS" property="fxfs" jdbcType="SMALLINT" />
+		<result column="HMCD" property="hmcd" jdbcType="SMALLINT" />
+		<result column="KHQDM" property="khqdm" jdbcType="VARCHAR" />
+		<result column="KHHZM" property="khhzm" jdbcType="VARCHAR" />
+		<result column="FFDX" property="ffdx" jdbcType="SMALLINT" />
+		<result column="YXQCD" property="yxqcd" jdbcType="CHAR" />
+		<result column="BJ_PSW" property="bjPsw" jdbcType="TINYINT" />
+		<result column="BJ_XSJL" property="bjXsjl" jdbcType="TINYINT" />
+		<result column="BJ_JF" property="bjJf" jdbcType="TINYINT" />
+		<result column="BJ_YHQZH" property="bjYhqzh" jdbcType="TINYINT" />
+		<result column="BJ_CZZH" property="bjCzzh" jdbcType="TINYINT" />
+		<result column="BJ_CZK" property="bjCzk" jdbcType="TINYINT" />
+		<result column="YHFS" property="yhfs" jdbcType="SMALLINT" />
+		<result column="FKQDXFJE" property="fkqdxfje" jdbcType="DECIMAL" />
+		<result column="KXBJ" property="kxbj" jdbcType="TINYINT" />
+		<result column="TKBJ" property="tkbj" jdbcType="TINYINT" />
+		<result column="ZFBJ" property="zfbj" jdbcType="TINYINT" />
+		<result column="HYKJCID" property="hykjcid" jdbcType="SMALLINT" />
+		<result column="KFJE" property="kfje" jdbcType="DECIMAL" />
+		<result column="BJ_CDNRJM" property="bjCdnrjm" jdbcType="SMALLINT" />
+		<result column="CDJZ" property="cdjz" jdbcType="SMALLINT" />
+		<result column="BJ_CZYHQ" property="bjCzyhq" jdbcType="SMALLINT" />
+		<result column="BJ_XTZK" property="bjXtzk" jdbcType="SMALLINT" />
+		<result column="FS_YXQ" property="fsYxq" jdbcType="SMALLINT" />
+		<result column="BJ_QZYK" property="bjQzyk" jdbcType="SMALLINT" />
+		<result column="BJ_CX" property="bjCx" jdbcType="SMALLINT" />
+		<result column="BJ_ZQHY" property="bjZqhy" jdbcType="SMALLINT" />
+		<result column="LEN_CDNR" property="lenCdnr" jdbcType="INTEGER" />
+		<result column="IMAGE_URL" property="imageUrl" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.yyabl.api.crm.biz.Domain.HykDef"
+		extends="BaseResultMap">
+		<result column="TM" property="tm" jdbcType="VARBINARY" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		HYKTYPE, HYKKZID, HYKNAME, FXFS, HMCD, KHQDM, KHHZM, FFDX, YXQCD, BJ_PSW,
+		BJ_XSJL,
+		BJ_JF, BJ_YHQZH, BJ_CZZH, BJ_CZK, YHFS, FKQDXFJE, KXBJ, TKBJ, ZFBJ, HYKJCID,
+		KFJE,
+		BJ_CDNRJM, CDJZ, BJ_CZYHQ, BJ_XTZK, FS_YXQ, BJ_QZYK, BJ_CX, BJ_ZQHY, LEN_CDNR,
+		IMAGE_URL
+	</sql>
+	<sql id="Blob_Column_List">
+		TM
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Short">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from BFCRM.HYKDEF
+		where HYKTYPE = #{hyktype,jdbcType=SMALLINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+		delete from BFCRM.HYKDEF
+		where HYKTYPE = #{hyktype,jdbcType=SMALLINT}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.HykDef">
+		insert into BFCRM.HYKDEF (HYKTYPE, HYKKZID, HYKNAME,
+		FXFS, HMCD, KHQDM,
+		KHHZM, FFDX, YXQCD, BJ_PSW,
+		BJ_XSJL, BJ_JF, BJ_YHQZH,
+		BJ_CZZH, BJ_CZK, YHFS,
+		FKQDXFJE, KXBJ, TKBJ,
+		ZFBJ, HYKJCID, KFJE,
+		BJ_CDNRJM, CDJZ, BJ_CZYHQ,
+		BJ_XTZK, FS_YXQ, BJ_QZYK,
+		BJ_CX, BJ_ZQHY, LEN_CDNR,
+		IMAGE_URL, TM)
+		values (#{hyktype,jdbcType=SMALLINT}, #{hykkzid,jdbcType=SMALLINT},
+		#{hykname,jdbcType=VARCHAR},
+		#{fxfs,jdbcType=SMALLINT}, #{hmcd,jdbcType=SMALLINT}, #{khqdm,jdbcType=VARCHAR},
+		#{khhzm,jdbcType=VARCHAR}, #{ffdx,jdbcType=SMALLINT},
+		#{yxqcd,jdbcType=CHAR}, #{bjPsw,jdbcType=TINYINT},
+		#{bjXsjl,jdbcType=TINYINT}, #{bjJf,jdbcType=TINYINT},
+		#{bjYhqzh,jdbcType=TINYINT},
+		#{bjCzzh,jdbcType=TINYINT}, #{bjCzk,jdbcType=TINYINT}, #{yhfs,jdbcType=SMALLINT},
+		#{fkqdxfje,jdbcType=DECIMAL}, #{kxbj,jdbcType=TINYINT},
+		#{tkbj,jdbcType=TINYINT},
+		#{zfbj,jdbcType=TINYINT}, #{hykjcid,jdbcType=SMALLINT}, #{kfje,jdbcType=DECIMAL},
+		#{bjCdnrjm,jdbcType=SMALLINT}, #{cdjz,jdbcType=SMALLINT},
+		#{bjCzyhq,jdbcType=SMALLINT},
+		#{bjXtzk,jdbcType=SMALLINT}, #{fsYxq,jdbcType=SMALLINT}, #{bjQzyk,jdbcType=SMALLINT},
+		#{bjCx,jdbcType=SMALLINT}, #{bjZqhy,jdbcType=SMALLINT},
+		#{lenCdnr,jdbcType=INTEGER},
+		#{imageUrl,jdbcType=VARCHAR}, #{tm,jdbcType=VARBINARY})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.HykDef">
+		insert into BFCRM.HYKDEF
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="hyktype != null">
+				HYKTYPE,
+			</if>
+			<if test="hykkzid != null">
+				HYKKZID,
+			</if>
+			<if test="hykname != null">
+				HYKNAME,
+			</if>
+			<if test="fxfs != null">
+				FXFS,
+			</if>
+			<if test="hmcd != null">
+				HMCD,
+			</if>
+			<if test="khqdm != null">
+				KHQDM,
+			</if>
+			<if test="khhzm != null">
+				KHHZM,
+			</if>
+			<if test="ffdx != null">
+				FFDX,
+			</if>
+			<if test="yxqcd != null">
+				YXQCD,
+			</if>
+			<if test="bjPsw != null">
+				BJ_PSW,
+			</if>
+			<if test="bjXsjl != null">
+				BJ_XSJL,
+			</if>
+			<if test="bjJf != null">
+				BJ_JF,
+			</if>
+			<if test="bjYhqzh != null">
+				BJ_YHQZH,
+			</if>
+			<if test="bjCzzh != null">
+				BJ_CZZH,
+			</if>
+			<if test="bjCzk != null">
+				BJ_CZK,
+			</if>
+			<if test="yhfs != null">
+				YHFS,
+			</if>
+			<if test="fkqdxfje != null">
+				FKQDXFJE,
+			</if>
+			<if test="kxbj != null">
+				KXBJ,
+			</if>
+			<if test="tkbj != null">
+				TKBJ,
+			</if>
+			<if test="zfbj != null">
+				ZFBJ,
+			</if>
+			<if test="hykjcid != null">
+				HYKJCID,
+			</if>
+			<if test="kfje != null">
+				KFJE,
+			</if>
+			<if test="bjCdnrjm != null">
+				BJ_CDNRJM,
+			</if>
+			<if test="cdjz != null">
+				CDJZ,
+			</if>
+			<if test="bjCzyhq != null">
+				BJ_CZYHQ,
+			</if>
+			<if test="bjXtzk != null">
+				BJ_XTZK,
+			</if>
+			<if test="fsYxq != null">
+				FS_YXQ,
+			</if>
+			<if test="bjQzyk != null">
+				BJ_QZYK,
+			</if>
+			<if test="bjCx != null">
+				BJ_CX,
+			</if>
+			<if test="bjZqhy != null">
+				BJ_ZQHY,
+			</if>
+			<if test="lenCdnr != null">
+				LEN_CDNR,
+			</if>
+			<if test="imageUrl != null">
+				IMAGE_URL,
+			</if>
+			<if test="tm != null">
+				TM,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="hyktype != null">
+				#{hyktype,jdbcType=SMALLINT},
+			</if>
+			<if test="hykkzid != null">
+				#{hykkzid,jdbcType=SMALLINT},
+			</if>
+			<if test="hykname != null">
+				#{hykname,jdbcType=VARCHAR},
+			</if>
+			<if test="fxfs != null">
+				#{fxfs,jdbcType=SMALLINT},
+			</if>
+			<if test="hmcd != null">
+				#{hmcd,jdbcType=SMALLINT},
+			</if>
+			<if test="khqdm != null">
+				#{khqdm,jdbcType=VARCHAR},
+			</if>
+			<if test="khhzm != null">
+				#{khhzm,jdbcType=VARCHAR},
+			</if>
+			<if test="ffdx != null">
+				#{ffdx,jdbcType=SMALLINT},
+			</if>
+			<if test="yxqcd != null">
+				#{yxqcd,jdbcType=CHAR},
+			</if>
+			<if test="bjPsw != null">
+				#{bjPsw,jdbcType=TINYINT},
+			</if>
+			<if test="bjXsjl != null">
+				#{bjXsjl,jdbcType=TINYINT},
+			</if>
+			<if test="bjJf != null">
+				#{bjJf,jdbcType=TINYINT},
+			</if>
+			<if test="bjYhqzh != null">
+				#{bjYhqzh,jdbcType=TINYINT},
+			</if>
+			<if test="bjCzzh != null">
+				#{bjCzzh,jdbcType=TINYINT},
+			</if>
+			<if test="bjCzk != null">
+				#{bjCzk,jdbcType=TINYINT},
+			</if>
+			<if test="yhfs != null">
+				#{yhfs,jdbcType=SMALLINT},
+			</if>
+			<if test="fkqdxfje != null">
+				#{fkqdxfje,jdbcType=DECIMAL},
+			</if>
+			<if test="kxbj != null">
+				#{kxbj,jdbcType=TINYINT},
+			</if>
+			<if test="tkbj != null">
+				#{tkbj,jdbcType=TINYINT},
+			</if>
+			<if test="zfbj != null">
+				#{zfbj,jdbcType=TINYINT},
+			</if>
+			<if test="hykjcid != null">
+				#{hykjcid,jdbcType=SMALLINT},
+			</if>
+			<if test="kfje != null">
+				#{kfje,jdbcType=DECIMAL},
+			</if>
+			<if test="bjCdnrjm != null">
+				#{bjCdnrjm,jdbcType=SMALLINT},
+			</if>
+			<if test="cdjz != null">
+				#{cdjz,jdbcType=SMALLINT},
+			</if>
+			<if test="bjCzyhq != null">
+				#{bjCzyhq,jdbcType=SMALLINT},
+			</if>
+			<if test="bjXtzk != null">
+				#{bjXtzk,jdbcType=SMALLINT},
+			</if>
+			<if test="fsYxq != null">
+				#{fsYxq,jdbcType=SMALLINT},
+			</if>
+			<if test="bjQzyk != null">
+				#{bjQzyk,jdbcType=SMALLINT},
+			</if>
+			<if test="bjCx != null">
+				#{bjCx,jdbcType=SMALLINT},
+			</if>
+			<if test="bjZqhy != null">
+				#{bjZqhy,jdbcType=SMALLINT},
+			</if>
+			<if test="lenCdnr != null">
+				#{lenCdnr,jdbcType=INTEGER},
+			</if>
+			<if test="imageUrl != null">
+				#{imageUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="tm != null">
+				#{tm,jdbcType=VARBINARY},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.HykDef">
+		update BFCRM.HYKDEF
+		<set>
+			<if test="hykkzid != null">
+				HYKKZID = #{hykkzid,jdbcType=SMALLINT},
+			</if>
+			<if test="hykname != null">
+				HYKNAME = #{hykname,jdbcType=VARCHAR},
+			</if>
+			<if test="fxfs != null">
+				FXFS = #{fxfs,jdbcType=SMALLINT},
+			</if>
+			<if test="hmcd != null">
+				HMCD = #{hmcd,jdbcType=SMALLINT},
+			</if>
+			<if test="khqdm != null">
+				KHQDM = #{khqdm,jdbcType=VARCHAR},
+			</if>
+			<if test="khhzm != null">
+				KHHZM = #{khhzm,jdbcType=VARCHAR},
+			</if>
+			<if test="ffdx != null">
+				FFDX = #{ffdx,jdbcType=SMALLINT},
+			</if>
+			<if test="yxqcd != null">
+				YXQCD = #{yxqcd,jdbcType=CHAR},
+			</if>
+			<if test="bjPsw != null">
+				BJ_PSW = #{bjPsw,jdbcType=TINYINT},
+			</if>
+			<if test="bjXsjl != null">
+				BJ_XSJL = #{bjXsjl,jdbcType=TINYINT},
+			</if>
+			<if test="bjJf != null">
+				BJ_JF = #{bjJf,jdbcType=TINYINT},
+			</if>
+			<if test="bjYhqzh != null">
+				BJ_YHQZH = #{bjYhqzh,jdbcType=TINYINT},
+			</if>
+			<if test="bjCzzh != null">
+				BJ_CZZH = #{bjCzzh,jdbcType=TINYINT},
+			</if>
+			<if test="bjCzk != null">
+				BJ_CZK = #{bjCzk,jdbcType=TINYINT},
+			</if>
+			<if test="yhfs != null">
+				YHFS = #{yhfs,jdbcType=SMALLINT},
+			</if>
+			<if test="fkqdxfje != null">
+				FKQDXFJE = #{fkqdxfje,jdbcType=DECIMAL},
+			</if>
+			<if test="kxbj != null">
+				KXBJ = #{kxbj,jdbcType=TINYINT},
+			</if>
+			<if test="tkbj != null">
+				TKBJ = #{tkbj,jdbcType=TINYINT},
+			</if>
+			<if test="zfbj != null">
+				ZFBJ = #{zfbj,jdbcType=TINYINT},
+			</if>
+			<if test="hykjcid != null">
+				HYKJCID = #{hykjcid,jdbcType=SMALLINT},
+			</if>
+			<if test="kfje != null">
+				KFJE = #{kfje,jdbcType=DECIMAL},
+			</if>
+			<if test="bjCdnrjm != null">
+				BJ_CDNRJM = #{bjCdnrjm,jdbcType=SMALLINT},
+			</if>
+			<if test="cdjz != null">
+				CDJZ = #{cdjz,jdbcType=SMALLINT},
+			</if>
+			<if test="bjCzyhq != null">
+				BJ_CZYHQ = #{bjCzyhq,jdbcType=SMALLINT},
+			</if>
+			<if test="bjXtzk != null">
+				BJ_XTZK = #{bjXtzk,jdbcType=SMALLINT},
+			</if>
+			<if test="fsYxq != null">
+				FS_YXQ = #{fsYxq,jdbcType=SMALLINT},
+			</if>
+			<if test="bjQzyk != null">
+				BJ_QZYK = #{bjQzyk,jdbcType=SMALLINT},
+			</if>
+			<if test="bjCx != null">
+				BJ_CX = #{bjCx,jdbcType=SMALLINT},
+			</if>
+			<if test="bjZqhy != null">
+				BJ_ZQHY = #{bjZqhy,jdbcType=SMALLINT},
+			</if>
+			<if test="lenCdnr != null">
+				LEN_CDNR = #{lenCdnr,jdbcType=INTEGER},
+			</if>
+			<if test="imageUrl != null">
+				IMAGE_URL = #{imageUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="tm != null">
+				TM = #{tm,jdbcType=VARBINARY},
+			</if>
+		</set>
+		where HYKTYPE = #{hyktype,jdbcType=SMALLINT}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yyabl.api.crm.biz.Domain.HykDef">
+		update BFCRM.HYKDEF
+		set HYKKZID = #{hykkzid,jdbcType=SMALLINT},
+		HYKNAME = #{hykname,jdbcType=VARCHAR},
+		FXFS = #{fxfs,jdbcType=SMALLINT},
+		HMCD = #{hmcd,jdbcType=SMALLINT},
+		KHQDM = #{khqdm,jdbcType=VARCHAR},
+		KHHZM = #{khhzm,jdbcType=VARCHAR},
+		FFDX = #{ffdx,jdbcType=SMALLINT},
+		YXQCD = #{yxqcd,jdbcType=CHAR},
+		BJ_PSW = #{bjPsw,jdbcType=TINYINT},
+		BJ_XSJL = #{bjXsjl,jdbcType=TINYINT},
+		BJ_JF = #{bjJf,jdbcType=TINYINT},
+		BJ_YHQZH = #{bjYhqzh,jdbcType=TINYINT},
+		BJ_CZZH = #{bjCzzh,jdbcType=TINYINT},
+		BJ_CZK = #{bjCzk,jdbcType=TINYINT},
+		YHFS = #{yhfs,jdbcType=SMALLINT},
+		FKQDXFJE = #{fkqdxfje,jdbcType=DECIMAL},
+		KXBJ = #{kxbj,jdbcType=TINYINT},
+		TKBJ = #{tkbj,jdbcType=TINYINT},
+		ZFBJ = #{zfbj,jdbcType=TINYINT},
+		HYKJCID = #{hykjcid,jdbcType=SMALLINT},
+		KFJE = #{kfje,jdbcType=DECIMAL},
+		BJ_CDNRJM = #{bjCdnrjm,jdbcType=SMALLINT},
+		CDJZ = #{cdjz,jdbcType=SMALLINT},
+		BJ_CZYHQ = #{bjCzyhq,jdbcType=SMALLINT},
+		BJ_XTZK = #{bjXtzk,jdbcType=SMALLINT},
+		FS_YXQ = #{fsYxq,jdbcType=SMALLINT},
+		BJ_QZYK = #{bjQzyk,jdbcType=SMALLINT},
+		BJ_CX = #{bjCx,jdbcType=SMALLINT},
+		BJ_ZQHY = #{bjZqhy,jdbcType=SMALLINT},
+		LEN_CDNR = #{lenCdnr,jdbcType=INTEGER},
+		IMAGE_URL = #{imageUrl,jdbcType=VARCHAR},
+		TM = #{tm,jdbcType=VARBINARY}
+		where HYKTYPE = #{hyktype,jdbcType=SMALLINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.HykDef">
+		update BFCRM.HYKDEF
+		set HYKKZID = #{hykkzid,jdbcType=SMALLINT},
+		HYKNAME = #{hykname,jdbcType=VARCHAR},
+		FXFS = #{fxfs,jdbcType=SMALLINT},
+		HMCD = #{hmcd,jdbcType=SMALLINT},
+		KHQDM = #{khqdm,jdbcType=VARCHAR},
+		KHHZM = #{khhzm,jdbcType=VARCHAR},
+		FFDX = #{ffdx,jdbcType=SMALLINT},
+		YXQCD = #{yxqcd,jdbcType=CHAR},
+		BJ_PSW = #{bjPsw,jdbcType=TINYINT},
+		BJ_XSJL = #{bjXsjl,jdbcType=TINYINT},
+		BJ_JF = #{bjJf,jdbcType=TINYINT},
+		BJ_YHQZH = #{bjYhqzh,jdbcType=TINYINT},
+		BJ_CZZH = #{bjCzzh,jdbcType=TINYINT},
+		BJ_CZK = #{bjCzk,jdbcType=TINYINT},
+		YHFS = #{yhfs,jdbcType=SMALLINT},
+		FKQDXFJE = #{fkqdxfje,jdbcType=DECIMAL},
+		KXBJ = #{kxbj,jdbcType=TINYINT},
+		TKBJ = #{tkbj,jdbcType=TINYINT},
+		ZFBJ = #{zfbj,jdbcType=TINYINT},
+		HYKJCID = #{hykjcid,jdbcType=SMALLINT},
+		KFJE = #{kfje,jdbcType=DECIMAL},
+		BJ_CDNRJM = #{bjCdnrjm,jdbcType=SMALLINT},
+		CDJZ = #{cdjz,jdbcType=SMALLINT},
+		BJ_CZYHQ = #{bjCzyhq,jdbcType=SMALLINT},
+		BJ_XTZK = #{bjXtzk,jdbcType=SMALLINT},
+		FS_YXQ = #{fsYxq,jdbcType=SMALLINT},
+		BJ_QZYK = #{bjQzyk,jdbcType=SMALLINT},
+		BJ_CX = #{bjCx,jdbcType=SMALLINT},
+		BJ_ZQHY = #{bjZqhy,jdbcType=SMALLINT},
+		LEN_CDNR = #{lenCdnr,jdbcType=INTEGER},
+		IMAGE_URL = #{imageUrl,jdbcType=VARCHAR}
+		where HYKTYPE = #{hyktype,jdbcType=SMALLINT}
+	</update>
+</mapper>

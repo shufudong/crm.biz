@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.SmsTemplateMapper">
+	<cache type="org.mybatis.caches.memcached.MemcachedCache" />
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.SmsTemplate">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="CONTEXT" property="context" jdbcType="VARCHAR" />
+		<result column="COMMENT" property="comment" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, CONTEXT, COMMENT
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from BFCRM.SMS_CONTEXT_TEMPLATE
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from BFCRM.SMS_CONTEXT_TEMPLATE
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.SmsTemplate">
+		insert into BFCRM.SMS_CONTEXT_TEMPLATE (ID, CONTEXT, COMMENT
+		)
+		values (#{id,jdbcType=INTEGER}, #{context,jdbcType=VARCHAR},
+		#{comment,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.SmsTemplate">
+		insert into BFCRM.SMS_CONTEXT_TEMPLATE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="context != null">
+				CONTEXT,
+			</if>
+			<if test="comment != null">
+				COMMENT,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="context != null">
+				#{context,jdbcType=VARCHAR},
+			</if>
+			<if test="comment != null">
+				#{comment,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.SmsTemplate">
+		update BFCRM.SMS_CONTEXT_TEMPLATE
+		<set>
+			<if test="context != null">
+				CONTEXT = #{context,jdbcType=VARCHAR},
+			</if>
+			<if test="comment != null">
+				COMMENT = #{comment,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.SmsTemplate">
+		update BFCRM.SMS_CONTEXT_TEMPLATE
+		set CONTEXT = #{context,jdbcType=VARCHAR},
+		COMMENT = #{comment,jdbcType=VARCHAR}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

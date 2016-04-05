@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>crm.biz</display-name>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:Spring/Spring.xml,classpath:Spring/Spring-mybatis.xml,classpath:Spring/Spring-memcached.xml</param-value>
+	</context-param>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.jpg</url-pattern>
+	</servlet-mapping>
+
+	<!-- spring mvc servlet -->
+	<servlet>
+		<description>spring mvc servlet</description>
+		<servlet-name>springMVC</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<description>spring mvc 配置文件</description>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:Spring/Spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springMVC</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<description>自定义过滤器，用于拦截所有签名不合法的请求</description>
+		<filter-name>requestPurviewFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<param-name>targetBean</param-name>
+			<param-value>requestPurviewFilter</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>requestPurviewFilter</filter-name>
+		<url-pattern>/Account/*</url-pattern>
+		<url-pattern>/Card/*</url-pattern>
+		<url-pattern>/Order/*</url-pattern>
+		<url-pattern>/Sms/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<description>字符集过滤器</description>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<description>字符集编码</description>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<description>spring监听器</description>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- 防止spring内存溢出监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+
+	<!-- 配置session超时时间,单位分钟 -->
+	<session-config>
+		<session-timeout>1</session-timeout>
+	</session-config>
+
+	<!-- http异常接口 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/Error/404</location>
+	</error-page>
+	<error-page>
+		<error-code>405</error-code>
+		<location>/Error/405</location>
+	</error-page>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/Error/400</location>
+	</error-page>
+</web-app>

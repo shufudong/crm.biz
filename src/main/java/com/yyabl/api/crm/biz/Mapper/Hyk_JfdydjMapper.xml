@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_JfdydjMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Jfdydj" >
+    <id column="HYKTYPE" property="hyktype" jdbcType="SMALLINT" />
+    <id column="SHDM" property="shdm" jdbcType="CHAR" />
+    <id column="SHBMDM" property="shbmdm" jdbcType="VARCHAR" />
+    <result column="ZXJLBH_PT" property="zxjlbhPt" jdbcType="INTEGER" />
+    <result column="ZXJLBH_YX" property="zxjlbhYx" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    HYKTYPE, SHDM, SHBMDM, ZXJLBH_PT, ZXJLBH_YX
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_JfdydjKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from BFCRM.HYKJFDYDJ
+    where HYKTYPE = #{hyktype,jdbcType=SMALLINT}
+      and SHDM = #{shdm,jdbcType=CHAR}
+      and SHBMDM = #{shbmdm,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_JfdydjKey" >
+    delete from BFCRM.HYKJFDYDJ
+    where HYKTYPE = #{hyktype,jdbcType=SMALLINT}
+      and SHDM = #{shdm,jdbcType=CHAR}
+      and SHBMDM = #{shbmdm,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdydj" >
+    insert into BFCRM.HYKJFDYDJ (HYKTYPE, SHDM, SHBMDM, 
+      ZXJLBH_PT, ZXJLBH_YX)
+    values (#{hyktype,jdbcType=SMALLINT}, #{shdm,jdbcType=CHAR}, #{shbmdm,jdbcType=VARCHAR}, 
+      #{zxjlbhPt,jdbcType=INTEGER}, #{zxjlbhYx,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdydj" >
+    insert into BFCRM.HYKJFDYDJ
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hyktype != null" >
+        HYKTYPE,
+      </if>
+      <if test="shdm != null" >
+        SHDM,
+      </if>
+      <if test="shbmdm != null" >
+        SHBMDM,
+      </if>
+      <if test="zxjlbhPt != null" >
+        ZXJLBH_PT,
+      </if>
+      <if test="zxjlbhYx != null" >
+        ZXJLBH_YX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hyktype != null" >
+        #{hyktype,jdbcType=SMALLINT},
+      </if>
+      <if test="shdm != null" >
+        #{shdm,jdbcType=CHAR},
+      </if>
+      <if test="shbmdm != null" >
+        #{shbmdm,jdbcType=VARCHAR},
+      </if>
+      <if test="zxjlbhPt != null" >
+        #{zxjlbhPt,jdbcType=INTEGER},
+      </if>
+      <if test="zxjlbhYx != null" >
+        #{zxjlbhYx,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdydj" >
+    update BFCRM.HYKJFDYDJ
+    <set >
+      <if test="zxjlbhPt != null" >
+        ZXJLBH_PT = #{zxjlbhPt,jdbcType=INTEGER},
+      </if>
+      <if test="zxjlbhYx != null" >
+        ZXJLBH_YX = #{zxjlbhYx,jdbcType=INTEGER},
+      </if>
+    </set>
+    where HYKTYPE = #{hyktype,jdbcType=SMALLINT}
+      and SHDM = #{shdm,jdbcType=CHAR}
+      and SHBMDM = #{shbmdm,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdydj" >
+    update BFCRM.HYKJFDYDJ
+    set ZXJLBH_PT = #{zxjlbhPt,jdbcType=INTEGER},
+      ZXJLBH_YX = #{zxjlbhYx,jdbcType=INTEGER}
+    where HYKTYPE = #{hyktype,jdbcType=SMALLINT}
+      and SHDM = #{shdm,jdbcType=CHAR}
+      and SHBMDM = #{shbmdm,jdbcType=VARCHAR}
+  </update>
+</mapper>

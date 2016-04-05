@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_JfflgzMapper">
+	<cache type="org.mybatis.caches.memcached.MemcachedCache" />
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Jfflgz">
+		<id column="HYKTYPE" property="hyktype" jdbcType="SMALLINT" />
+		<result column="CLRC" property="clrc" jdbcType="SMALLINT" />
+		<result column="KSRQ" property="ksrq" jdbcType="TIMESTAMP" />
+		<result column="CLFW" property="clfw" jdbcType="SMALLINT" />
+		<result column="QZQD" property="qzqd" jdbcType="VARCHAR" />
+		<result column="JSRQ" property="jsrq" jdbcType="TIMESTAMP" />
+		<result column="YXBJSCL_BJ" property="yxbjsclBj" jdbcType="TINYINT" />
+		<result column="DJR" property="djr" jdbcType="INTEGER" />
+		<result column="DJRMC" property="djrmc" jdbcType="VARCHAR" />
+		<result column="DJSJ" property="djsj" jdbcType="TIMESTAMP" />
+		<result column="STATUS" property="status" jdbcType="SMALLINT" />
+		<result column="SYJSRQ" property="syjsrq" jdbcType="TIMESTAMP" />
+		<result column="YHQYXTS" property="yhqyxts" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		HYKTYPE, CLRC, KSRQ, CLFW, QZQD, JSRQ, YXBJSCL_BJ, DJR, DJRMC, DJSJ, STATUS,
+		SYJSRQ,
+		YHQYXTS
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Short">
+		select
+		<include refid="Base_Column_List" />
+		from BFCRM.HYK_JFFLGZ
+		where HYKTYPE = #{hyktype,jdbcType=SMALLINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+		delete from BFCRM.HYK_JFFLGZ
+		where HYKTYPE = #{hyktype,jdbcType=SMALLINT}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfflgz">
+		insert into BFCRM.HYK_JFFLGZ (HYKTYPE, CLRC, KSRQ,
+		CLFW, QZQD, JSRQ,
+		YXBJSCL_BJ, DJR, DJRMC,
+		DJSJ, STATUS, SYJSRQ,
+		YHQYXTS)
+		values (#{hyktype,jdbcType=SMALLINT}, #{clrc,jdbcType=SMALLINT},
+		#{ksrq,jdbcType=TIMESTAMP},
+		#{clfw,jdbcType=SMALLINT}, #{qzqd,jdbcType=VARCHAR}, #{jsrq,jdbcType=TIMESTAMP},
+		#{yxbjsclBj,jdbcType=TINYINT}, #{djr,jdbcType=INTEGER},
+		#{djrmc,jdbcType=VARCHAR},
+		#{djsj,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT}, #{syjsrq,jdbcType=TIMESTAMP},
+		#{yhqyxts,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfflgz">
+		insert into BFCRM.HYK_JFFLGZ
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="hyktype != null">
+				HYKTYPE,
+			</if>
+			<if test="clrc != null">
+				CLRC,
+			</if>
+			<if test="ksrq != null">
+				KSRQ,
+			</if>
+			<if test="clfw != null">
+				CLFW,
+			</if>
+			<if test="qzqd != null">
+				QZQD,
+			</if>
+			<if test="jsrq != null">
+				JSRQ,
+			</if>
+			<if test="yxbjsclBj != null">
+				YXBJSCL_BJ,
+			</if>
+			<if test="djr != null">
+				DJR,
+			</if>
+			<if test="djrmc != null">
+				DJRMC,
+			</if>
+			<if test="djsj != null">
+				DJSJ,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="syjsrq != null">
+				SYJSRQ,
+			</if>
+			<if test="yhqyxts != null">
+				YHQYXTS,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="hyktype != null">
+				#{hyktype,jdbcType=SMALLINT},
+			</if>
+			<if test="clrc != null">
+				#{clrc,jdbcType=SMALLINT},
+			</if>
+			<if test="ksrq != null">
+				#{ksrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="clfw != null">
+				#{clfw,jdbcType=SMALLINT},
+			</if>
+			<if test="qzqd != null">
+				#{qzqd,jdbcType=VARCHAR},
+			</if>
+			<if test="jsrq != null">
+				#{jsrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="yxbjsclBj != null">
+				#{yxbjsclBj,jdbcType=TINYINT},
+			</if>
+			<if test="djr != null">
+				#{djr,jdbcType=INTEGER},
+			</if>
+			<if test="djrmc != null">
+				#{djrmc,jdbcType=VARCHAR},
+			</if>
+			<if test="djsj != null">
+				#{djsj,jdbcType=TIMESTAMP},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=SMALLINT},
+			</if>
+			<if test="syjsrq != null">
+				#{syjsrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="yhqyxts != null">
+				#{yhqyxts,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfflgz">
+		update BFCRM.HYK_JFFLGZ
+		<set>
+			<if test="clrc != null">
+				CLRC = #{clrc,jdbcType=SMALLINT},
+			</if>
+			<if test="ksrq != null">
+				KSRQ = #{ksrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="clfw != null">
+				CLFW = #{clfw,jdbcType=SMALLINT},
+			</if>
+			<if test="qzqd != null">
+				QZQD = #{qzqd,jdbcType=VARCHAR},
+			</if>
+			<if test="jsrq != null">
+				JSRQ = #{jsrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="yxbjsclBj != null">
+				YXBJSCL_BJ = #{yxbjsclBj,jdbcType=TINYINT},
+			</if>
+			<if test="djr != null">
+				DJR = #{djr,jdbcType=INTEGER},
+			</if>
+			<if test="djrmc != null">
+				DJRMC = #{djrmc,jdbcType=VARCHAR},
+			</if>
+			<if test="djsj != null">
+				DJSJ = #{djsj,jdbcType=TIMESTAMP},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=SMALLINT},
+			</if>
+			<if test="syjsrq != null">
+				SYJSRQ = #{syjsrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="yhqyxts != null">
+				YHQYXTS = #{yhqyxts,jdbcType=INTEGER},
+			</if>
+		</set>
+		where HYKTYPE = #{hyktype,jdbcType=SMALLINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfflgz">
+		update BFCRM.HYK_JFFLGZ
+		set CLRC = #{clrc,jdbcType=SMALLINT},
+		KSRQ = #{ksrq,jdbcType=TIMESTAMP},
+		CLFW = #{clfw,jdbcType=SMALLINT},
+		QZQD = #{qzqd,jdbcType=VARCHAR},
+		JSRQ = #{jsrq,jdbcType=TIMESTAMP},
+		YXBJSCL_BJ = #{yxbjsclBj,jdbcType=TINYINT},
+		DJR = #{djr,jdbcType=INTEGER},
+		DJRMC = #{djrmc,jdbcType=VARCHAR},
+		DJSJ = #{djsj,jdbcType=TIMESTAMP},
+		STATUS = #{status,jdbcType=SMALLINT},
+		SYJSRQ = #{syjsrq,jdbcType=TIMESTAMP},
+		YHQYXTS = #{yhqyxts,jdbcType=INTEGER}
+		where HYKTYPE = #{hyktype,jdbcType=SMALLINT}
+	</update>
+</mapper>

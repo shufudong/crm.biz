@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_JfbddMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Jfbdd" >
+    <id column="JLBH" property="jlbh" jdbcType="INTEGER" />
+    <result column="CZDD" property="czdd" jdbcType="VARCHAR" />
+    <result column="HYID" property="hyid" jdbcType="INTEGER" />
+    <result column="WCLJF_OLD" property="wcljfOld" jdbcType="DOUBLE" />
+    <result column="XFJE" property="xfje" jdbcType="DECIMAL" />
+    <result column="TZJF" property="tzjf" jdbcType="DOUBLE" />
+    <result column="ZY" property="zy" jdbcType="VARCHAR" />
+    <result column="DJR" property="djr" jdbcType="INTEGER" />
+    <result column="DJRMC" property="djrmc" jdbcType="VARCHAR" />
+    <result column="DJSJ" property="djsj" jdbcType="TIMESTAMP" />
+    <result column="ZXR" property="zxr" jdbcType="INTEGER" />
+    <result column="ZXRMC" property="zxrmc" jdbcType="VARCHAR" />
+    <result column="ZXRQ" property="zxrq" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JLBH, CZDD, HYID, WCLJF_OLD, XFJE, TZJF, ZY, DJR, DJRMC, DJSJ, ZXR, ZXRMC, ZXRQ
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from BFCRM.HYK_JFBDD
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from BFCRM.HYK_JFBDD
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfbdd" >
+    insert into BFCRM.HYK_JFBDD (JLBH, CZDD, HYID, 
+      WCLJF_OLD, XFJE, TZJF, 
+      ZY, DJR, DJRMC, DJSJ, 
+      ZXR, ZXRMC, ZXRQ)
+    values (#{jlbh,jdbcType=INTEGER}, #{czdd,jdbcType=VARCHAR}, #{hyid,jdbcType=INTEGER}, 
+      #{wcljfOld,jdbcType=DOUBLE}, #{xfje,jdbcType=DECIMAL}, #{tzjf,jdbcType=DOUBLE}, 
+      #{zy,jdbcType=VARCHAR}, #{djr,jdbcType=INTEGER}, #{djrmc,jdbcType=VARCHAR}, #{djsj,jdbcType=TIMESTAMP}, 
+      #{zxr,jdbcType=INTEGER}, #{zxrmc,jdbcType=VARCHAR}, #{zxrq,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfbdd" >
+    insert into BFCRM.HYK_JFBDD
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        JLBH,
+      </if>
+      <if test="czdd != null" >
+        CZDD,
+      </if>
+      <if test="hyid != null" >
+        HYID,
+      </if>
+      <if test="wcljfOld != null" >
+        WCLJF_OLD,
+      </if>
+      <if test="xfje != null" >
+        XFJE,
+      </if>
+      <if test="tzjf != null" >
+        TZJF,
+      </if>
+      <if test="zy != null" >
+        ZY,
+      </if>
+      <if test="djr != null" >
+        DJR,
+      </if>
+      <if test="djrmc != null" >
+        DJRMC,
+      </if>
+      <if test="djsj != null" >
+        DJSJ,
+      </if>
+      <if test="zxr != null" >
+        ZXR,
+      </if>
+      <if test="zxrmc != null" >
+        ZXRMC,
+      </if>
+      <if test="zxrq != null" >
+        ZXRQ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        #{jlbh,jdbcType=INTEGER},
+      </if>
+      <if test="czdd != null" >
+        #{czdd,jdbcType=VARCHAR},
+      </if>
+      <if test="hyid != null" >
+        #{hyid,jdbcType=INTEGER},
+      </if>
+      <if test="wcljfOld != null" >
+        #{wcljfOld,jdbcType=DOUBLE},
+      </if>
+      <if test="xfje != null" >
+        #{xfje,jdbcType=DECIMAL},
+      </if>
+      <if test="tzjf != null" >
+        #{tzjf,jdbcType=DOUBLE},
+      </if>
+      <if test="zy != null" >
+        #{zy,jdbcType=VARCHAR},
+      </if>
+      <if test="djr != null" >
+        #{djr,jdbcType=INTEGER},
+      </if>
+      <if test="djrmc != null" >
+        #{djrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="djsj != null" >
+        #{djsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zxr != null" >
+        #{zxr,jdbcType=INTEGER},
+      </if>
+      <if test="zxrmc != null" >
+        #{zxrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zxrq != null" >
+        #{zxrq,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfbdd" >
+    update BFCRM.HYK_JFBDD
+    <set >
+      <if test="czdd != null" >
+        CZDD = #{czdd,jdbcType=VARCHAR},
+      </if>
+      <if test="hyid != null" >
+        HYID = #{hyid,jdbcType=INTEGER},
+      </if>
+      <if test="wcljfOld != null" >
+        WCLJF_OLD = #{wcljfOld,jdbcType=DOUBLE},
+      </if>
+      <if test="xfje != null" >
+        XFJE = #{xfje,jdbcType=DECIMAL},
+      </if>
+      <if test="tzjf != null" >
+        TZJF = #{tzjf,jdbcType=DOUBLE},
+      </if>
+      <if test="zy != null" >
+        ZY = #{zy,jdbcType=VARCHAR},
+      </if>
+      <if test="djr != null" >
+        DJR = #{djr,jdbcType=INTEGER},
+      </if>
+      <if test="djrmc != null" >
+        DJRMC = #{djrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="djsj != null" >
+        DJSJ = #{djsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zxr != null" >
+        ZXR = #{zxr,jdbcType=INTEGER},
+      </if>
+      <if test="zxrmc != null" >
+        ZXRMC = #{zxrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zxrq != null" >
+        ZXRQ = #{zxrq,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfbdd" >
+    update BFCRM.HYK_JFBDD
+    set CZDD = #{czdd,jdbcType=VARCHAR},
+      HYID = #{hyid,jdbcType=INTEGER},
+      WCLJF_OLD = #{wcljfOld,jdbcType=DOUBLE},
+      XFJE = #{xfje,jdbcType=DECIMAL},
+      TZJF = #{tzjf,jdbcType=DOUBLE},
+      ZY = #{zy,jdbcType=VARCHAR},
+      DJR = #{djr,jdbcType=INTEGER},
+      DJRMC = #{djrmc,jdbcType=VARCHAR},
+      DJSJ = #{djsj,jdbcType=TIMESTAMP},
+      ZXR = #{zxr,jdbcType=INTEGER},
+      ZXRMC = #{zxrmc,jdbcType=VARCHAR},
+      ZXRQ = #{zxrq,jdbcType=TIMESTAMP}
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </update>
+</mapper>

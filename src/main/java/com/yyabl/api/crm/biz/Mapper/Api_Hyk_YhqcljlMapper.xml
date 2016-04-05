@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Api_Hyk_YhqcljlMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Api_Hyk_Yhqcljl" >
+    <id column="JLBH" property="jlbh" jdbcType="INTEGER" />
+    <result column="TRADE_NO" property="tradeNo" jdbcType="VARCHAR" />
+    <result column="CARD_ID" property="cardId" jdbcType="INTEGER" />
+    <result column="TICKETS" property="tickets" jdbcType="DOUBLE" />
+    <result column="BIZ_TYPE" property="bizType" jdbcType="INTEGER" />
+    <result column="CALLER_ID" property="callerId" jdbcType="INTEGER" />
+    <result column="CALLER_NAME" property="callerName" jdbcType="VARCHAR" />
+    <result column="CALL_DATE" property="callDate" jdbcType="TIMESTAMP" />
+    <result column="FLAG_FLUSHED" property="flagFlushed" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JLBH, TRADE_NO, CARD_ID, TICKETS, BIZ_TYPE, CALLER_ID, CALLER_NAME, CALL_DATE, FLAG_FLUSHED
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from BFCRM.API_HYK_YHQCLJL
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from BFCRM.API_HYK_YHQCLJL
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Api_Hyk_Yhqcljl" >
+    insert into BFCRM.API_HYK_YHQCLJL (JLBH, TRADE_NO, CARD_ID, 
+      TICKETS, BIZ_TYPE, CALLER_ID, 
+      CALLER_NAME, CALL_DATE, FLAG_FLUSHED
+      )
+    values (#{jlbh,jdbcType=INTEGER}, #{tradeNo,jdbcType=VARCHAR}, #{cardId,jdbcType=INTEGER}, 
+      #{tickets,jdbcType=DOUBLE}, #{bizType,jdbcType=INTEGER}, #{callerId,jdbcType=INTEGER}, 
+      #{callerName,jdbcType=VARCHAR}, #{callDate,jdbcType=TIMESTAMP}, #{flagFlushed,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Api_Hyk_Yhqcljl" >
+    insert into BFCRM.API_HYK_YHQCLJL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        JLBH,
+      </if>
+      <if test="tradeNo != null" >
+        TRADE_NO,
+      </if>
+      <if test="cardId != null" >
+        CARD_ID,
+      </if>
+      <if test="tickets != null" >
+        TICKETS,
+      </if>
+      <if test="bizType != null" >
+        BIZ_TYPE,
+      </if>
+      <if test="callerId != null" >
+        CALLER_ID,
+      </if>
+      <if test="callerName != null" >
+        CALLER_NAME,
+      </if>
+      <if test="callDate != null" >
+        CALL_DATE,
+      </if>
+      <if test="flagFlushed != null" >
+        FLAG_FLUSHED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        #{jlbh,jdbcType=INTEGER},
+      </if>
+      <if test="tradeNo != null" >
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null" >
+        #{cardId,jdbcType=INTEGER},
+      </if>
+      <if test="tickets != null" >
+        #{tickets,jdbcType=DOUBLE},
+      </if>
+      <if test="bizType != null" >
+        #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="callerId != null" >
+        #{callerId,jdbcType=INTEGER},
+      </if>
+      <if test="callerName != null" >
+        #{callerName,jdbcType=VARCHAR},
+      </if>
+      <if test="callDate != null" >
+        #{callDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flagFlushed != null" >
+        #{flagFlushed,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Api_Hyk_Yhqcljl" >
+    update BFCRM.API_HYK_YHQCLJL
+    <set >
+      <if test="tradeNo != null" >
+        TRADE_NO = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null" >
+        CARD_ID = #{cardId,jdbcType=INTEGER},
+      </if>
+      <if test="tickets != null" >
+        TICKETS = #{tickets,jdbcType=DOUBLE},
+      </if>
+      <if test="bizType != null" >
+        BIZ_TYPE = #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="callerId != null" >
+        CALLER_ID = #{callerId,jdbcType=INTEGER},
+      </if>
+      <if test="callerName != null" >
+        CALLER_NAME = #{callerName,jdbcType=VARCHAR},
+      </if>
+      <if test="callDate != null" >
+        CALL_DATE = #{callDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flagFlushed != null" >
+        FLAG_FLUSHED = #{flagFlushed,jdbcType=BIT},
+      </if>
+    </set>
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Api_Hyk_Yhqcljl" >
+    update BFCRM.API_HYK_YHQCLJL
+    set TRADE_NO = #{tradeNo,jdbcType=VARCHAR},
+      CARD_ID = #{cardId,jdbcType=INTEGER},
+      TICKETS = #{tickets,jdbcType=DOUBLE},
+      BIZ_TYPE = #{bizType,jdbcType=INTEGER},
+      CALLER_ID = #{callerId,jdbcType=INTEGER},
+      CALLER_NAME = #{callerName,jdbcType=VARCHAR},
+      CALL_DATE = #{callDate,jdbcType=TIMESTAMP},
+      FLAG_FLUSHED = #{flagFlushed,jdbcType=BIT}
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.ShhtMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Shht" >
+    <id column="SHHTID" property="shhtid" jdbcType="INTEGER" />
+    <result column="SHDM" property="shdm" jdbcType="CHAR" />
+    <result column="HTH" property="hth" jdbcType="VARCHAR" />
+    <result column="GHSDM" property="ghsdm" jdbcType="VARCHAR" />
+    <result column="GSHMC" property="gshmc" jdbcType="VARCHAR" />
+    <result column="SHBMID" property="shbmid" jdbcType="INTEGER" />
+    <result column="BJ_YX" property="bjYx" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SHHTID, SHDM, HTH, GHSDM, GSHMC, SHBMID, BJ_YX
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from BFCRM.SHHT
+    where SHHTID = #{shhtid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from BFCRM.SHHT
+    where SHHTID = #{shhtid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Shht" >
+    insert into BFCRM.SHHT (SHHTID, SHDM, HTH, 
+      GHSDM, GSHMC, SHBMID, 
+      BJ_YX)
+    values (#{shhtid,jdbcType=INTEGER}, #{shdm,jdbcType=CHAR}, #{hth,jdbcType=VARCHAR}, 
+      #{ghsdm,jdbcType=VARCHAR}, #{gshmc,jdbcType=VARCHAR}, #{shbmid,jdbcType=INTEGER}, 
+      #{bjYx,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Shht" >
+    insert into BFCRM.SHHT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shhtid != null" >
+        SHHTID,
+      </if>
+      <if test="shdm != null" >
+        SHDM,
+      </if>
+      <if test="hth != null" >
+        HTH,
+      </if>
+      <if test="ghsdm != null" >
+        GHSDM,
+      </if>
+      <if test="gshmc != null" >
+        GSHMC,
+      </if>
+      <if test="shbmid != null" >
+        SHBMID,
+      </if>
+      <if test="bjYx != null" >
+        BJ_YX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shhtid != null" >
+        #{shhtid,jdbcType=INTEGER},
+      </if>
+      <if test="shdm != null" >
+        #{shdm,jdbcType=CHAR},
+      </if>
+      <if test="hth != null" >
+        #{hth,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsdm != null" >
+        #{ghsdm,jdbcType=VARCHAR},
+      </if>
+      <if test="gshmc != null" >
+        #{gshmc,jdbcType=VARCHAR},
+      </if>
+      <if test="shbmid != null" >
+        #{shbmid,jdbcType=INTEGER},
+      </if>
+      <if test="bjYx != null" >
+        #{bjYx,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Shht" >
+    update BFCRM.SHHT
+    <set >
+      <if test="shdm != null" >
+        SHDM = #{shdm,jdbcType=CHAR},
+      </if>
+      <if test="hth != null" >
+        HTH = #{hth,jdbcType=VARCHAR},
+      </if>
+      <if test="ghsdm != null" >
+        GHSDM = #{ghsdm,jdbcType=VARCHAR},
+      </if>
+      <if test="gshmc != null" >
+        GSHMC = #{gshmc,jdbcType=VARCHAR},
+      </if>
+      <if test="shbmid != null" >
+        SHBMID = #{shbmid,jdbcType=INTEGER},
+      </if>
+      <if test="bjYx != null" >
+        BJ_YX = #{bjYx,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where SHHTID = #{shhtid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Shht" >
+    update BFCRM.SHHT
+    set SHDM = #{shdm,jdbcType=CHAR},
+      HTH = #{hth,jdbcType=VARCHAR},
+      GHSDM = #{ghsdm,jdbcType=VARCHAR},
+      GSHMC = #{gshmc,jdbcType=VARCHAR},
+      SHBMID = #{shbmid,jdbcType=INTEGER},
+      BJ_YX = #{bjYx,jdbcType=SMALLINT}
+    where SHHTID = #{shhtid,jdbcType=INTEGER}
+  </update>
+</mapper>

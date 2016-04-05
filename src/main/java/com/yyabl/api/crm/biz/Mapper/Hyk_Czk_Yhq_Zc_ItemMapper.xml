@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_Czk_Yhq_Zc_ItemMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Czk_Yhq_Zc_Item" >
+    <id column="CZJPJ_JLBH" property="czjpjJlbh" jdbcType="INTEGER" />
+    <id column="HYID_ZC" property="hyidZc" jdbcType="INTEGER" />
+    <id column="YHQID" property="yhqid" jdbcType="SMALLINT" />
+    <id column="JSRQ" property="jsrq" jdbcType="TIMESTAMP" />
+    <id column="MDFWDM" property="mdfwdm" jdbcType="CHAR" />
+    <result column="ZCJE" property="zcje" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CZJPJ_JLBH, HYID_ZC, YHQID, JSRQ, MDFWDM, ZCJE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Czk_Yhq_Zc_ItemKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from BFCRM.HYK_CZK_YHQ_ZCITEM
+    where CZJPJ_JLBH = #{czjpjJlbh,jdbcType=INTEGER}
+      and HYID_ZC = #{hyidZc,jdbcType=INTEGER}
+      and YHQID = #{yhqid,jdbcType=SMALLINT}
+      and JSRQ = #{jsrq,jdbcType=TIMESTAMP}
+      and MDFWDM = #{mdfwdm,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Czk_Yhq_Zc_ItemKey" >
+    delete from BFCRM.HYK_CZK_YHQ_ZCITEM
+    where CZJPJ_JLBH = #{czjpjJlbh,jdbcType=INTEGER}
+      and HYID_ZC = #{hyidZc,jdbcType=INTEGER}
+      and YHQID = #{yhqid,jdbcType=SMALLINT}
+      and JSRQ = #{jsrq,jdbcType=TIMESTAMP}
+      and MDFWDM = #{mdfwdm,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Czk_Yhq_Zc_Item" >
+    insert into BFCRM.HYK_CZK_YHQ_ZCITEM (CZJPJ_JLBH, HYID_ZC, YHQID, 
+      JSRQ, MDFWDM, ZCJE)
+    values (#{czjpjJlbh,jdbcType=INTEGER}, #{hyidZc,jdbcType=INTEGER}, #{yhqid,jdbcType=SMALLINT}, 
+      #{jsrq,jdbcType=TIMESTAMP}, #{mdfwdm,jdbcType=CHAR}, #{zcje,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Czk_Yhq_Zc_Item" >
+    insert into BFCRM.HYK_CZK_YHQ_ZCITEM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="czjpjJlbh != null" >
+        CZJPJ_JLBH,
+      </if>
+      <if test="hyidZc != null" >
+        HYID_ZC,
+      </if>
+      <if test="yhqid != null" >
+        YHQID,
+      </if>
+      <if test="jsrq != null" >
+        JSRQ,
+      </if>
+      <if test="mdfwdm != null" >
+        MDFWDM,
+      </if>
+      <if test="zcje != null" >
+        ZCJE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="czjpjJlbh != null" >
+        #{czjpjJlbh,jdbcType=INTEGER},
+      </if>
+      <if test="hyidZc != null" >
+        #{hyidZc,jdbcType=INTEGER},
+      </if>
+      <if test="yhqid != null" >
+        #{yhqid,jdbcType=SMALLINT},
+      </if>
+      <if test="jsrq != null" >
+        #{jsrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfwdm != null" >
+        #{mdfwdm,jdbcType=CHAR},
+      </if>
+      <if test="zcje != null" >
+        #{zcje,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Czk_Yhq_Zc_Item" >
+    update BFCRM.HYK_CZK_YHQ_ZCITEM
+    <set >
+      <if test="zcje != null" >
+        ZCJE = #{zcje,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CZJPJ_JLBH = #{czjpjJlbh,jdbcType=INTEGER}
+      and HYID_ZC = #{hyidZc,jdbcType=INTEGER}
+      and YHQID = #{yhqid,jdbcType=SMALLINT}
+      and JSRQ = #{jsrq,jdbcType=TIMESTAMP}
+      and MDFWDM = #{mdfwdm,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Czk_Yhq_Zc_Item" >
+    update BFCRM.HYK_CZK_YHQ_ZCITEM
+    set ZCJE = #{zcje,jdbcType=DECIMAL}
+    where CZJPJ_JLBH = #{czjpjJlbh,jdbcType=INTEGER}
+      and HYID_ZC = #{hyidZc,jdbcType=INTEGER}
+      and YHQID = #{yhqid,jdbcType=SMALLINT}
+      and JSRQ = #{jsrq,jdbcType=TIMESTAMP}
+      and MDFWDM = #{mdfwdm,jdbcType=CHAR}
+  </update>
+</mapper>

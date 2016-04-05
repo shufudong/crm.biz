@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.RclMapper">
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Rcl">
+		<id column="RQ" property="rq" jdbcType="TIMESTAMP" />
+		<id column="LIBID" property="libid" jdbcType="INTEGER" />
+		<result column="OPERATOR_ID" property="operatorId" jdbcType="INTEGER" />
+		<result column="PROC_KSSJ" property="procKssj" jdbcType="TIMESTAMP" />
+		<result column="PROC_JSSJ" property="procJssj" jdbcType="TIMESTAMP" />
+		<result column="STATION_ID" property="stationId" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="SMALLINT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		RQ, LIBID, OPERATOR_ID, PROC_KSSJ, PROC_JSSJ, STATION_ID, STATUS
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="com.yyabl.api.crm.biz.Domain.RclKey">
+		select
+		<include refid="Base_Column_List" />
+		from BFPUB.RCL
+		where RQ = #{rq,jdbcType=TIMESTAMP}
+		and LIBID = #{libid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.RclKey">
+		delete from BFPUB.RCL
+		where RQ = #{rq,jdbcType=TIMESTAMP}
+		and LIBID = #{libid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Rcl">
+		insert into BFPUB.RCL (RQ, LIBID, OPERATOR_ID,
+		PROC_KSSJ, PROC_JSSJ, STATION_ID,
+		STATUS)
+		values (#{rq,jdbcType=TIMESTAMP}, #{libid,jdbcType=INTEGER},
+		#{operatorId,jdbcType=INTEGER},
+		#{procKssj,jdbcType=TIMESTAMP}, #{procJssj,jdbcType=TIMESTAMP}, #{stationId,jdbcType=VARCHAR},
+		#{status,jdbcType=SMALLINT})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Rcl">
+		insert into BFPUB.RCL
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="rq != null">
+				RQ,
+			</if>
+			<if test="libid != null">
+				LIBID,
+			</if>
+			<if test="operatorId != null">
+				OPERATOR_ID,
+			</if>
+			<if test="procKssj != null">
+				PROC_KSSJ,
+			</if>
+			<if test="procJssj != null">
+				PROC_JSSJ,
+			</if>
+			<if test="stationId != null">
+				STATION_ID,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="rq != null">
+				#{rq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="libid != null">
+				#{libid,jdbcType=INTEGER},
+			</if>
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=INTEGER},
+			</if>
+			<if test="procKssj != null">
+				#{procKssj,jdbcType=TIMESTAMP},
+			</if>
+			<if test="procJssj != null">
+				#{procJssj,jdbcType=TIMESTAMP},
+			</if>
+			<if test="stationId != null">
+				#{stationId,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=SMALLINT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Rcl">
+		update BFPUB.RCL
+		<set>
+			<if test="operatorId != null">
+				OPERATOR_ID = #{operatorId,jdbcType=INTEGER},
+			</if>
+			<if test="procKssj != null">
+				PROC_KSSJ = #{procKssj,jdbcType=TIMESTAMP},
+			</if>
+			<if test="procJssj != null">
+				PROC_JSSJ = #{procJssj,jdbcType=TIMESTAMP},
+			</if>
+			<if test="stationId != null">
+				STATION_ID = #{stationId,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=SMALLINT},
+			</if>
+		</set>
+		where RQ = #{rq,jdbcType=TIMESTAMP}
+		and LIBID = #{libid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Rcl">
+		update BFPUB.RCL
+		set OPERATOR_ID = #{operatorId,jdbcType=INTEGER},
+		PROC_KSSJ = #{procKssj,jdbcType=TIMESTAMP},
+		PROC_JSSJ = #{procJssj,jdbcType=TIMESTAMP},
+		STATION_ID = #{stationId,jdbcType=VARCHAR},
+		STATUS = #{status,jdbcType=SMALLINT}
+		where RQ = #{rq,jdbcType=TIMESTAMP}
+		and LIBID = #{libid,jdbcType=INTEGER}
+	</update>
+	<select id="checkRclStatus" resultMap="BaseResultMap">
+		select
+			max(RQ) RQ,sum(STATUS) STATUS
+		from BFPUB.RCL
+		where LIBID in (510020,510030,510040,510200)
+	</select>
+
+</mapper>

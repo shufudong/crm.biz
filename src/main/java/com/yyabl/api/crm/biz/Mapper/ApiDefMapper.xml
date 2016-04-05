@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.ApiDefMapper">
+	<cache type="org.mybatis.caches.memcached.MemcachedCache" />
+	<resultMap id="BaseResultMap" type="ApiDef">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="URL" property="url" jdbcType="VARCHAR" />
+		<result column="COMMENT" property="comment" jdbcType="VARCHAR" />
+		<result column="ENABLED" property="enabled" jdbcType="BIT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, URL, COMMENT, ENABLED
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from BFCRM.API_DEF
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	<select id="selectByUrlEnabled" parameterType="string" resultMap="BaseResultMap">
+		select
+			ID,
+			URL,
+			COMMENT,
+			ENABLED
+		from 
+			API_DEF
+		where
+			URL=#{url} and ENABLED=1
+	</select> 
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from BFCRM.API_DEF
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.ApiDef">
+		insert into BFCRM.API_DEF (ID, URL, COMMENT,
+		ENABLED)
+		values (#{id,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR},
+		#{enabled,jdbcType=BIT})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.ApiDef">
+		insert into BFCRM.API_DEF
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="url != null">
+				URL,
+			</if>
+			<if test="comment != null">
+				COMMENT,
+			</if>
+			<if test="enabled != null">
+				ENABLED,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="url != null">
+				#{url,jdbcType=VARCHAR},
+			</if>
+			<if test="comment != null">
+				#{comment,jdbcType=VARCHAR},
+			</if>
+			<if test="enabled != null">
+				#{enabled,jdbcType=BIT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.ApiDef">
+		update BFCRM.API_DEF
+		<set>
+			<if test="url != null">
+				URL = #{url,jdbcType=VARCHAR},
+			</if>
+			<if test="comment != null">
+				COMMENT = #{comment,jdbcType=VARCHAR},
+			</if>
+			<if test="enabled != null">
+				ENABLED = #{enabled,jdbcType=BIT},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.ApiDef">
+		update BFCRM.API_DEF
+		set URL = #{url,jdbcType=VARCHAR},
+		COMMENT = #{comment,jdbcType=VARCHAR},
+		ENABLED = #{enabled,jdbcType=BIT}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

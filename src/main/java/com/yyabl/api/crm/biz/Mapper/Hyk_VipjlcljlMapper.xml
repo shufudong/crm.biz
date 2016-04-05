@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_VipjlcljlMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Vipjlcljl" >
+    <id column="JLBH" property="jlbh" jdbcType="INTEGER" />
+    <result column="HYID" property="hyid" jdbcType="INTEGER" />
+    <result column="HYKTYPE" property="hyktype" jdbcType="SMALLINT" />
+    <result column="FLJE" property="flje" jdbcType="DECIMAL" />
+    <result column="LJXFJE" property="ljxfje" jdbcType="DECIMAL" />
+    <result column="CLJF" property="cljf" jdbcType="DOUBLE" />
+    <result column="CLRQ" property="clrq" jdbcType="TIMESTAMP" />
+    <result column="DJR" property="djr" jdbcType="INTEGER" />
+    <result column="DJRMC" property="djrmc" jdbcType="VARCHAR" />
+    <result column="DJSJ" property="djsj" jdbcType="TIMESTAMP" />
+    <result column="SHR" property="shr" jdbcType="INTEGER" />
+    <result column="SHRMC" property="shrmc" jdbcType="VARCHAR" />
+    <result column="SHRQ" property="shrq" jdbcType="TIMESTAMP" />
+    <result column="ZXR" property="zxr" jdbcType="INTEGER" />
+    <result column="ZXRMC" property="zxrmc" jdbcType="VARCHAR" />
+    <result column="ZXRQ" property="zxrq" jdbcType="TIMESTAMP" />
+    <result column="SYJSRQ" property="syjsrq" jdbcType="TIMESTAMP" />
+    <result column="MDID" property="mdid" jdbcType="INTEGER" />
+    <result column="CZJLBH" property="czjlbh" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yyabl.api.crm.biz.Domain.Hyk_Vipjlcljl" extends="BaseResultMap" >
+    <result column="TM" property="tm" jdbcType="VARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JLBH, HYID, HYKTYPE, FLJE, LJXFJE, CLJF, CLRQ, DJR, DJRMC, DJSJ, SHR, SHRMC, SHRQ, 
+    ZXR, ZXRMC, ZXRQ, SYJSRQ, MDID, CZJLBH
+  </sql>
+  <sql id="Blob_Column_List" >
+    TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from BFCRM.HYK_VIPJLCLJL
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from BFCRM.HYK_VIPJLCLJL
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Vipjlcljl" >
+    insert into BFCRM.HYK_VIPJLCLJL (JLBH, HYID, HYKTYPE, 
+      FLJE, LJXFJE, CLJF, 
+      CLRQ, DJR, DJRMC, 
+      DJSJ, SHR, SHRMC, 
+      SHRQ, ZXR, ZXRMC, 
+      ZXRQ, SYJSRQ, MDID, 
+      CZJLBH, TM)
+    values (#{jlbh,jdbcType=INTEGER}, #{hyid,jdbcType=INTEGER}, #{hyktype,jdbcType=SMALLINT}, 
+      #{flje,jdbcType=DECIMAL}, #{ljxfje,jdbcType=DECIMAL}, #{cljf,jdbcType=DOUBLE}, 
+      #{clrq,jdbcType=TIMESTAMP}, #{djr,jdbcType=INTEGER}, #{djrmc,jdbcType=VARCHAR}, 
+      #{djsj,jdbcType=TIMESTAMP}, #{shr,jdbcType=INTEGER}, #{shrmc,jdbcType=VARCHAR}, 
+      #{shrq,jdbcType=TIMESTAMP}, #{zxr,jdbcType=INTEGER}, #{zxrmc,jdbcType=VARCHAR}, 
+      #{zxrq,jdbcType=TIMESTAMP}, #{syjsrq,jdbcType=TIMESTAMP}, #{mdid,jdbcType=INTEGER}, 
+      #{czjlbh,jdbcType=INTEGER}, #{tm,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Vipjlcljl" >
+    insert into BFCRM.HYK_VIPJLCLJL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        JLBH,
+      </if>
+      <if test="hyid != null" >
+        HYID,
+      </if>
+      <if test="hyktype != null" >
+        HYKTYPE,
+      </if>
+      <if test="flje != null" >
+        FLJE,
+      </if>
+      <if test="ljxfje != null" >
+        LJXFJE,
+      </if>
+      <if test="cljf != null" >
+        CLJF,
+      </if>
+      <if test="clrq != null" >
+        CLRQ,
+      </if>
+      <if test="djr != null" >
+        DJR,
+      </if>
+      <if test="djrmc != null" >
+        DJRMC,
+      </if>
+      <if test="djsj != null" >
+        DJSJ,
+      </if>
+      <if test="shr != null" >
+        SHR,
+      </if>
+      <if test="shrmc != null" >
+        SHRMC,
+      </if>
+      <if test="shrq != null" >
+        SHRQ,
+      </if>
+      <if test="zxr != null" >
+        ZXR,
+      </if>
+      <if test="zxrmc != null" >
+        ZXRMC,
+      </if>
+      <if test="zxrq != null" >
+        ZXRQ,
+      </if>
+      <if test="syjsrq != null" >
+        SYJSRQ,
+      </if>
+      <if test="mdid != null" >
+        MDID,
+      </if>
+      <if test="czjlbh != null" >
+        CZJLBH,
+      </if>
+      <if test="tm != null" >
+        TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        #{jlbh,jdbcType=INTEGER},
+      </if>
+      <if test="hyid != null" >
+        #{hyid,jdbcType=INTEGER},
+      </if>
+      <if test="hyktype != null" >
+        #{hyktype,jdbcType=SMALLINT},
+      </if>
+      <if test="flje != null" >
+        #{flje,jdbcType=DECIMAL},
+      </if>
+      <if test="ljxfje != null" >
+        #{ljxfje,jdbcType=DECIMAL},
+      </if>
+      <if test="cljf != null" >
+        #{cljf,jdbcType=DOUBLE},
+      </if>
+      <if test="clrq != null" >
+        #{clrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="djr != null" >
+        #{djr,jdbcType=INTEGER},
+      </if>
+      <if test="djrmc != null" >
+        #{djrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="djsj != null" >
+        #{djsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shr != null" >
+        #{shr,jdbcType=INTEGER},
+      </if>
+      <if test="shrmc != null" >
+        #{shrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="shrq != null" >
+        #{shrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zxr != null" >
+        #{zxr,jdbcType=INTEGER},
+      </if>
+      <if test="zxrmc != null" >
+        #{zxrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zxrq != null" >
+        #{zxrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syjsrq != null" >
+        #{syjsrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdid != null" >
+        #{mdid,jdbcType=INTEGER},
+      </if>
+      <if test="czjlbh != null" >
+        #{czjlbh,jdbcType=INTEGER},
+      </if>
+      <if test="tm != null" >
+        #{tm,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Vipjlcljl" >
+    update BFCRM.HYK_VIPJLCLJL
+    <set >
+      <if test="hyid != null" >
+        HYID = #{hyid,jdbcType=INTEGER},
+      </if>
+      <if test="hyktype != null" >
+        HYKTYPE = #{hyktype,jdbcType=SMALLINT},
+      </if>
+      <if test="flje != null" >
+        FLJE = #{flje,jdbcType=DECIMAL},
+      </if>
+      <if test="ljxfje != null" >
+        LJXFJE = #{ljxfje,jdbcType=DECIMAL},
+      </if>
+      <if test="cljf != null" >
+        CLJF = #{cljf,jdbcType=DOUBLE},
+      </if>
+      <if test="clrq != null" >
+        CLRQ = #{clrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="djr != null" >
+        DJR = #{djr,jdbcType=INTEGER},
+      </if>
+      <if test="djrmc != null" >
+        DJRMC = #{djrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="djsj != null" >
+        DJSJ = #{djsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shr != null" >
+        SHR = #{shr,jdbcType=INTEGER},
+      </if>
+      <if test="shrmc != null" >
+        SHRMC = #{shrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="shrq != null" >
+        SHRQ = #{shrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zxr != null" >
+        ZXR = #{zxr,jdbcType=INTEGER},
+      </if>
+      <if test="zxrmc != null" >
+        ZXRMC = #{zxrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zxrq != null" >
+        ZXRQ = #{zxrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syjsrq != null" >
+        SYJSRQ = #{syjsrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdid != null" >
+        MDID = #{mdid,jdbcType=INTEGER},
+      </if>
+      <if test="czjlbh != null" >
+        CZJLBH = #{czjlbh,jdbcType=INTEGER},
+      </if>
+      <if test="tm != null" >
+        TM = #{tm,jdbcType=VARBINARY},
+      </if>
+    </set>
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Vipjlcljl" >
+    update BFCRM.HYK_VIPJLCLJL
+    set HYID = #{hyid,jdbcType=INTEGER},
+      HYKTYPE = #{hyktype,jdbcType=SMALLINT},
+      FLJE = #{flje,jdbcType=DECIMAL},
+      LJXFJE = #{ljxfje,jdbcType=DECIMAL},
+      CLJF = #{cljf,jdbcType=DOUBLE},
+      CLRQ = #{clrq,jdbcType=TIMESTAMP},
+      DJR = #{djr,jdbcType=INTEGER},
+      DJRMC = #{djrmc,jdbcType=VARCHAR},
+      DJSJ = #{djsj,jdbcType=TIMESTAMP},
+      SHR = #{shr,jdbcType=INTEGER},
+      SHRMC = #{shrmc,jdbcType=VARCHAR},
+      SHRQ = #{shrq,jdbcType=TIMESTAMP},
+      ZXR = #{zxr,jdbcType=INTEGER},
+      ZXRMC = #{zxrmc,jdbcType=VARCHAR},
+      ZXRQ = #{zxrq,jdbcType=TIMESTAMP},
+      SYJSRQ = #{syjsrq,jdbcType=TIMESTAMP},
+      MDID = #{mdid,jdbcType=INTEGER},
+      CZJLBH = #{czjlbh,jdbcType=INTEGER},
+      TM = #{tm,jdbcType=VARBINARY}
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Vipjlcljl" >
+    update BFCRM.HYK_VIPJLCLJL
+    set HYID = #{hyid,jdbcType=INTEGER},
+      HYKTYPE = #{hyktype,jdbcType=SMALLINT},
+      FLJE = #{flje,jdbcType=DECIMAL},
+      LJXFJE = #{ljxfje,jdbcType=DECIMAL},
+      CLJF = #{cljf,jdbcType=DOUBLE},
+      CLRQ = #{clrq,jdbcType=TIMESTAMP},
+      DJR = #{djr,jdbcType=INTEGER},
+      DJRMC = #{djrmc,jdbcType=VARCHAR},
+      DJSJ = #{djsj,jdbcType=TIMESTAMP},
+      SHR = #{shr,jdbcType=INTEGER},
+      SHRMC = #{shrmc,jdbcType=VARCHAR},
+      SHRQ = #{shrq,jdbcType=TIMESTAMP},
+      ZXR = #{zxr,jdbcType=INTEGER},
+      ZXRMC = #{zxrmc,jdbcType=VARCHAR},
+      ZXRQ = #{zxrq,jdbcType=TIMESTAMP},
+      SYJSRQ = #{syjsrq,jdbcType=TIMESTAMP},
+      MDID = #{mdid,jdbcType=INTEGER},
+      CZJLBH = #{czjlbh,jdbcType=INTEGER}
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.O2O_MallMapper">
+	<cache type="org.mybatis.caches.memcached.MemcachedCache" />
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.O2O_Mall">
+		<id column="MDID" property="mdid" jdbcType="INTEGER" />
+		<result column="SHMC" property="shmc" jdbcType="VARCHAR" />
+		<result column="BMDM" property="bmdm" jdbcType="VARCHAR" />
+		<result column="SHDM" property="shdm" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		MDID, SHMC, BMDM, SHDM
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from BFCRM.O2O_FD
+		where MDID = #{mdid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from BFCRM.O2O_FD
+		where MDID = #{mdid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.O2O_Mall">
+		insert into BFCRM.O2O_FD (MDID, SHMC, BMDM,
+		SHDM)
+		values (#{mdid,jdbcType=INTEGER}, #{shmc,jdbcType=VARCHAR},
+		#{bmdm,jdbcType=VARCHAR},
+		#{shdm,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.O2O_Mall">
+		insert into BFCRM.O2O_FD
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mdid != null">
+				MDID,
+			</if>
+			<if test="shmc != null">
+				SHMC,
+			</if>
+			<if test="bmdm != null">
+				BMDM,
+			</if>
+			<if test="shdm != null">
+				SHDM,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mdid != null">
+				#{mdid,jdbcType=INTEGER},
+			</if>
+			<if test="shmc != null">
+				#{shmc,jdbcType=VARCHAR},
+			</if>
+			<if test="bmdm != null">
+				#{bmdm,jdbcType=VARCHAR},
+			</if>
+			<if test="shdm != null">
+				#{shdm,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.O2O_Mall">
+		update BFCRM.O2O_FD
+		<set>
+			<if test="shmc != null">
+				SHMC = #{shmc,jdbcType=VARCHAR},
+			</if>
+			<if test="bmdm != null">
+				BMDM = #{bmdm,jdbcType=VARCHAR},
+			</if>
+			<if test="shdm != null">
+				SHDM = #{shdm,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where MDID = #{mdid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.O2O_Mall">
+		update BFCRM.O2O_FD
+		set SHMC = #{shmc,jdbcType=VARCHAR},
+		BMDM = #{bmdm,jdbcType=VARCHAR},
+		SHDM = #{shdm,jdbcType=VARCHAR}
+		where MDID = #{mdid,jdbcType=INTEGER}
+	</update>
+</mapper>

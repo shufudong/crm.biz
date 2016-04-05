@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.O2O_PayTypeMapper">
+	<cache type="org.mybatis.caches.memcached.MemcachedCache" />
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.O2O_PayType">
+		<id column="CODE" property="code" jdbcType="INTEGER" />
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="KKID" property="kkid" jdbcType="INTEGER" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.yyabl.api.crm.biz.Domain.O2O_PayType"
+		extends="BaseResultMap">
+		<result column="TM" property="tm" jdbcType="VARBINARY" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		CODE, ID, NAME, KKID
+	</sql>
+	<sql id="Blob_Column_List">
+		TM
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="com.yyabl.api.crm.biz.Domain.O2O_PayTypeKey">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from BFCRM.O2O_SKFS
+		where CODE = #{code,jdbcType=INTEGER}
+		and ID = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.O2O_PayTypeKey">
+		delete from BFCRM.O2O_SKFS
+		where CODE = #{code,jdbcType=INTEGER}
+		and ID = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.O2O_PayType">
+		insert into BFCRM.O2O_SKFS (CODE, ID, NAME,
+		KKID, TM)
+		values (#{code,jdbcType=INTEGER}, #{id,jdbcType=INTEGER},
+		#{name,jdbcType=VARCHAR},
+		#{kkid,jdbcType=INTEGER}, #{tm,jdbcType=VARBINARY})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.O2O_PayType">
+		insert into BFCRM.O2O_SKFS
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="code != null">
+				CODE,
+			</if>
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+			<if test="kkid != null">
+				KKID,
+			</if>
+			<if test="tm != null">
+				TM,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="code != null">
+				#{code,jdbcType=INTEGER},
+			</if>
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="kkid != null">
+				#{kkid,jdbcType=INTEGER},
+			</if>
+			<if test="tm != null">
+				#{tm,jdbcType=VARBINARY},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.O2O_PayType">
+		update BFCRM.O2O_SKFS
+		<set>
+			<if test="name != null">
+				NAME = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="kkid != null">
+				KKID = #{kkid,jdbcType=INTEGER},
+			</if>
+			<if test="tm != null">
+				TM = #{tm,jdbcType=VARBINARY},
+			</if>
+		</set>
+		where CODE = #{code,jdbcType=INTEGER}
+		and ID = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yyabl.api.crm.biz.Domain.O2O_PayType">
+		update BFCRM.O2O_SKFS
+		set NAME = #{name,jdbcType=VARCHAR},
+		KKID = #{kkid,jdbcType=INTEGER},
+		TM = #{tm,jdbcType=VARBINARY}
+		where CODE = #{code,jdbcType=INTEGER}
+		and ID = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.O2O_PayType">
+		update BFCRM.O2O_SKFS
+		set NAME = #{name,jdbcType=VARCHAR},
+		KKID = #{kkid,jdbcType=INTEGER}
+		where CODE = #{code,jdbcType=INTEGER}
+		and ID = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

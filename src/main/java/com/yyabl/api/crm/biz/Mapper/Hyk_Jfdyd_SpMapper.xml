@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_Jfdyd_SpMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Sp" >
+    <id column="JLBH" property="jlbh" jdbcType="INTEGER" />
+    <id column="INX" property="inx" jdbcType="SMALLINT" />
+    <id column="SHSPID" property="shspid" jdbcType="INTEGER" />
+    <result column="FZ" property="fz" jdbcType="DOUBLE" />
+    <result column="XH" property="xh" jdbcType="INTEGER" />
+    <result column="BJ_CJ" property="bjCj" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JLBH, INX, SHSPID, FZ, XH, BJ_CJ
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_SpKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from BFCRM.HYKJFDYD_SP
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and INX = #{inx,jdbcType=SMALLINT}
+      and SHSPID = #{shspid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_SpKey" >
+    delete from BFCRM.HYKJFDYD_SP
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and INX = #{inx,jdbcType=SMALLINT}
+      and SHSPID = #{shspid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Sp" >
+    insert into BFCRM.HYKJFDYD_SP (JLBH, INX, SHSPID, 
+      FZ, XH, BJ_CJ)
+    values (#{jlbh,jdbcType=INTEGER}, #{inx,jdbcType=SMALLINT}, #{shspid,jdbcType=INTEGER}, 
+      #{fz,jdbcType=DOUBLE}, #{xh,jdbcType=INTEGER}, #{bjCj,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Sp" >
+    insert into BFCRM.HYKJFDYD_SP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        JLBH,
+      </if>
+      <if test="inx != null" >
+        INX,
+      </if>
+      <if test="shspid != null" >
+        SHSPID,
+      </if>
+      <if test="fz != null" >
+        FZ,
+      </if>
+      <if test="xh != null" >
+        XH,
+      </if>
+      <if test="bjCj != null" >
+        BJ_CJ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        #{jlbh,jdbcType=INTEGER},
+      </if>
+      <if test="inx != null" >
+        #{inx,jdbcType=SMALLINT},
+      </if>
+      <if test="shspid != null" >
+        #{shspid,jdbcType=INTEGER},
+      </if>
+      <if test="fz != null" >
+        #{fz,jdbcType=DOUBLE},
+      </if>
+      <if test="xh != null" >
+        #{xh,jdbcType=INTEGER},
+      </if>
+      <if test="bjCj != null" >
+        #{bjCj,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Sp" >
+    update BFCRM.HYKJFDYD_SP
+    <set >
+      <if test="fz != null" >
+        FZ = #{fz,jdbcType=DOUBLE},
+      </if>
+      <if test="xh != null" >
+        XH = #{xh,jdbcType=INTEGER},
+      </if>
+      <if test="bjCj != null" >
+        BJ_CJ = #{bjCj,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and INX = #{inx,jdbcType=SMALLINT}
+      and SHSPID = #{shspid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Sp" >
+    update BFCRM.HYKJFDYD_SP
+    set FZ = #{fz,jdbcType=DOUBLE},
+      XH = #{xh,jdbcType=INTEGER},
+      BJ_CJ = #{bjCj,jdbcType=SMALLINT}
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and INX = #{inx,jdbcType=SMALLINT}
+      and SHSPID = #{shspid,jdbcType=INTEGER}
+  </update>
+</mapper>

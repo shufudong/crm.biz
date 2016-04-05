@@ -1,0 +1,302 @@
+/*API接口定义表*/
+CREATE TABLE BFCRM.API_DEF (
+	ID int NOT NULL,					--API ID
+	URL varchar(255) NOT NULL,			--接口访问地址
+	COMMENT varchar(255) NOT NULL,      --接口的文字描述
+	ENABLED bit NOT NULL,				--接口是否已经作废(0-作废，1-有效)
+	PRIMARY KEY (ID)
+)
+
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (1, '/crm.biz/Card/getMobileNoByCardNo', '根据会员卡号查询对应的手机号码', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (2, '/crm.biz/Sms/sendVerifyCodeByCardNo', '根据会员卡号发送验证短信', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (3, '/crm.biz/Card/getCardIdByVerifyInfo', '判断短信验证码是否合法，然后返回会员ID', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (4, '/crm.biz/Card/getCardInfoByCardId', '根据会员卡ID获取会员信息', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (5, '/crm.biz/Order/getProductPoints', '按ERP编码获取商品的积分信息', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (6, '/crm.biz/Account/getEffectPointByCardId', '根据会员ID获取未处理积分数额', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (7, '/crm.biz/Account/getEffectTicketByCardId', '根据会员ID获取优惠券账户余额', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (8, '/crm.biz/Card/generateCard', '会员卡资料导入', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (9, '/crm.biz/Card/getCardIdByCardNoAndPhoneNo', '按会员卡号和手机号码获取会员卡 ID', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (10, '/crm.biz/Card/mergeCard', '会员卡合并', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (11, '/crm.biz/Account/exchangePointToTicket', '会员卡积分兑换优惠券', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (12, '/crm.biz/Account/modifyPoint', '积分账户扣减', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (13, '/crm.biz/Account/flushesPoint', '积分账户扣减冲正', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (14, '/crm.biz/Account/cutTicket', '优惠券账户扣减', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (15, '/crm.biz/Account/flushesTicket', '优惠券账户扣减冲正', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (16, '/crm.biz/Account/getExchangeRule', '获取会员积分兑换电子券规则', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (17, '/crm.biz/Card/getRightsOfMember', '获取会员特权信息', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (18, '/crm.biz/Card/getCardIdByCardNo', '根据会员卡号获取会员卡ID(临时用)', 1)
+GO
+INSERT INTO BFCRM.API_DEF(ID, URL, COMMENT, ENABLED) VALUES (19, '/crm.biz/Account/modifyTicket', '修改优惠券账户余额', 1)
+GO
+
+
+/*增加门店与部门对应表*/
+CREATE TABLE BFCRM.O2O_FD
+(
+	MDID int NOT NULL,			
+	SHMC varchar(50) NOT NULL,
+	BMDM varchar(10) NOT NULL,
+	SHDM varchar(10) NOT NULL,
+	PRIMARY KEY (MDID)
+)
+
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(1,'友阿股份总部','01','QT')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(2,'阿波罗商业广场','26','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(3,'阿波罗商城','25','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(4,'友谊名店','23','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(5,'友谊商城','21','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(6,'友谊商店（旧）','20','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(7,'家电超市广场店','30','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(8,'春天百货','50','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(9,'春天百货常德店','51','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(11,'友谊晶珠广场','31','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(12,'家电超市赤岗冲店','32','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(13,'家电超市株洲店','33','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(15,'郴州店','52','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(16,'家电超市宁乡店','35','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(17,'友阿百货朝阳店','68','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(18,'友谊商店AB店','88','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(19,'娄底鹏泰店','28','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(21,'滨江友谊商业广场','29','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(22,'友阿电器人民路店','36','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(23,'新化世茂','37','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(26,'邵阳友谊','22','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(27,'长沙奥特莱斯','98','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(33,'友阿春天','53','BH')
+insert into BFCRM.O2O_FD(MDID,SHMC,BMDM,SHDM) values(99,'友阿黄金中山路店','80','HJ')
+
+/*增加积分处理类型枚举表*/
+create table BFCRM.ENUM_HYK_JFBD_CLLX
+(
+	ID	int not null,				
+	COMMENT varchar(100) not null,
+	primary key (ID)
+)
+
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(0,'更换卡类型')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(1,'积分变动单')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(2,'积分调整单')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(3,'升级换卡')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(4,'取历史记录升级换卡')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(5,'有效期延长')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(6,'会员卡休眠')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(7,'积分返利执行与冲正')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(8,'老卡换新卡')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(9,'老卡并新卡')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(10,'前台消费积分')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(11,'积分转储')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(12,'钱买积分')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(13,'超值服务')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(14,'积分返礼清零')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(15,'会员卡作废清零')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(16,'积分有效期扣积分')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(17,'会员来店报道赠送积分')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(18,'会员消费抽奖赠送积分')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(19,'积分兑换金币扣减积分')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(20,'绑定实体卡后送积分')
+insert into BFCRM.ENUM_HYK_JFBD_CLLX(ID,COMMENT) values(21,'友阿云商调用接口增减积分')
+
+/*增加优惠券处理类型枚举表*/
+create table BFCRM.ENUM_CZK_YHQ_CLLX
+(
+	ID	int not null,
+	COMMENT varchar(100) not null,
+	primary key (ID)
+)
+insert into BFCRM.ENUM_CZK_YHQ_CLLX(ID,COMMENT) values(0,'建卡记录')
+insert into BFCRM.ENUM_CZK_YHQ_CLLX(ID,COMMENT) values(1,'存款记录')
+insert into BFCRM.ENUM_CZK_YHQ_CLLX(ID,COMMENT) values(2,'取款记录')
+insert into BFCRM.ENUM_CZK_YHQ_CLLX(ID,COMMENT) values(3,'作废记录')
+insert into BFCRM.ENUM_CZK_YHQ_CLLX(ID,COMMENT) values(4,'有效期变动')
+insert into BFCRM.ENUM_CZK_YHQ_CLLX(ID,COMMENT) values(5,'并卡')
+insert into BFCRM.ENUM_CZK_YHQ_CLLX(ID,COMMENT) values(6,'退卡')
+insert into BFCRM.ENUM_CZK_YHQ_CLLX(ID,COMMENT) values(7,'消费')
+insert into BFCRM.ENUM_CZK_YHQ_CLLX(ID,COMMENT) values(8,'挂失')
+insert into BFCRM.ENUM_CZK_YHQ_CLLX(ID,COMMENT) values(9,'换卡')
+insert into BFCRM.ENUM_CZK_YHQ_CLLX(ID,COMMENT) values(12,'余额清零')
+insert into BFCRM.ENUM_CZK_YHQ_CLLX(ID,COMMENT) values(13,'作废恢复')
+insert into BFCRM.ENUM_CZK_YHQ_CLLX(ID,COMMENT) values(14,'一次性消费')
+
+/*加盟机构名称*/
+create table BFCRM.API_ORG_DEF
+(
+	ID			int 				not null,   --ID
+	ORG_NAME	varchar(100)		not null,   --名称
+	MDID		int					not null, 	--对应友阿集团的实体门店的ID
+	primary key (ID)
+)
+
+insert into BFCRM.API_ORG_DEF(ID,ORG_NAME,MDID) values(1,'湖南友阿云商',88)
+insert into BFCRM.API_ORG_DEF(ID,ORG_NAME,MDID) values(2,"友阿微购",1)
+
+/*API调用者与加盟机构对应表对应表*/
+create table BFCRM.API_PERSON_DEF
+(
+	PERSON_ID	int				not null,  --对应RYXX.PERSON_ID
+	ORG_ID		int				not null,  --对应API_ORG_DEF.ID
+	primary key (PERSON_ID)
+)
+
+insert into BFCRM.API_PERSON_DEF(PERSON_ID,ORG_ID) values(117,1)
+insert into BFCRM.API_PERSON_DEF(PERSON_ID,ORG_ID) values(782,2)
+
+/*增加友阿云卡的联名卡定义*/
+insert into BFCRM.LMKDEF(LMK_ID,LMK_CODE,LMK_NAME,ORG_ID,LEN_CDNR,LEN_BEGIN,LEN_END,HYKTYPE,CAN_NEW,CAN_ZF,CAN_HK,CAN_GS,CAN_JG)
+values
+(7,'03','友阿云卡',4,10,1,10,901,1,1,1,1,1)
+
+
+/*API接口调用Account/modifyPoint的流水记录*/
+create table BFCRM.API_HYK_JFBDJL
+(
+	JLBH			int				NOT NULL,
+	TRADE_NO		varchar(50)		NOT	NULL,
+	CARD_ID			int				NOT NULL,
+	POINTS			float			NOT NULL,
+	BIZ_TYPE		int				NOT NULL,
+	CALLER_ID		int				NOT NULL,
+	CALLER_NAME		varchar(20)		NOT NULL,
+	CALL_DATE		datetime		NOT NULL,
+	constraint PK_API_HYK_JFBDJL_JLBH primary key(JLBH)
+)
+alter table BFCRM.API_HYK_JFBDJL lock datarows
+create nonclustered index INX_API_HYK_JFBDJL_CARD_ID on BFCRM.API_HYK_JFBDJL(CARD_ID)
+/*修改API_HYK_JFBDJL表，增加'是否冲正'标记，以防止重复冲正.*/
+alter table BFCRM.API_HYK_JFBDJL add FLAG_FLUSHED bit default 0
+
+/*API接口调用card/mergeCard的流水表*/
+create table BFCRM.API_MERGE_CARD
+(
+	JLBH			int				not null,         --主键，记录编号
+	SOURCE_CARD_ID	int				not null,		  --源会员卡ID
+	TARGET_CARD_ID	int				not null,		  --目标会员卡ID
+	CALLER_ID		int				not null,		  --调用者ID(外键关联BFCRM.RYXX.PERSON_ID)
+	CALLER_NAME		varchar(20)		not null,         --调用者名称
+	CALL_DATE		datetime		not null,		  --调用时间
+	constraint PK_API_MERGE_CARD_JLBH primary key(JLBH)
+)
+alter table BFCRM.API_MERGE_CARD lock datarows
+create nonclustered index INX_API_MERGE_CARD_S_CARD_ID on BFCRM.API_MERGE_CARD(SOURCE_CARD_ID)
+create nonclustered index INX_API_MERGE_CARD_T_CARD_ID on BFCRM.API_MERGE_CARD(TARGET_CARD_ID)
+
+
+/*API接口调用card/mergeCard的积分转储流水明细表*/
+create table BFCRM.API_MERGE_CARD_ITEM_POINT
+(
+	JLBH			int 			not null,		  --外键(API_MERGE_CARD_RECORD.JLBH)
+	ZC_JLBH			int				not null,		  --积分转储业务记录编号(HYK_JFZCJL.JLBH)
+	constraint FK_API_MERGE_CARD_ITEM_POINT foreign key(JLBH) references BFCRM.API_MERGE_CARD(JLBH)
+)
+alter table BFCRM.API_MERGE_CARD_ITEM_POINT lock datarows
+create nonclustered index INX_API_MERGE_CARD_JF_JLBH on BFCRM.API_MERGE_CARD_ITEM_POINT(ZC_JLBH)
+
+/*API接口调用card/mergeCard的优惠券转储流水明细表*/
+create table BFCRM.API_MERGE_CARD_ITEM_TICKET
+(
+	JLBH			int				not null,          --外键(API_MERGE_CARD_RECORD.JLBH)
+	ZC_JLBH			int				not null,		   --优惠券转储业务记录编号(HYK_CZK_YHQ_ZC.JLBH)
+	constraint FK_API_MERGE_CARD_ITEM_TICKET foreign key(JLBH) references BFCRM.API_MERGE_CARD(JLBH)
+)
+alter table BFCRM.API_MERGE_CARD_ITEM_TICKET lock datarows
+create nonclustered index INX_API_MERGE_CARD_YHQ_JLBH on BFCRM.API_MERGE_CARD_ITEM_TICKET(ZC_JLBH)
+
+/*修改会员卡定义表，增加会员卡图片URL字段*/
+alter table BFCRM.HYKDEF add IMAGE_URL varchar(150) null
+update BFCRM.HYKDEF set IMAGE_URL="http://test-api.your-mart.cn:81/crm.biz/image/200.jpg" where HYKTYPE=200
+update BFCRM.HYKDEF set IMAGE_URL="http://test-api.your-mart.cn:81/crm.biz/image/201.jpg" where HYKTYPE=201
+update BFCRM.HYKDEF set IMAGE_URL="http://test-api.your-mart.cn:81/crm.biz/image/202.jpg" where HYKTYPE=202
+update BFCRM.HYKDEF set IMAGE_URL="http://test-api.your-mart.cn:81/crm.biz/image/203.jpg" where HYKTYPE=203
+update BFCRM.HYKDEF set IMAGE_URL="http://test-api.your-mart.cn:81/crm.biz/image/204.jpg" where HYKTYPE=204
+update BFCRM.HYKDEF set IMAGE_URL="http://test-api.your-mart.cn:81/crm.biz/image/205.jpg" where HYKTYPE=205
+update BFCRM.HYKDEF set IMAGE_URL="http://test-api.your-mart.cn:81/crm.biz/image/301.jpg" where HYKTYPE=301
+update BFCRM.HYKDEF set IMAGE_URL="http://test-api.your-mart.cn:81/crm.biz/image/302.jpg" where HYKTYPE=302
+update BFCRM.HYKDEF set IMAGE_URL="http://test-api.your-mart.cn:81/crm.biz/image/401.jpg" where HYKTYPE=401
+update BFCRM.HYKDEF set IMAGE_URL="http://test-api.your-mart.cn:81/crm.biz/image/402.jpg" where HYKTYPE=402
+update BFCRM.HYKDEF set IMAGE_URL="http://test-api.your-mart.cn:81/crm.biz/image/501.jpg" where HYKTYPE=501
+update BFCRM.HYKDEF set IMAGE_URL="http://test-api.your-mart.cn:81/crm.biz/image/502.jpg" where HYKTYPE=502
+
+/*修改存储过程的执行模式*/
+sp_procxmode HYXF_ZX_MDJFFT_JFZC, 'anymode'
+go
+
+/*API接口调用Account/cutTicket的流水表*/
+create table BFCRM.API_HYK_YHQCLJL
+(
+	JLBH			int				not null,				--单据号
+	TRADE_NO		varchar(50)		not null,		   		--第三方商户的单据号
+	CARD_ID			int				not null,				--会员卡ID
+	TICKETS			float			not null,				--需要扣减的优惠券金额
+	BIZ_TYPE		int				not null,				--扣减优惠券的业务类型
+	CALLER_ID		int				not null,				--接口调用者的账户ID
+	CALLER_NAME		varchar(20)		not null,				--接口调用者的账户名称
+	CALL_DATE		datetime		not null,				--接口调用时间
+	constraint PK_API_HYK_YHQCLJL_JLBH primary key(JLBH)
+)
+alter table BFCRM.API_HYK_YHQCLJL lock datarows
+create nonclustered index INX_API_HYK_YHQCLJL_CARD_ID on BFCRM.API_HYK_YHQCLJL(CARD_ID)
+/*修改API_HYK_YHQCLJL表，增加'是否冲正'标记，以防止重复冲正.*/
+alter table BFCRM.API_HYK_YHQCLJL add FLAG_FLUSHED bit default 0
+
+/*API接口调用Account/cutTicket的流水表明细表*/
+create table BFCRM.API_HYK_YHQCLJL_ITEM
+(
+	JLBH			int				not null,				--单据号
+	CARD_ID			int				not null,				--会员卡ID
+	YHQID			int				not null,				--优惠券ID
+	JSRQ			datetime		not null,				--优惠券结束日期
+	MDFWDM			varchar(20)		not null,				--优惠券门店使用范围
+	JE				float			not null,				--扣减金额
+	CZ_JLBH			int				not null				--操作单据号(对应BFCRM.HYK_YHQ_QKJL.JLBH)
+)
+alter table BFCRM.API_HYK_YHQCLJL_ITEM lock datarows
+create nonclustered index INX_API_HYK_YHQCLJL_ITEM_JLBH on BFCRM.API_HYK_YHQCLJL_ITEM(JLBH)
+
+/*API接口调用Account/flushesPoint的流水表*/
+create table BFCRM.API_FLUSHES_POINT
+(
+	JLBH		int			not null,					--单据号
+	OLD_JLBH	int 		not null,					--原单据号(对应BFCRM.API_HYK_JFBDJL.JLBH)
+	CALLER_ID	int			not null,					--接口调用者的账户ID
+	CALLER_NAME	varchar(20) not null,					--接口调用者的账户名称
+	CALL_DATE	datetime	not null,					--接口调用时间
+	constraint PK_API_FLUSHES_POINT primary key (JLBH)
+)
+alter table BFCRM.API_FLUSHES_POINT lock datarows
+create nonclustered index INX_API_FLUSHES_POINT_OLD_JLBH on BFCRM.API_FLUSHES_POINT(OLD_JLBH)
+
+/*API接口调用Account/flushesTicket的流水表*/
+create table BFCRM.API_FLUSHES_TICKET
+(
+	JLBH		int			not null,
+	OLD_JLBH	int			not null,
+	CALLER_ID	int			not null,
+	CALLER_NAME	varchar(20)	not null,
+	CALL_DATE	datetime	not null,
+	constraint PK_API_FLUSHES_TICKET primary key (JLBH)
+)
+alter table BFCRM.API_FLUSHES_TICKET lock datarows
+create nonclustered index INX_API_FLUSHES_TICKET_OLDJLBH on BFCRM.API_FLUSHES_TICKET(OLD_JLBH)
+
+/*为HYK_YHQZH.JE字段增加不能小余0的规则*/
+create rule R_HYK_YHQZH_JE as @JE>=0
+exec sp_bindrule "R_HYK_YHQZH_JE","HYK_YHQZH.JE"
+
+
+

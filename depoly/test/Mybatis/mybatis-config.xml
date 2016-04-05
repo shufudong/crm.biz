@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="lazyLoadingEnabled" value="false" />
+	</settings>
+	<typeAliases>
+		<package name="com.yyabl.api.crm.biz.Domain" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/ApiDefMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/BhztMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_GkdaMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_HyxxMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_JfbddMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_Jfbdjlmx_MdMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_JfbdjlmxMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_Jfdyd_FdMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_Jfdyd_GzItemMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_Jfdyd_GzsdMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_Jfdyd_SpMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_JfdydjMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_JfdydMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_JfzhMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_MdjfMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_SMS_Verify_CodeMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_StatusMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_VipjlcljlMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_VipjlcljlmxMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_YhqcljlMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_YhqzhMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/HykDefMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/PrivApiMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/RyxxMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/ShhtMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/ShSpflMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/ShSpsbMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/ShSpxx_DmMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/ShSpxxMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/XtczyMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/YhqDefMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/SmsTemplateMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/O2O_PayTypeMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/O2O_MallMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Enum_Czk_Yhq_CllxMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Enum_Hyk_Jfbd_CllxMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/ApiOrgDefMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/ApiPersonDefMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_JfflgzMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/LmkDefMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_BgddMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_ZfjlMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_Zfjl_ItemMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_JfzcjlMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_Jfzcjl_ItemMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/ApiFlushesPointMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/ApiFlushesTicketMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/ApiMergeCardMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/ApiMergeCardItemPointMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/ApiMergeCardItemTicketMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_JfzcjlMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_Jfzcjl_ItemMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_Czk_Yhq_ZcMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_Czk_Yhq_Zc_ItemMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/RclMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_Czk_Yhq_QkjlMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Hyk_Czk_Yhq_CkjlMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Api_Hyk_YhqcljlMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Api_Hyk_Yhqcljl_ItemMapper.xml" />
+		<mapper resource="com/yyabl/api/crm/biz/Mapper/Api_Hyk_JfbdjlMapper.xml"/>
+	</mappers>
+</configuration>

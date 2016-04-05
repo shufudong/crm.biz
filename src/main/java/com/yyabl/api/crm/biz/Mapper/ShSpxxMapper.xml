@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.ShSpxxMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.ShSpxx" >
+    <id column="SHSPID" property="shspid" jdbcType="INTEGER" />
+    <result column="SHDM" property="shdm" jdbcType="CHAR" />
+    <result column="SPDM" property="spdm" jdbcType="VARCHAR" />
+    <result column="SPMC" property="spmc" jdbcType="VARCHAR" />
+    <result column="SPJC" property="spjc" jdbcType="VARCHAR" />
+    <result column="PYM" property="pym" jdbcType="VARCHAR" />
+    <result column="UNIT" property="unit" jdbcType="VARCHAR" />
+    <result column="SPHS" property="sphs" jdbcType="VARCHAR" />
+    <result column="SPGG" property="spgg" jdbcType="VARCHAR" />
+    <result column="HH" property="hh" jdbcType="VARCHAR" />
+    <result column="SHSPFLID" property="shspflid" jdbcType="INTEGER" />
+    <result column="SHSBID" property="shsbid" jdbcType="INTEGER" />
+    <result column="SHHTID" property="shhtid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yyabl.api.crm.biz.Domain.ShSpxx" extends="BaseResultMap" >
+    <result column="TM" property="tm" jdbcType="VARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SHSPID, SHDM, SPDM, SPMC, SPJC, PYM, UNIT, SPHS, SPGG, HH, SHSPFLID, SHSBID, SHHTID
+  </sql>
+  <sql id="Blob_Column_List" >
+    TM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from BFCRM.SHSPXX
+    where SHSPID = #{shspid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from BFCRM.SHSPXX
+    where SHSPID = #{shspid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.ShSpxx" >
+    insert into BFCRM.SHSPXX (SHSPID, SHDM, SPDM, 
+      SPMC, SPJC, PYM, UNIT, 
+      SPHS, SPGG, HH, SHSPFLID, 
+      SHSBID, SHHTID, TM
+      )
+    values (#{shspid,jdbcType=INTEGER}, #{shdm,jdbcType=CHAR}, #{spdm,jdbcType=VARCHAR}, 
+      #{spmc,jdbcType=VARCHAR}, #{spjc,jdbcType=VARCHAR}, #{pym,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, 
+      #{sphs,jdbcType=VARCHAR}, #{spgg,jdbcType=VARCHAR}, #{hh,jdbcType=VARCHAR}, #{shspflid,jdbcType=INTEGER}, 
+      #{shsbid,jdbcType=INTEGER}, #{shhtid,jdbcType=INTEGER}, #{tm,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.ShSpxx" >
+    insert into BFCRM.SHSPXX
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shspid != null" >
+        SHSPID,
+      </if>
+      <if test="shdm != null" >
+        SHDM,
+      </if>
+      <if test="spdm != null" >
+        SPDM,
+      </if>
+      <if test="spmc != null" >
+        SPMC,
+      </if>
+      <if test="spjc != null" >
+        SPJC,
+      </if>
+      <if test="pym != null" >
+        PYM,
+      </if>
+      <if test="unit != null" >
+        UNIT,
+      </if>
+      <if test="sphs != null" >
+        SPHS,
+      </if>
+      <if test="spgg != null" >
+        SPGG,
+      </if>
+      <if test="hh != null" >
+        HH,
+      </if>
+      <if test="shspflid != null" >
+        SHSPFLID,
+      </if>
+      <if test="shsbid != null" >
+        SHSBID,
+      </if>
+      <if test="shhtid != null" >
+        SHHTID,
+      </if>
+      <if test="tm != null" >
+        TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shspid != null" >
+        #{shspid,jdbcType=INTEGER},
+      </if>
+      <if test="shdm != null" >
+        #{shdm,jdbcType=CHAR},
+      </if>
+      <if test="spdm != null" >
+        #{spdm,jdbcType=VARCHAR},
+      </if>
+      <if test="spmc != null" >
+        #{spmc,jdbcType=VARCHAR},
+      </if>
+      <if test="spjc != null" >
+        #{spjc,jdbcType=VARCHAR},
+      </if>
+      <if test="pym != null" >
+        #{pym,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="sphs != null" >
+        #{sphs,jdbcType=VARCHAR},
+      </if>
+      <if test="spgg != null" >
+        #{spgg,jdbcType=VARCHAR},
+      </if>
+      <if test="hh != null" >
+        #{hh,jdbcType=VARCHAR},
+      </if>
+      <if test="shspflid != null" >
+        #{shspflid,jdbcType=INTEGER},
+      </if>
+      <if test="shsbid != null" >
+        #{shsbid,jdbcType=INTEGER},
+      </if>
+      <if test="shhtid != null" >
+        #{shhtid,jdbcType=INTEGER},
+      </if>
+      <if test="tm != null" >
+        #{tm,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.ShSpxx" >
+    update BFCRM.SHSPXX
+    <set >
+      <if test="shdm != null" >
+        SHDM = #{shdm,jdbcType=CHAR},
+      </if>
+      <if test="spdm != null" >
+        SPDM = #{spdm,jdbcType=VARCHAR},
+      </if>
+      <if test="spmc != null" >
+        SPMC = #{spmc,jdbcType=VARCHAR},
+      </if>
+      <if test="spjc != null" >
+        SPJC = #{spjc,jdbcType=VARCHAR},
+      </if>
+      <if test="pym != null" >
+        PYM = #{pym,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        UNIT = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="sphs != null" >
+        SPHS = #{sphs,jdbcType=VARCHAR},
+      </if>
+      <if test="spgg != null" >
+        SPGG = #{spgg,jdbcType=VARCHAR},
+      </if>
+      <if test="hh != null" >
+        HH = #{hh,jdbcType=VARCHAR},
+      </if>
+      <if test="shspflid != null" >
+        SHSPFLID = #{shspflid,jdbcType=INTEGER},
+      </if>
+      <if test="shsbid != null" >
+        SHSBID = #{shsbid,jdbcType=INTEGER},
+      </if>
+      <if test="shhtid != null" >
+        SHHTID = #{shhtid,jdbcType=INTEGER},
+      </if>
+      <if test="tm != null" >
+        TM = #{tm,jdbcType=VARBINARY},
+      </if>
+    </set>
+    where SHSPID = #{shspid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yyabl.api.crm.biz.Domain.ShSpxx" >
+    update BFCRM.SHSPXX
+    set SHDM = #{shdm,jdbcType=CHAR},
+      SPDM = #{spdm,jdbcType=VARCHAR},
+      SPMC = #{spmc,jdbcType=VARCHAR},
+      SPJC = #{spjc,jdbcType=VARCHAR},
+      PYM = #{pym,jdbcType=VARCHAR},
+      UNIT = #{unit,jdbcType=VARCHAR},
+      SPHS = #{sphs,jdbcType=VARCHAR},
+      SPGG = #{spgg,jdbcType=VARCHAR},
+      HH = #{hh,jdbcType=VARCHAR},
+      SHSPFLID = #{shspflid,jdbcType=INTEGER},
+      SHSBID = #{shsbid,jdbcType=INTEGER},
+      SHHTID = #{shhtid,jdbcType=INTEGER},
+      TM = #{tm,jdbcType=VARBINARY}
+    where SHSPID = #{shspid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.ShSpxx" >
+    update BFCRM.SHSPXX
+    set SHDM = #{shdm,jdbcType=CHAR},
+      SPDM = #{spdm,jdbcType=VARCHAR},
+      SPMC = #{spmc,jdbcType=VARCHAR},
+      SPJC = #{spjc,jdbcType=VARCHAR},
+      PYM = #{pym,jdbcType=VARCHAR},
+      UNIT = #{unit,jdbcType=VARCHAR},
+      SPHS = #{sphs,jdbcType=VARCHAR},
+      SPGG = #{spgg,jdbcType=VARCHAR},
+      HH = #{hh,jdbcType=VARCHAR},
+      SHSPFLID = #{shspflid,jdbcType=INTEGER},
+      SHSBID = #{shsbid,jdbcType=INTEGER},
+      SHHTID = #{shhtid,jdbcType=INTEGER}
+    where SHSPID = #{shspid,jdbcType=INTEGER}
+  </update>
+</mapper>

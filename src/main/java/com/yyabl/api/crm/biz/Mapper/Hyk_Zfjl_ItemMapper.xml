@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_Zfjl_ItemMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Zfjl_Item" >
+    <id column="JLBH" property="jlbh" jdbcType="INTEGER" />
+    <id column="HYID" property="hyid" jdbcType="INTEGER" />
+    <result column="LJXFJE" property="ljxfje" jdbcType="DECIMAL" />
+    <result column="LJJF" property="ljjf" jdbcType="DOUBLE" />
+    <result column="WCLJF" property="wcljf" jdbcType="DOUBLE" />
+    <result column="YE" property="ye" jdbcType="DECIMAL" />
+    <result column="JLJYE" property="jljye" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JLBH, HYID, LJXFJE, LJJF, WCLJF, YE, JLJYE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Zfjl_ItemKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from BFCRM.HYK_ZFJLITEM
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and HYID = #{hyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Zfjl_ItemKey" >
+    delete from BFCRM.HYK_ZFJLITEM
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and HYID = #{hyid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Zfjl_Item" >
+    insert into BFCRM.HYK_ZFJLITEM (JLBH, HYID, LJXFJE, 
+      LJJF, WCLJF, YE, JLJYE
+      )
+    values (#{jlbh,jdbcType=INTEGER}, #{hyid,jdbcType=INTEGER}, #{ljxfje,jdbcType=DECIMAL}, 
+      #{ljjf,jdbcType=DOUBLE}, #{wcljf,jdbcType=DOUBLE}, #{ye,jdbcType=DECIMAL}, #{jljye,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Zfjl_Item" >
+    insert into BFCRM.HYK_ZFJLITEM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        JLBH,
+      </if>
+      <if test="hyid != null" >
+        HYID,
+      </if>
+      <if test="ljxfje != null" >
+        LJXFJE,
+      </if>
+      <if test="ljjf != null" >
+        LJJF,
+      </if>
+      <if test="wcljf != null" >
+        WCLJF,
+      </if>
+      <if test="ye != null" >
+        YE,
+      </if>
+      <if test="jljye != null" >
+        JLJYE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        #{jlbh,jdbcType=INTEGER},
+      </if>
+      <if test="hyid != null" >
+        #{hyid,jdbcType=INTEGER},
+      </if>
+      <if test="ljxfje != null" >
+        #{ljxfje,jdbcType=DECIMAL},
+      </if>
+      <if test="ljjf != null" >
+        #{ljjf,jdbcType=DOUBLE},
+      </if>
+      <if test="wcljf != null" >
+        #{wcljf,jdbcType=DOUBLE},
+      </if>
+      <if test="ye != null" >
+        #{ye,jdbcType=DECIMAL},
+      </if>
+      <if test="jljye != null" >
+        #{jljye,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Zfjl_Item" >
+    update BFCRM.HYK_ZFJLITEM
+    <set >
+      <if test="ljxfje != null" >
+        LJXFJE = #{ljxfje,jdbcType=DECIMAL},
+      </if>
+      <if test="ljjf != null" >
+        LJJF = #{ljjf,jdbcType=DOUBLE},
+      </if>
+      <if test="wcljf != null" >
+        WCLJF = #{wcljf,jdbcType=DOUBLE},
+      </if>
+      <if test="ye != null" >
+        YE = #{ye,jdbcType=DECIMAL},
+      </if>
+      <if test="jljye != null" >
+        JLJYE = #{jljye,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and HYID = #{hyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Zfjl_Item" >
+    update BFCRM.HYK_ZFJLITEM
+    set LJXFJE = #{ljxfje,jdbcType=DECIMAL},
+      LJJF = #{ljjf,jdbcType=DOUBLE},
+      WCLJF = #{wcljf,jdbcType=DOUBLE},
+      YE = #{ye,jdbcType=DECIMAL},
+      JLJYE = #{jljye,jdbcType=DECIMAL}
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and HYID = #{hyid,jdbcType=INTEGER}
+  </update>
+</mapper>

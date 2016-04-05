@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.LmkDefMapper">
+	<cache type="org.mybatis.caches.memcached.MemcachedCache" />
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.LmkDef">
+		<id column="LMK_ID" property="lmkId" jdbcType="INTEGER" />
+		<result column="LMK_CODE" property="lmkCode" jdbcType="VARCHAR" />
+		<result column="LMK_NAME" property="lmkName" jdbcType="VARCHAR" />
+		<result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+		<result column="LEN_CDNR" property="lenCdnr" jdbcType="INTEGER" />
+		<result column="LEN_BEGIN" property="lenBegin" jdbcType="INTEGER" />
+		<result column="LEN_END" property="lenEnd" jdbcType="INTEGER" />
+		<result column="HYKTYPE" property="hyktype" jdbcType="SMALLINT" />
+		<result column="CAN_NEW" property="canNew" jdbcType="TINYINT" />
+		<result column="CAN_ZF" property="canZf" jdbcType="TINYINT" />
+		<result column="CAN_HK" property="canHk" jdbcType="TINYINT" />
+		<result column="CAN_GS" property="canGs" jdbcType="TINYINT" />
+		<result column="CAN_JG" property="canJg" jdbcType="TINYINT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		LMK_ID, LMK_CODE, LMK_NAME, ORG_ID, LEN_CDNR, LEN_BEGIN, LEN_END, HYKTYPE,
+		CAN_NEW,
+		CAN_ZF, CAN_HK, CAN_GS, CAN_JG
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from BFCRM.LMKDEF
+		where LMK_ID = #{lmkId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from BFCRM.LMKDEF
+		where LMK_ID = #{lmkId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.LmkDef">
+		insert into BFCRM.LMKDEF (LMK_ID, LMK_CODE, LMK_NAME,
+		ORG_ID, LEN_CDNR, LEN_BEGIN,
+		LEN_END, HYKTYPE, CAN_NEW,
+		CAN_ZF, CAN_HK, CAN_GS,
+		CAN_JG)
+		values (#{lmkId,jdbcType=INTEGER}, #{lmkCode,jdbcType=VARCHAR},
+		#{lmkName,jdbcType=VARCHAR},
+		#{orgId,jdbcType=INTEGER}, #{lenCdnr,jdbcType=INTEGER}, #{lenBegin,jdbcType=INTEGER},
+		#{lenEnd,jdbcType=INTEGER}, #{hyktype,jdbcType=SMALLINT},
+		#{canNew,jdbcType=TINYINT},
+		#{canZf,jdbcType=TINYINT}, #{canHk,jdbcType=TINYINT}, #{canGs,jdbcType=TINYINT},
+		#{canJg,jdbcType=TINYINT})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.LmkDef">
+		insert into BFCRM.LMKDEF
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="lmkId != null">
+				LMK_ID,
+			</if>
+			<if test="lmkCode != null">
+				LMK_CODE,
+			</if>
+			<if test="lmkName != null">
+				LMK_NAME,
+			</if>
+			<if test="orgId != null">
+				ORG_ID,
+			</if>
+			<if test="lenCdnr != null">
+				LEN_CDNR,
+			</if>
+			<if test="lenBegin != null">
+				LEN_BEGIN,
+			</if>
+			<if test="lenEnd != null">
+				LEN_END,
+			</if>
+			<if test="hyktype != null">
+				HYKTYPE,
+			</if>
+			<if test="canNew != null">
+				CAN_NEW,
+			</if>
+			<if test="canZf != null">
+				CAN_ZF,
+			</if>
+			<if test="canHk != null">
+				CAN_HK,
+			</if>
+			<if test="canGs != null">
+				CAN_GS,
+			</if>
+			<if test="canJg != null">
+				CAN_JG,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="lmkId != null">
+				#{lmkId,jdbcType=INTEGER},
+			</if>
+			<if test="lmkCode != null">
+				#{lmkCode,jdbcType=VARCHAR},
+			</if>
+			<if test="lmkName != null">
+				#{lmkName,jdbcType=VARCHAR},
+			</if>
+			<if test="orgId != null">
+				#{orgId,jdbcType=INTEGER},
+			</if>
+			<if test="lenCdnr != null">
+				#{lenCdnr,jdbcType=INTEGER},
+			</if>
+			<if test="lenBegin != null">
+				#{lenBegin,jdbcType=INTEGER},
+			</if>
+			<if test="lenEnd != null">
+				#{lenEnd,jdbcType=INTEGER},
+			</if>
+			<if test="hyktype != null">
+				#{hyktype,jdbcType=SMALLINT},
+			</if>
+			<if test="canNew != null">
+				#{canNew,jdbcType=TINYINT},
+			</if>
+			<if test="canZf != null">
+				#{canZf,jdbcType=TINYINT},
+			</if>
+			<if test="canHk != null">
+				#{canHk,jdbcType=TINYINT},
+			</if>
+			<if test="canGs != null">
+				#{canGs,jdbcType=TINYINT},
+			</if>
+			<if test="canJg != null">
+				#{canJg,jdbcType=TINYINT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.LmkDef">
+		update BFCRM.LMKDEF
+		<set>
+			<if test="lmkCode != null">
+				LMK_CODE = #{lmkCode,jdbcType=VARCHAR},
+			</if>
+			<if test="lmkName != null">
+				LMK_NAME = #{lmkName,jdbcType=VARCHAR},
+			</if>
+			<if test="orgId != null">
+				ORG_ID = #{orgId,jdbcType=INTEGER},
+			</if>
+			<if test="lenCdnr != null">
+				LEN_CDNR = #{lenCdnr,jdbcType=INTEGER},
+			</if>
+			<if test="lenBegin != null">
+				LEN_BEGIN = #{lenBegin,jdbcType=INTEGER},
+			</if>
+			<if test="lenEnd != null">
+				LEN_END = #{lenEnd,jdbcType=INTEGER},
+			</if>
+			<if test="hyktype != null">
+				HYKTYPE = #{hyktype,jdbcType=SMALLINT},
+			</if>
+			<if test="canNew != null">
+				CAN_NEW = #{canNew,jdbcType=TINYINT},
+			</if>
+			<if test="canZf != null">
+				CAN_ZF = #{canZf,jdbcType=TINYINT},
+			</if>
+			<if test="canHk != null">
+				CAN_HK = #{canHk,jdbcType=TINYINT},
+			</if>
+			<if test="canGs != null">
+				CAN_GS = #{canGs,jdbcType=TINYINT},
+			</if>
+			<if test="canJg != null">
+				CAN_JG = #{canJg,jdbcType=TINYINT},
+			</if>
+		</set>
+		where LMK_ID = #{lmkId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.LmkDef">
+		update BFCRM.LMKDEF
+		set LMK_CODE = #{lmkCode,jdbcType=VARCHAR},
+		LMK_NAME = #{lmkName,jdbcType=VARCHAR},
+		ORG_ID = #{orgId,jdbcType=INTEGER},
+		LEN_CDNR = #{lenCdnr,jdbcType=INTEGER},
+		LEN_BEGIN = #{lenBegin,jdbcType=INTEGER},
+		LEN_END = #{lenEnd,jdbcType=INTEGER},
+		HYKTYPE = #{hyktype,jdbcType=SMALLINT},
+		CAN_NEW = #{canNew,jdbcType=TINYINT},
+		CAN_ZF = #{canZf,jdbcType=TINYINT},
+		CAN_HK = #{canHk,jdbcType=TINYINT},
+		CAN_GS = #{canGs,jdbcType=TINYINT},
+		CAN_JG = #{canJg,jdbcType=TINYINT}
+		where LMK_ID = #{lmkId,jdbcType=INTEGER}
+	</update>
+</mapper>

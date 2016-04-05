@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Api_Hyk_Yhqcljl_ItemMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Api_Hyk_Yhqcljl_Item" >
+    <result column="JLBH" property="jlbh" jdbcType="INTEGER" />
+    <result column="CARD_ID" property="cardId" jdbcType="INTEGER" />
+    <result column="YHQID" property="yhqid" jdbcType="INTEGER" />
+    <result column="JSRQ" property="jsrq" jdbcType="TIMESTAMP" />
+    <result column="MDFWDM" property="mdfwdm" jdbcType="VARCHAR" />
+    <result column="JE" property="je" jdbcType="DOUBLE" />
+    <result column="CZ_JLBH" property="czJlbh" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Api_Hyk_Yhqcljl_Item" >
+    insert into BFCRM.API_HYK_YHQCLJL_ITEM (JLBH, CARD_ID, YHQID, 
+      JSRQ, MDFWDM, JE, 
+      CZ_JLBH)
+    values (#{jlbh,jdbcType=INTEGER}, #{cardId,jdbcType=INTEGER}, #{yhqid,jdbcType=INTEGER}, 
+      #{jsrq,jdbcType=TIMESTAMP}, #{mdfwdm,jdbcType=VARCHAR}, #{je,jdbcType=DOUBLE}, 
+      #{czJlbh,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Api_Hyk_Yhqcljl_Item" >
+    insert into BFCRM.API_HYK_YHQCLJL_ITEM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        JLBH,
+      </if>
+      <if test="cardId != null" >
+        CARD_ID,
+      </if>
+      <if test="yhqid != null" >
+        YHQID,
+      </if>
+      <if test="jsrq != null" >
+        JSRQ,
+      </if>
+      <if test="mdfwdm != null" >
+        MDFWDM,
+      </if>
+      <if test="je != null" >
+        JE,
+      </if>
+      <if test="czJlbh != null" >
+        CZ_JLBH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        #{jlbh,jdbcType=INTEGER},
+      </if>
+      <if test="cardId != null" >
+        #{cardId,jdbcType=INTEGER},
+      </if>
+      <if test="yhqid != null" >
+        #{yhqid,jdbcType=INTEGER},
+      </if>
+      <if test="jsrq != null" >
+        #{jsrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfwdm != null" >
+        #{mdfwdm,jdbcType=VARCHAR},
+      </if>
+      <if test="je != null" >
+        #{je,jdbcType=DOUBLE},
+      </if>
+      <if test="czJlbh != null" >
+        #{czJlbh,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="selectByPramaryKey" parameterType="integer" resultMap="BaseResultMap">
+  	select
+  		JLBH,
+  		CARD_ID,
+  		YHQID,
+  		JSRQ,
+  		MDFWDM,
+  		JE,
+  		CZ_JLBH
+  	from
+  		BFCRM.API_HYK_YHQCLJL_ITEM
+  	where
+  		JLBH = #{jlbh,jdbcType=INTEGER}
+  </select>
+</mapper>

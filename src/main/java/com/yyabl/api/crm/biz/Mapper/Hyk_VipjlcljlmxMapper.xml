@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_VipjlcljlmxMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Vipjlcljlmx" >
+    <id column="JLBH" property="jlbh" jdbcType="INTEGER" />
+    <id column="XH" property="xh" jdbcType="SMALLINT" />
+    <result column="JF_QC" property="jfQc" jdbcType="DOUBLE" />
+    <result column="JF_CL" property="jfCl" jdbcType="DOUBLE" />
+    <result column="JLJE" property="jlje" jdbcType="DECIMAL" />
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+    <result column="HBFS" property="hbfs" jdbcType="SMALLINT" />
+    <result column="CS" property="cs" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JLBH, XH, JF_QC, JF_CL, JLJE, CONTENT, HBFS, CS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_VipjlcljlmxKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from BFCRM.HYK_VIPJLCLJLMX
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and XH = #{xh,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_VipjlcljlmxKey" >
+    delete from BFCRM.HYK_VIPJLCLJLMX
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and XH = #{xh,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Vipjlcljlmx" >
+    insert into BFCRM.HYK_VIPJLCLJLMX (JLBH, XH, JF_QC, 
+      JF_CL, JLJE, CONTENT, 
+      HBFS, CS)
+    values (#{jlbh,jdbcType=INTEGER}, #{xh,jdbcType=SMALLINT}, #{jfQc,jdbcType=DOUBLE}, 
+      #{jfCl,jdbcType=DOUBLE}, #{jlje,jdbcType=DECIMAL}, #{content,jdbcType=VARCHAR}, 
+      #{hbfs,jdbcType=SMALLINT}, #{cs,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Vipjlcljlmx" >
+    insert into BFCRM.HYK_VIPJLCLJLMX
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        JLBH,
+      </if>
+      <if test="xh != null" >
+        XH,
+      </if>
+      <if test="jfQc != null" >
+        JF_QC,
+      </if>
+      <if test="jfCl != null" >
+        JF_CL,
+      </if>
+      <if test="jlje != null" >
+        JLJE,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="hbfs != null" >
+        HBFS,
+      </if>
+      <if test="cs != null" >
+        CS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        #{jlbh,jdbcType=INTEGER},
+      </if>
+      <if test="xh != null" >
+        #{xh,jdbcType=SMALLINT},
+      </if>
+      <if test="jfQc != null" >
+        #{jfQc,jdbcType=DOUBLE},
+      </if>
+      <if test="jfCl != null" >
+        #{jfCl,jdbcType=DOUBLE},
+      </if>
+      <if test="jlje != null" >
+        #{jlje,jdbcType=DECIMAL},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="hbfs != null" >
+        #{hbfs,jdbcType=SMALLINT},
+      </if>
+      <if test="cs != null" >
+        #{cs,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Vipjlcljlmx" >
+    update BFCRM.HYK_VIPJLCLJLMX
+    <set >
+      <if test="jfQc != null" >
+        JF_QC = #{jfQc,jdbcType=DOUBLE},
+      </if>
+      <if test="jfCl != null" >
+        JF_CL = #{jfCl,jdbcType=DOUBLE},
+      </if>
+      <if test="jlje != null" >
+        JLJE = #{jlje,jdbcType=DECIMAL},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="hbfs != null" >
+        HBFS = #{hbfs,jdbcType=SMALLINT},
+      </if>
+      <if test="cs != null" >
+        CS = #{cs,jdbcType=INTEGER},
+      </if>
+    </set>
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and XH = #{xh,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Vipjlcljlmx" >
+    update BFCRM.HYK_VIPJLCLJLMX
+    set JF_QC = #{jfQc,jdbcType=DOUBLE},
+      JF_CL = #{jfCl,jdbcType=DOUBLE},
+      JLJE = #{jlje,jdbcType=DECIMAL},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      HBFS = #{hbfs,jdbcType=SMALLINT},
+      CS = #{cs,jdbcType=INTEGER}
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and XH = #{xh,jdbcType=SMALLINT}
+  </update>
+</mapper>

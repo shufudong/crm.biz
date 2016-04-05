@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.RyxxMapper">
+	<cache type="org.mybatis.caches.memcached.MemcachedCache" />
+	<resultMap id="BaseResultMap" type="Ryxx">
+		<id column="PERSON_ID" property="personId" jdbcType="INTEGER" />
+		<result column="PERSON_NAME" property="personName" jdbcType="VARCHAR" />
+		<result column="LZRQ" property="lzrq" jdbcType="TIMESTAMP" />
+		<result column="WORK_TYPE" property="workType" jdbcType="TINYINT" />
+		<result column="GXRQ" property="gxrq" jdbcType="TIMESTAMP" />
+		<result column="PYM" property="pym" jdbcType="VARCHAR" />
+		<result column="RYDM" property="rydm" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		PERSON_ID, PERSON_NAME, LZRQ, WORK_TYPE, GXRQ, PYM, RYDM
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from BFPUB.RYXX
+		where PERSON_ID = #{personId,jdbcType=INTEGER}
+	</select>
+
+	<resultMap type="Ryxx" id="RyxxAndPrivMap">
+		<id column="RYXX_PERSON_ID" property="personId" jdbcType="INTEGER" />
+		<result column="RYXX_PERSON_NAME" property="personName"
+			jdbcType="VARCHAR" />
+		<result column="RYXX_LZRQ" property="lzrq" jdbcType="TIMESTAMP" />
+		<result column="RYXX_WORK_TYPE" property="workType" jdbcType="TINYINT" />
+		<result column="RYXX_GXRQ" property="gxrq" jdbcType="TIMESTAMP" />
+		<result column="RYXX_PYM" property="pym" jdbcType="VARCHAR" />
+		<result column="RYXX_RYDM" property="rydm" jdbcType="VARCHAR" />
+		<association property="xtczy" javaType="Xtczy">
+			<id column="XTCZY_PERSON_ID" property="personId" />
+			<result column="XTCZY_LOGIN_PASSWORD" property="loginPassword" />
+			<result column="XTCZY_OPER_STATION" property="operStation" />
+		</association>
+		<collection property="lstApiDef" ofType="ApiDef">
+			<id column="APIDEF_ID" property="id" />
+			<result column="APIDEF_URL" property="url" />
+			<result column="APIDEF_COMMENT" property="comment" />
+			<result column="APIDEF_ENABLED" property="enabled" />
+		</collection>
+	</resultMap>
+
+	<select id="selectRyxxAndPrivByPersonCode" resultMap="RyxxAndPrivMap"
+		parameterType="string">
+		select
+		A.PERSON_ID RYXX_PERSON_ID,
+		A.PERSON_NAME
+		RYXX_PERSON_NAME,
+		A.LZRQ RYXX_LZRQ,
+		A.WORK_TYPE RYXX_WORK_TYPE,
+		A.GXRQ
+		RYXX_GXRQ,
+		A.PYM RYXX_PYM,
+		A.RYDM RYXX_RYDM,
+		B.PERSON_ID XTCZY_PERSON_ID,
+		B.LOGIN_PASSWORD XTCZY_LOGIN_PASSWORD,
+		B.OPER_STATION
+		XTCZY_OPER_STATION,
+		D.ID APIDEF_ID,
+		D.URL APIDEF_URL,
+		D.COMMENT
+		APIDEF_COMMENT,
+		D.ENABLED APIDEF_ENABLED
+		from
+		BFPUB.RYXX A left join
+		BFPUB.XTCZY B on A.PERSON_ID=B.PERSON_ID
+		left join BFCRM.PRIV_API C on
+		A.PERSON_ID=C.PERSON_ID
+		left join BFCRM.API_DEF D on C.API_ID=D.ID
+		where
+		A.RYDM=#{partnerCode}
+	</select>
+
+	<resultMap type="Ryxx" id="RyxxAndXtczyMap">
+		<id column="RYXX_PERSON_ID" property="personId" jdbcType="INTEGER" />
+		<result column="RYXX_PERSON_NAME" property="personName"
+			jdbcType="VARCHAR" />
+		<result column="RYXX_LZRQ" property="lzrq" jdbcType="TIMESTAMP" />
+		<result column="RYXX_WORK_TYPE" property="workType" jdbcType="TINYINT" />
+		<result column="RYXX_GXRQ" property="gxrq" jdbcType="TIMESTAMP" />
+		<result column="RYXX_PYM" property="pym" jdbcType="VARCHAR" />
+		<result column="RYXX_RYDM" property="rydm" jdbcType="VARCHAR" />
+		<association property="xtczy" javaType="Xtczy">
+			<id column="XTCZY_PERSON_ID" property="personId" />
+			<result column="XTCZY_LOGIN_PASSWORD" property="loginPassword" />
+			<result column="XTCZY_OPER_STATION" property="operStation" />
+		</association>
+	</resultMap>
+	<select id="selectByPersonCode" resultMap="RyxxAndXtczyMap"
+		parameterType="string">
+		select
+		A.PERSON_ID RYXX_PERSON_ID,
+		A.PERSON_NAME RYXX_PERSON_NAME,
+		A.LZRQ RYXX_LZRQ,
+		A.WORK_TYPE RYXX_WORK_TYPE,
+		A.GXRQ RYXX_GXRQ,
+		A.PYM RYXX_PYM,
+		A.RYDM RYXX_RYDM,
+		B.PERSON_ID XTCZY_PERSON_ID,
+		B.LOGIN_PASSWORD XTCZY_LOGIN_PASSWORD,
+		B.OPER_STATION XTCZY_OPER_STATION
+		from
+		BFPUB.RYXX A left join BFPUB.XTCZY B on A.PERSON_ID=B.PERSON_ID
+		where
+		A.RYDM=#{partnerCode}
+	</select>
+
+	<resultMap type="Ryxx" id="RyxxAndApiResultMap">
+		<id column="PERSON_ID" property="personId" jdbcType="INTEGER" />
+		<result column="PERSON_NAME" property="personName" jdbcType="VARCHAR" />
+		<result column="LZRQ" property="lzrq" jdbcType="TIMESTAMP" />
+		<result column="WORK_TYPE" property="workType" jdbcType="TINYINT" />
+		<result column="GXRQ" property="gxrq" jdbcType="TIMESTAMP" />
+		<result column="PYM" property="pym" jdbcType="VARCHAR" />
+		<result column="RYDM" property="rydm" jdbcType="VARCHAR" />
+		<collection property="lstApiDef" ofType="ApiDef">
+			<id column="ID" property="id" />
+			<result column="URL" property="url" />
+			<result column="COMMENT" property="comment" />
+			<result column="ENABLED" property="enabled" />
+		</collection>
+	</resultMap>
+	<select id="selectByPersonCodeAndUrl" resultMap="RyxxAndApiResultMap"
+		parameterType="hashmap">
+		select
+		A.PERSON_ID,
+		A.PERSON_NAME,
+		A.LZRQ,
+		A.WORK_TYPE,
+		A.GXRQ,
+		A.PYM,
+		A.RYDM,
+		B.ID,
+		B.URL,
+		B.COMMENT,
+		B.ENABLED
+		from
+		BFPUB.RYXX
+		A,BFCRM.API_DEF B,BFCRM.PRIV_API C
+		where
+		A.PERSON_ID=C.PERSON_ID
+		and
+		B.ID=C.API_ID
+		and B.ENABLED=1
+		and A.RYDM=#{partenrCode}
+		and B.URL=#{url}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		BFPUB.RYXX
+		where PERSON_ID = #{personId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Ryxx">
+		insert into BFPUB.RYXX
+		(PERSON_ID, PERSON_NAME, LZRQ,
+		WORK_TYPE, GXRQ, PYM,
+		RYDM)
+		values
+		(#{personId,jdbcType=INTEGER},
+		#{personName,jdbcType=VARCHAR},
+		#{lzrq,jdbcType=TIMESTAMP},
+		#{workType,jdbcType=TINYINT},
+		#{gxrq,jdbcType=TIMESTAMP}, #{pym,jdbcType=VARCHAR},
+		#{rydm,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Ryxx">
+		insert into BFPUB.RYXX
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="personId != null">
+				PERSON_ID,
+			</if>
+			<if test="personName != null">
+				PERSON_NAME,
+			</if>
+			<if test="lzrq != null">
+				LZRQ,
+			</if>
+			<if test="workType != null">
+				WORK_TYPE,
+			</if>
+			<if test="gxrq != null">
+				GXRQ,
+			</if>
+			<if test="pym != null">
+				PYM,
+			</if>
+			<if test="rydm != null">
+				RYDM,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="personId != null">
+				#{personId,jdbcType=INTEGER},
+			</if>
+			<if test="personName != null">
+				#{personName,jdbcType=VARCHAR},
+			</if>
+			<if test="lzrq != null">
+				#{lzrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="workType != null">
+				#{workType,jdbcType=TINYINT},
+			</if>
+			<if test="gxrq != null">
+				#{gxrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="pym != null">
+				#{pym,jdbcType=VARCHAR},
+			</if>
+			<if test="rydm != null">
+				#{rydm,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Ryxx">
+		update BFPUB.RYXX
+		<set>
+			<if test="personName != null">
+				PERSON_NAME = #{personName,jdbcType=VARCHAR},
+			</if>
+			<if test="lzrq != null">
+				LZRQ = #{lzrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="workType != null">
+				WORK_TYPE = #{workType,jdbcType=TINYINT},
+			</if>
+			<if test="gxrq != null">
+				GXRQ = #{gxrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="pym != null">
+				PYM = #{pym,jdbcType=VARCHAR},
+			</if>
+			<if test="rydm != null">
+				RYDM = #{rydm,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where PERSON_ID = #{personId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Ryxx">
+		update BFPUB.RYXX
+		set PERSON_NAME = #{personName,jdbcType=VARCHAR},
+		LZRQ =
+		#{lzrq,jdbcType=TIMESTAMP},
+		WORK_TYPE =
+		#{workType,jdbcType=TINYINT},
+		GXRQ = #{gxrq,jdbcType=TIMESTAMP},
+		PYM = #{pym,jdbcType=VARCHAR},
+		RYDM =
+		#{rydm,jdbcType=VARCHAR}
+		where PERSON_ID = #{personId,jdbcType=INTEGER}
+	</update>
+</mapper>

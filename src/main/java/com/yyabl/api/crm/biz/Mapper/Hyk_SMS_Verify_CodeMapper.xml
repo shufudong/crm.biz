@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_SMS_Verify_CodeMapper">
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_SMS_Verify_Code">
+		<id column="HYID" property="hyid" jdbcType="INTEGER" />
+		<id column="BIZ_TYPE" property="bizType" jdbcType="INTEGER" />
+		<result column="VERIFY_CODE" property="verifyCode" jdbcType="VARCHAR" />
+		<result column="SEND_DATE" property="sendDate" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		HYID, BIZ_TYPE, VERIFY_CODE, SEND_DATE
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_SMS_Verify_CodeKey">
+		select
+		<include refid="Base_Column_List" />
+		from BFCRM.HYK_SMS_VERIFY_CODE
+		where HYID = #{hyid,jdbcType=INTEGER}
+		and BIZ_TYPE = #{bizType,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_SMS_Verify_CodeKey">
+		delete from BFCRM.HYK_SMS_VERIFY_CODE
+		where HYID = #{hyid,jdbcType=INTEGER}
+		and BIZ_TYPE = #{bizType,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_SMS_Verify_Code">
+		insert into BFCRM.HYK_SMS_VERIFY_CODE (HYID, BIZ_TYPE, VERIFY_CODE,
+		SEND_DATE)
+		values (#{hyid,jdbcType=INTEGER},
+		#{bizType,jdbcType=INTEGER}, #{verifyCode,jdbcType=VARCHAR},
+		#{sendDate,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_SMS_Verify_Code">
+		insert into BFCRM.HYK_SMS_VERIFY_CODE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="hyid != null">
+				HYID,
+			</if>
+			<if test="bizType != null">
+				BIZ_TYPE,
+			</if>
+			<if test="verifyCode != null">
+				VERIFY_CODE,
+			</if>
+			<if test="sendDate != null">
+				SEND_DATE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="hyid != null">
+				#{hyid,jdbcType=INTEGER},
+			</if>
+			<if test="bizType != null">
+				#{bizType,jdbcType=INTEGER},
+			</if>
+			<if test="verifyCode != null">
+				#{verifyCode,jdbcType=VARCHAR},
+			</if>
+			<if test="sendDate != null">
+				#{sendDate,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_SMS_Verify_Code">
+		update BFCRM.HYK_SMS_VERIFY_CODE
+		<set>
+			<if test="verifyCode != null">
+				VERIFY_CODE = #{verifyCode,jdbcType=VARCHAR},
+			</if>
+			<if test="sendDate != null">
+				SEND_DATE = #{sendDate,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where HYID = #{hyid,jdbcType=INTEGER}
+		and BIZ_TYPE = #{bizType,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_SMS_Verify_Code">
+		update BFCRM.HYK_SMS_VERIFY_CODE
+		set VERIFY_CODE = #{verifyCode,jdbcType=VARCHAR},
+		SEND_DATE = #{sendDate,jdbcType=TIMESTAMP}
+		where HYID = #{hyid,jdbcType=INTEGER}
+		and BIZ_TYPE = #{bizType,jdbcType=INTEGER}
+	</update>
+</mapper>

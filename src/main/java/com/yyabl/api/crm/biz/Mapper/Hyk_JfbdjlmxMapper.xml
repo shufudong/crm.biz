@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_JfbdjlmxMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Jfbdjlmx" >
+    <id column="HYID" property="hyid" jdbcType="INTEGER" />
+    <id column="RQ" property="rq" jdbcType="TIMESTAMP" />
+    <id column="CLLX" property="cllx" jdbcType="SMALLINT" />
+    <id column="JLBH" property="jlbh" jdbcType="INTEGER" />
+    <result column="WCLJFBD" property="wcljfbd" jdbcType="DOUBLE" />
+    <result column="BQJFBD" property="bqjfbd" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    HYID, RQ, CLLX, JLBH, WCLJFBD, BQJFBD
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_JfbdjlmxKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from BFCRM.HYK_JFBDJLMX
+    where HYID = #{hyid,jdbcType=INTEGER}
+      and RQ = #{rq,jdbcType=TIMESTAMP}
+      and CLLX = #{cllx,jdbcType=SMALLINT}
+      and JLBH = #{jlbh,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_JfbdjlmxKey" >
+    delete from BFCRM.HYK_JFBDJLMX
+    where HYID = #{hyid,jdbcType=INTEGER}
+      and RQ = #{rq,jdbcType=TIMESTAMP}
+      and CLLX = #{cllx,jdbcType=SMALLINT}
+      and JLBH = #{jlbh,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfbdjlmx" >
+    insert into BFCRM.HYK_JFBDJLMX (HYID, RQ, CLLX, 
+      JLBH, WCLJFBD, BQJFBD
+      )
+    values (#{hyid,jdbcType=INTEGER}, #{rq,jdbcType=TIMESTAMP}, #{cllx,jdbcType=SMALLINT}, 
+      #{jlbh,jdbcType=INTEGER}, #{wcljfbd,jdbcType=DOUBLE}, #{bqjfbd,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfbdjlmx" >
+    insert into BFCRM.HYK_JFBDJLMX
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hyid != null" >
+        HYID,
+      </if>
+      <if test="rq != null" >
+        RQ,
+      </if>
+      <if test="cllx != null" >
+        CLLX,
+      </if>
+      <if test="jlbh != null" >
+        JLBH,
+      </if>
+      <if test="wcljfbd != null" >
+        WCLJFBD,
+      </if>
+      <if test="bqjfbd != null" >
+        BQJFBD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hyid != null" >
+        #{hyid,jdbcType=INTEGER},
+      </if>
+      <if test="rq != null" >
+        #{rq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cllx != null" >
+        #{cllx,jdbcType=SMALLINT},
+      </if>
+      <if test="jlbh != null" >
+        #{jlbh,jdbcType=INTEGER},
+      </if>
+      <if test="wcljfbd != null" >
+        #{wcljfbd,jdbcType=DOUBLE},
+      </if>
+      <if test="bqjfbd != null" >
+        #{bqjfbd,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfbdjlmx" >
+    update BFCRM.HYK_JFBDJLMX
+    <set >
+      <if test="wcljfbd != null" >
+        WCLJFBD = #{wcljfbd,jdbcType=DOUBLE},
+      </if>
+      <if test="bqjfbd != null" >
+        BQJFBD = #{bqjfbd,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where HYID = #{hyid,jdbcType=INTEGER}
+      and RQ = #{rq,jdbcType=TIMESTAMP}
+      and CLLX = #{cllx,jdbcType=SMALLINT}
+      and JLBH = #{jlbh,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfbdjlmx" >
+    update BFCRM.HYK_JFBDJLMX
+    set WCLJFBD = #{wcljfbd,jdbcType=DOUBLE},
+      BQJFBD = #{bqjfbd,jdbcType=DOUBLE}
+    where HYID = #{hyid,jdbcType=INTEGER}
+      and RQ = #{rq,jdbcType=TIMESTAMP}
+      and CLLX = #{cllx,jdbcType=SMALLINT}
+      and JLBH = #{jlbh,jdbcType=INTEGER}
+  </update>
+</mapper>

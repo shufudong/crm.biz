@@ -1,0 +1,14 @@
+一：运行环境
+  1：jdk(1.7及1.7以上)
+  2：tomcat(7.0及7.0以上)
+二：部署环境
+  1：subversion(1.6及1.6以上)
+  2：maven(3.0及3.0以上)
+三：部署过程(需要root权限)
+  1：从svn服务器上下载最新源代码
+     svn checkout https://172.18.0.68/svn/crm/crm.biz
+  2：根据部署环境，使用maven编译并打包项目
+  	 测试环境：mvn package -Ptest -Dmaven.test.skip=true
+  	 生产环境：mvn package -Pprod -Dmaven.test.skip=true
+  3：将target目录下的crm.biz.war文件拷贝到$TOMCAT_HOME/webapps目录下
+  4：查看$TOMCAT_HOME/logs/catalina.out，检查项目是否发布成功

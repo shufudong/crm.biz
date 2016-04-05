@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+	<!-- 自动扫描(自动注入) -->
+	<context:component-scan base-package="com.yyabl.api.crm.biz">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="location" value="classpath:config.properties" />
+	</bean>
+	
+	<bean class="com.yyabl.api.crm.biz.Util.BizUtil">
+		<property name="mapMemberRight">
+			<props>
+				<prop key="200">${memeber.rights.200}</prop>
+				<prop key="201">${memeber.rights.201}</prop>
+				<prop key="202">${memeber.rights.202}</prop>
+				<prop key="203">${memeber.rights.203}</prop>
+				<prop key="204">${memeber.rights.204}</prop>
+				<prop key="301">${memeber.rights.301}</prop>
+				<prop key="302">${memeber.rights.302}</prop>
+				<prop key="401">${memeber.rights.401}</prop>
+				<prop key="402">${memeber.rights.402}</prop>
+				<prop key="501">${memeber.rights.501}</prop>
+				<prop key="502">${memeber.rights.502}</prop>
+			</props>
+		</property>
+		<!-- 有效的会员卡类型 -->
+		<property name="collectionEffectCardStatus">
+			<list>
+				<value>0</value>
+				<value>1</value>
+			</list>
+		</property>
+		<!-- 可用的优惠券ID -->
+		<property name="collectionAvailableTicketType">
+			<list>
+				<value>0</value>
+				<value>1</value>
+			</list>
+		</property>
+	</bean>
+</beans>

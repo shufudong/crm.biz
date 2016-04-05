@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_HyxxMapper">
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Hyxx">
+		<id column="HYID" property="hyid" jdbcType="INTEGER" />
+		<result column="HYKTYPE" property="hyktype" jdbcType="SMALLINT" />
+		<result column="HYK_NO" property="hykNo" jdbcType="VARCHAR" />
+		<result column="HY_NAME" property="hyName" jdbcType="VARCHAR" />
+		<result column="CDNR" property="cdnr" jdbcType="VARCHAR" />
+		<result column="JKRQ" property="jkrq" jdbcType="TIMESTAMP" />
+		<result column="YXQ" property="yxq" jdbcType="TIMESTAMP" />
+		<result column="ZHXFRQ" property="zhxfrq" jdbcType="TIMESTAMP" />
+		<result column="BJ_PSW" property="bjPsw" jdbcType="SMALLINT" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="DJSJ" property="djsj" jdbcType="TIMESTAMP" />
+		<result column="DJR" property="djr" jdbcType="INTEGER" />
+		<result column="DJRMC" property="djrmc" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="SMALLINT" />
+		<result column="JGID" property="jgid" jdbcType="SMALLINT" />
+		<result column="FFSX" property="ffsx" jdbcType="SMALLINT" />
+		<result column="OLD_HYKNO" property="oldHykno" jdbcType="VARCHAR" />
+		<result column="YBGDD" property="ybgdd" jdbcType="VARCHAR" />
+		<result column="KHID" property="khid" jdbcType="INTEGER" />
+		<result column="MDID" property="mdid" jdbcType="INTEGER" />
+		<result column="GKID" property="gkid" jdbcType="INTEGER" />
+		<result column="CREATEDAT" property="createdat" jdbcType="TIMESTAMP" />
+		<result column="UPDATEDAT" property="updatedat" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.yyabl.api.crm.biz.Domain.Hyk_Hyxx" extends="BaseResultMap">
+		<result column="TM" property="tm" jdbcType="VARBINARY" />
+	</resultMap>
+
+	<resultMap type="Hyk_Hyxx" id="HykHyxxResultMap">
+		<id column="HYK_HYXX_HYID" property="hyid" jdbcType="INTEGER" />
+		<result column="HYK_HYXX_HYKTYPE" property="hyktype" jdbcType="SMALLINT" />
+		<result column="HYK_HYXX_HYK_NO" property="hykNo" jdbcType="VARCHAR" />
+		<result column="HYK_HYXX_HY_NAME" property="hyName" jdbcType="VARCHAR" />
+		<result column="HYK_HYXX_CDNR" property="cdnr" jdbcType="VARCHAR" />
+		<result column="HYK_HYXX_JKRQ" property="jkrq" jdbcType="TIMESTAMP" />
+		<result column="HYK_HYXX_YXQ" property="yxq" jdbcType="TIMESTAMP" />
+		<result column="HYK_HYXX_ZHXFRQ" property="zhxfrq" jdbcType="TIMESTAMP" />
+		<result column="HYK_HYXX_BJ_PSW" property="bjPsw" jdbcType="SMALLINT" />
+		<result column="HYK_HYXX_PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="HYK_HYXX_DJSJ" property="djsj" jdbcType="TIMESTAMP" />
+		<result column="HYK_HYXX_DJR" property="djr" jdbcType="INTEGER" />
+		<result column="HYK_HYXX_DJRMC" property="djrmc" jdbcType="VARCHAR" />
+		<result column="HYK_HYXX_STATUS" property="status" jdbcType="SMALLINT" />
+		<result column="HYK_HYXX_JGID" property="jgid" jdbcType="SMALLINT" />
+		<result column="HYK_HYXX_FFSX" property="ffsx" jdbcType="SMALLINT" />
+		<result column="HYK_HYXX_OLD_HYKNO" property="oldHykno" jdbcType="VARCHAR" />
+		<result column="HYK_HYXX_YBGDD" property="ybgdd" jdbcType="VARCHAR" />
+		<result column="HYK_HYXX_KHID" property="khid" jdbcType="INTEGER" />
+		<result column="HYK_HYXX_MDID" property="mdid" jdbcType="INTEGER" />
+		<result column="HYK_HYXX_GKID" property="gkid" jdbcType="INTEGER" />
+		<association property="hykType" javaType="HykDef">
+			<id column="HYKDEF_HYKTYPE" property="hyktype" jdbcType="SMALLINT" />
+			<result column="HYKDEF_HYKNAME" property="hykname" jdbcType="VARCHAR" />
+			<result column="HYKDEF_IMAGE_URL" property="imageUrl" jdbcType="VARCHAR"/>
+		</association>
+		<association property="hykGkda" javaType="Hyk_Gkda">
+			<id column="HYK_GKDA_GKID" property="gkid" jdbcType="INTEGER" />
+			<result column="HYK_GKDA_SEX" property="sex" jdbcType="TINYINT" />
+			<result column="HYK_GKDA_CSRQ" property="csrq" jdbcType="TIMESTAMP" />
+			<result column="HYK_GKDA_SFZBH" property="sfzbh" jdbcType="VARCHAR" />
+			<result column="HYK_GKDA_JTZZ" property="jtzz" jdbcType="VARCHAR" />
+			<result column="HYK_GKDA_GZDW" property="gzdw" jdbcType="VARCHAR" />
+			<result column="HYK_GKDA_PASSWORD" property="password" jdbcType="VARCHAR" />
+			<result column="HYK_GKDA_E_MAIL" property="eMail" jdbcType="VARCHAR" />
+			<result column="HYK_GKDA_TXDZ" property="txdz" jdbcType="VARCHAR" />
+			<result column="HYK_GKDA_YZBM" property="yzbm" jdbcType="VARCHAR" />
+			<result column="HYK_GKDA_SJHM" property="sjhm" jdbcType="VARCHAR" />
+			<result column="HYK_GKDA_DJR" property="djr" jdbcType="INTEGER" />
+			<result column="HYK_GKDA_DJRMC" property="djrmc" jdbcType="VARCHAR" />
+			<result column="HYK_GKDA_DJSJ" property="djsj" jdbcType="TIMESTAMP" />
+			<result column="HYK_GKDA_HYK_NO_OLD" property="hykNoOld" jdbcType="VARCHAR" />
+			<result column="HYK_GKDA_GXR" property="gxr" jdbcType="INTEGER" />
+			<result column="HYK_GKDA_GXRMC" property="gxrmc" jdbcType="VARCHAR" />
+			<result column="HYK_GKDA_GXSJ" property="gxsj" jdbcType="TIMESTAMP" />
+		</association>
+		<association property="hykStatus" javaType="Hyk_Status">
+			<id column="HYK_STATUS_ID" property="id" jdbcType="SMALLINT" />
+			<result column="HYK_STATUS_NAME" property="name" jdbcType="VARCHAR" />
+		</association>
+	</resultMap>
+
+	<select id="selectCardInfoByParamMap" parameterType="map" resultMap="HykHyxxResultMap">
+		SELECT
+			HYK_HYXX.HYID HYK_HYXX_HYID,
+			HYK_HYXX.HYKTYPE HYK_HYXX_HYKTYPE,
+			HYK_HYXX.HYK_NO HYK_HYXX_HYK_NO,
+			HYK_HYXX.HY_NAME HYK_HYXX_HY_NAME,
+			HYK_HYXX.CDNR HYK_HYXX_CDNR,
+			HYK_HYXX.JKRQ HYK_HYXX_JKRQ,
+			HYK_HYXX.YXQ HYK_HYXX_YXQ,
+			HYK_HYXX.ZHXFRQ HYK_HYXX_ZHXFRQ,
+			HYK_HYXX.BJ_PSW HYK_HYXX_BJ_PSW,
+			HYK_HYXX.PASSWORD HYK_HYXX_PASSWORD,
+			HYK_HYXX.DJSJ HYK_HYXX_DJSJ,
+			HYK_HYXX.DJR HYK_HYXX_DJR,
+			HYK_HYXX.DJRMC HYK_HYXX_DJRMC,
+			HYK_HYXX.STATUS HYK_HYXX_STATUS,
+			HYK_HYXX.JGID HYK_HYXX_JGID,
+			HYK_HYXX.FFSX HYK_HYXX_FFSX,
+			HYK_HYXX.OLD_HYKNO HYK_HYXX_OLD_HYKNO,
+			HYK_HYXX.YBGDD HYK_HYXX_YBGDD,
+			HYK_HYXX.KHID HYK_HYXX_KHID,
+			HYK_HYXX.MDID HYK_HYXX_MDID,
+			HYK_HYXX.GKID HYK_HYXX_GKID,
+			HYK_GKDA.GKID HYK_GKDA_GKID,
+			HYK_GKDA.SEX HYK_GKDA_SEX,
+			HYK_GKDA.CSRQ HYK_GKDA_CSRQ,
+			HYK_GKDA.SFZBH HYK_GKDA_SFZBH,
+			HYK_GKDA.JTZZ HYK_GKDA_JTZZ,
+			HYK_GKDA.GZDW HYK_GKDA_GZDW,
+			HYK_GKDA.PASSWORD HYK_GKDA_PASSWORD,
+			HYK_GKDA.E_MAIL HYK_GKDA_E_MAIL,
+			HYK_GKDA.TXDZ HYK_GKDA_TXDZ,
+			HYK_GKDA.YZBM HYK_GKDA_YZBM,
+			HYK_GKDA.SJHM HYK_GKDA_SJHM,
+			HYK_GKDA.DJR HYK_GKDA_DJR,
+			HYK_GKDA.DJRMC HYK_GKDA_DJRMC,
+			HYK_GKDA.DJSJ HYK_GKDA_DJSJ,
+			HYK_GKDA.HYK_NO_OLD HYK_GKDA_HYK_NO_OLD,
+			HYK_GKDA.GXR HYK_GKDA_GXR,
+			HYK_GKDA.GXRMC HYK_GKDA_GXRMC,
+			HYK_GKDA.GXSJ HYK_GKDA_GXSJ,
+			HYKDEF.HYKTYPE HYKDEF_HYKTYPE,
+			HYKDEF.HYKNAME HYKDEF_HYKNAME,
+			HYKDEF.IMAGE_URL HYKDEF_IMAGE_URL,
+			HYK_STATUS.ID HYK_STATUS_ID,
+			HYK_STATUS.NAME HYK_STATUS_NAME
+		FROM
+			BFCRM.HYK_HYXX HYK_HYXX,
+			BFCRM.HYK_GKDA HYK_GKDA,
+			BFCRM.HYKDEF HYKDEF,
+			BFCRM.HYK_STATUS HYK_STATUS
+		WHERE
+			HYK_HYXX.HYKTYPE = HYKDEF.HYKTYPE and
+			HYK_HYXX.STATUS = HYK_STATUS.ID and
+			HYK_HYXX.GKID = HYK_GKDA.GKID
+			<if test="cardId != null">
+				and HYK_HYXX.HYID = #{cardId,jdbcType=INTEGER}
+			</if>
+			<if test="cardNo != null">
+				and HYK_HYXX.HYK_NO = #{cardNo,jdbcType=VARCHAR}
+			</if>
+			<if test="phoneNo != null">
+				and HYK_GKDA.SJHM = #{phoneNo,jdbcType=VARCHAR}
+			</if>
+	</select>
+
+	<sql id="Base_Column_List">
+		HYID, HYKTYPE, HYK_NO, HY_NAME, CDNR, JKRQ, YXQ, ZHXFRQ, BJ_PSW, PASSWORD, DJSJ,
+		DJR, DJRMC, STATUS, JGID, FFSX, OLD_HYKNO, YBGDD, KHID, MDID, GKID, CREATEDAT,
+		UPDATEDAT
+	</sql>
+	<sql id="Blob_Column_List">
+		TM
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from BFCRM.HYK_HYXX
+		where HYID = #{hyid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from BFCRM.HYK_HYXX
+		where HYID = #{hyid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Hyxx">
+		insert into BFCRM.HYK_HYXX (HYID, HYKTYPE, HYK_NO,
+		HY_NAME, CDNR, JKRQ,
+		YXQ, ZHXFRQ, BJ_PSW,
+		PASSWORD, DJSJ, DJR,
+		DJRMC, STATUS, JGID,
+		FFSX,
+		OLD_HYKNO, YBGDD,
+		KHID, MDID, GKID, CREATEDAT,
+		UPDATEDAT)
+		values (#{hyid,jdbcType=INTEGER}, #{hyktype,jdbcType=SMALLINT}, #{hykNo,jdbcType=VARCHAR},
+		#{hyName,jdbcType=VARCHAR},
+		#{cdnr,jdbcType=VARCHAR}, #{jkrq,jdbcType=TIMESTAMP},
+		#{yxq,jdbcType=TIMESTAMP}, #{zhxfrq,jdbcType=TIMESTAMP}, #{bjPsw,jdbcType=SMALLINT},
+		#{password,jdbcType=VARCHAR},
+		#{djsj,jdbcType=TIMESTAMP}, #{djr,jdbcType=INTEGER},
+		#{djrmc,jdbcType=VARCHAR}, #{status,jdbcType=SMALLINT}, #{jgid,jdbcType=SMALLINT},
+		#{ffsx,jdbcType=SMALLINT},
+		#{oldHykno,jdbcType=VARCHAR}, #{ybgdd,jdbcType=VARCHAR},
+		#{khid,jdbcType=INTEGER}, #{mdid,jdbcType=INTEGER}, #{gkid,jdbcType=INTEGER}, #{createdat,jdbcType=TIMESTAMP},
+		#{updatedat,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Hyxx">
+		insert into BFCRM.HYK_HYXX
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="hyid != null">
+				HYID,
+			</if>
+			<if test="hyktype != null">
+				HYKTYPE,
+			</if>
+			<if test="hykNo != null">
+				HYK_NO,
+			</if>
+			<if test="hyName != null">
+				HY_NAME,
+			</if>
+			<if test="cdnr != null">
+				CDNR,
+			</if>
+			<if test="jkrq != null">
+				JKRQ,
+			</if>
+			<if test="yxq != null">
+				YXQ,
+			</if>
+			<if test="zhxfrq != null">
+				ZHXFRQ,
+			</if>
+			<if test="bjPsw != null">
+				BJ_PSW,
+			</if>
+			<if test="password != null">
+				PASSWORD,
+			</if>
+			<if test="djsj != null">
+				DJSJ,
+			</if>
+			<if test="djr != null">
+				DJR,
+			</if>
+			<if test="djrmc != null">
+				DJRMC,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="jgid != null">
+				JGID,
+			</if>
+			<if test="ffsx != null">
+				FFSX,
+			</if>
+			<if test="oldHykno != null">
+				OLD_HYKNO,
+			</if>
+			<if test="ybgdd != null">
+				YBGDD,
+			</if>
+			<if test="khid != null">
+				KHID,
+			</if>
+			<if test="mdid != null">
+				MDID,
+			</if>
+			<if test="gkid != null">
+				GKID,
+			</if>
+			<if test="createdat != null">
+				CREATEDAT,
+			</if>
+			<if test="updatedat != null">
+				UPDATEDAT,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="hyid != null">
+				#{hyid,jdbcType=INTEGER},
+			</if>
+			<if test="hyktype != null">
+				#{hyktype,jdbcType=SMALLINT},
+			</if>
+			<if test="hykNo != null">
+				#{hykNo,jdbcType=VARCHAR},
+			</if>
+			<if test="hyName != null">
+				#{hyName,jdbcType=VARCHAR},
+			</if>
+			<if test="cdnr != null">
+				#{cdnr,jdbcType=VARCHAR},
+			</if>
+			<if test="jkrq != null">
+				#{jkrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="yxq != null">
+				#{yxq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="zhxfrq != null">
+				#{zhxfrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="bjPsw != null">
+				#{bjPsw,jdbcType=SMALLINT},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="djsj != null">
+				#{djsj,jdbcType=TIMESTAMP},
+			</if>
+			<if test="djr != null">
+				#{djr,jdbcType=INTEGER},
+			</if>
+			<if test="djrmc != null">
+				#{djrmc,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=SMALLINT},
+			</if>
+			<if test="jgid != null">
+				#{jgid,jdbcType=SMALLINT},
+			</if>
+			<if test="ffsx != null">
+				#{ffsx,jdbcType=SMALLINT},
+			</if>
+			<if test="oldHykno != null">
+				#{oldHykno,jdbcType=VARCHAR},
+			</if>
+			<if test="ybgdd != null">
+				#{ybgdd,jdbcType=VARCHAR},
+			</if>
+			<if test="khid != null">
+				#{khid,jdbcType=INTEGER},
+			</if>
+			<if test="mdid != null">
+				#{mdid,jdbcType=INTEGER},
+			</if>
+			<if test="gkid != null">
+				#{gkid,jdbcType=INTEGER},
+			</if>
+			<if test="createdat != null">
+				#{createdat,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedat != null">
+				#{updatedat,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Hyxx">
+		update BFCRM.HYK_HYXX
+		<set>
+			<if test="hyktype != null">
+				HYKTYPE = #{hyktype,jdbcType=SMALLINT},
+			</if>
+			<if test="hykNo != null">
+				HYK_NO = #{hykNo,jdbcType=VARCHAR},
+			</if>
+			<if test="hyName != null">
+				HY_NAME = #{hyName,jdbcType=VARCHAR},
+			</if>
+			<if test="cdnr != null">
+				CDNR = #{cdnr,jdbcType=VARCHAR},
+			</if>
+			<if test="jkrq != null">
+				JKRQ = #{jkrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="yxq != null">
+				YXQ = #{yxq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="zhxfrq != null">
+				ZHXFRQ = #{zhxfrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="bjPsw != null">
+				BJ_PSW = #{bjPsw,jdbcType=SMALLINT},
+			</if>
+			<if test="password != null">
+				PASSWORD = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="djsj != null">
+				DJSJ = #{djsj,jdbcType=TIMESTAMP},
+			</if>
+			<if test="djr != null">
+				DJR = #{djr,jdbcType=INTEGER},
+			</if>
+			<if test="djrmc != null">
+				DJRMC = #{djrmc,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=SMALLINT},
+			</if>
+			<if test="jgid != null">
+				JGID = #{jgid,jdbcType=SMALLINT},
+			</if>
+			<if test="ffsx != null">
+				FFSX = #{ffsx,jdbcType=SMALLINT},
+			</if>
+			<if test="oldHykno != null">
+				OLD_HYKNO = #{oldHykno,jdbcType=VARCHAR},
+			</if>
+			<if test="ybgdd != null">
+				YBGDD = #{ybgdd,jdbcType=VARCHAR},
+			</if>
+			<if test="khid != null">
+				KHID = #{khid,jdbcType=INTEGER},
+			</if>
+			<if test="mdid != null">
+				MDID = #{mdid,jdbcType=INTEGER},
+			</if>
+			<if test="gkid != null">
+				GKID = #{gkid,jdbcType=INTEGER},
+			</if>
+			<if test="createdat != null">
+				CREATEDAT = #{createdat,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedat != null">
+				UPDATEDAT = #{updatedat,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where HYID = #{hyid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Hyxx">
+		update BFCRM.HYK_HYXX
+		set HYKTYPE = #{hyktype,jdbcType=SMALLINT},
+		HYK_NO = #{hykNo,jdbcType=VARCHAR},
+		HY_NAME =
+		#{hyName,jdbcType=VARCHAR},
+		CDNR = #{cdnr,jdbcType=VARCHAR},
+		JKRQ = #{jkrq,jdbcType=TIMESTAMP},
+		YXQ = #{yxq,jdbcType=TIMESTAMP},
+		ZHXFRQ = #{zhxfrq,jdbcType=TIMESTAMP},
+		BJ_PSW =
+		#{bjPsw,jdbcType=SMALLINT},
+		PASSWORD = #{password,jdbcType=VARCHAR},
+		DJSJ = #{djsj,jdbcType=TIMESTAMP},
+		DJR = #{djr,jdbcType=INTEGER},
+		DJRMC = #{djrmc,jdbcType=VARCHAR},
+		STATUS =
+		#{status,jdbcType=SMALLINT},
+		JGID = #{jgid,jdbcType=SMALLINT},
+		FFSX = #{ffsx,jdbcType=SMALLINT},
+		OLD_HYKNO = #{oldHykno,jdbcType=VARCHAR},
+		YBGDD = #{ybgdd,jdbcType=VARCHAR},
+		KHID =
+		#{khid,jdbcType=INTEGER},
+		MDID = #{mdid,jdbcType=INTEGER},
+		GKID = #{gkid,jdbcType=INTEGER},
+		CREATEDAT = #{createdat,jdbcType=TIMESTAMP},
+		UPDATEDAT = #{updatedat,jdbcType=TIMESTAMP},
+		TM = #{tm,jdbcType=VARBINARY}
+		where HYID = #{hyid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Hyxx">
+		update BFCRM.HYK_HYXX
+		set HYKTYPE = #{hyktype,jdbcType=SMALLINT},
+		HYK_NO = #{hykNo,jdbcType=VARCHAR},
+		HY_NAME =
+		#{hyName,jdbcType=VARCHAR},
+		CDNR = #{cdnr,jdbcType=VARCHAR},
+		JKRQ = #{jkrq,jdbcType=TIMESTAMP},
+		YXQ = #{yxq,jdbcType=TIMESTAMP},
+		ZHXFRQ = #{zhxfrq,jdbcType=TIMESTAMP},
+		BJ_PSW =
+		#{bjPsw,jdbcType=SMALLINT},
+		PASSWORD = #{password,jdbcType=VARCHAR},
+		DJSJ = #{djsj,jdbcType=TIMESTAMP},
+		DJR = #{djr,jdbcType=INTEGER},
+		DJRMC = #{djrmc,jdbcType=VARCHAR},
+		STATUS =
+		#{status,jdbcType=SMALLINT},
+		JGID = #{jgid,jdbcType=SMALLINT},
+		FFSX = #{ffsx,jdbcType=SMALLINT},
+		OLD_HYKNO = #{oldHykno,jdbcType=VARCHAR},
+		YBGDD = #{ybgdd,jdbcType=VARCHAR},
+		KHID =
+		#{khid,jdbcType=INTEGER},
+		MDID = #{mdid,jdbcType=INTEGER},
+		GKID = #{gkid,jdbcType=INTEGER},
+		CREATEDAT = #{createdat,jdbcType=TIMESTAMP},
+		UPDATEDAT = #{updatedat,jdbcType=TIMESTAMP}
+		where HYID = #{hyid,jdbcType=INTEGER}
+	</update>
+</mapper>

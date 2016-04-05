@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_Jfdyd_FdMapper" >
+  <resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Fd" >
+    <id column="JLBH" property="jlbh" jdbcType="INTEGER" />
+    <id column="INX" property="inx" jdbcType="SMALLINT" />
+    <result column="KSRQ" property="ksrq" jdbcType="TIMESTAMP" />
+    <result column="JSRQ" property="jsrq" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Fd" extends="BaseResultMap" >
+    <result column="SD" property="sd" jdbcType="VARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JLBH, INX, KSRQ, JSRQ
+  </sql>
+  <sql id="Blob_Column_List" >
+    SD
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_FdKey" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from BFCRM.HYKJFDYD_FD
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and INX = #{inx,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_FdKey" >
+    delete from BFCRM.HYKJFDYD_FD
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and INX = #{inx,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Fd" >
+    insert into BFCRM.HYKJFDYD_FD (JLBH, INX, KSRQ, 
+      JSRQ, SD)
+    values (#{jlbh,jdbcType=INTEGER}, #{inx,jdbcType=SMALLINT}, #{ksrq,jdbcType=TIMESTAMP}, 
+      #{jsrq,jdbcType=TIMESTAMP}, #{sd,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Fd" >
+    insert into BFCRM.HYKJFDYD_FD
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        JLBH,
+      </if>
+      <if test="inx != null" >
+        INX,
+      </if>
+      <if test="ksrq != null" >
+        KSRQ,
+      </if>
+      <if test="jsrq != null" >
+        JSRQ,
+      </if>
+      <if test="sd != null" >
+        SD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jlbh != null" >
+        #{jlbh,jdbcType=INTEGER},
+      </if>
+      <if test="inx != null" >
+        #{inx,jdbcType=SMALLINT},
+      </if>
+      <if test="ksrq != null" >
+        #{ksrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jsrq != null" >
+        #{jsrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sd != null" >
+        #{sd,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Fd" >
+    update BFCRM.HYKJFDYD_FD
+    <set >
+      <if test="ksrq != null" >
+        KSRQ = #{ksrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jsrq != null" >
+        JSRQ = #{jsrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sd != null" >
+        SD = #{sd,jdbcType=VARBINARY},
+      </if>
+    </set>
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and INX = #{inx,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Fd" >
+    update BFCRM.HYKJFDYD_FD
+    set KSRQ = #{ksrq,jdbcType=TIMESTAMP},
+      JSRQ = #{jsrq,jdbcType=TIMESTAMP},
+      SD = #{sd,jdbcType=VARBINARY}
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and INX = #{inx,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Jfdyd_Fd" >
+    update BFCRM.HYKJFDYD_FD
+    set KSRQ = #{ksrq,jdbcType=TIMESTAMP},
+      JSRQ = #{jsrq,jdbcType=TIMESTAMP}
+    where JLBH = #{jlbh,jdbcType=INTEGER}
+      and INX = #{inx,jdbcType=SMALLINT}
+  </update>
+</mapper>

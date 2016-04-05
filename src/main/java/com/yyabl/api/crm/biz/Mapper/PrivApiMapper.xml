@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.PrivApiMapper">
+	<cache type="org.mybatis.caches.memcached.MemcachedCache" />
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.PrivApiKey">
+		<id column="PERSON_ID" property="personId" jdbcType="INTEGER" />
+		<id column="API_ID" property="apiId" jdbcType="INTEGER" />
+	</resultMap>
+	<delete id="deleteByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.PrivApiKey">
+		delete from BFCRM.PRIV_API
+		where PERSON_ID = #{personId,jdbcType=INTEGER}
+		and API_ID = #{apiId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.PrivApiKey">
+		insert into BFCRM.PRIV_API (PERSON_ID, API_ID)
+		values (#{personId,jdbcType=INTEGER}, #{apiId,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.PrivApiKey">
+		insert into BFCRM.PRIV_API
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="personId != null">
+				PERSON_ID,
+			</if>
+			<if test="apiId != null">
+				API_ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="personId != null">
+				#{personId,jdbcType=INTEGER},
+			</if>
+			<if test="apiId != null">
+				#{apiId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+</mapper>

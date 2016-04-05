@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yyabl.api.crm.biz.Dao.Hyk_GkdaMapper">
+	<resultMap id="BaseResultMap" type="com.yyabl.api.crm.biz.Domain.Hyk_Gkda">
+		<id column="GKID" property="gkid" jdbcType="INTEGER" />
+		<result column="SEX" property="sex" jdbcType="TINYINT" />
+		<result column="CSRQ" property="csrq" jdbcType="TIMESTAMP" />
+		<result column="SFZBH" property="sfzbh" jdbcType="VARCHAR" />
+		<result column="JTZZ" property="jtzz" jdbcType="VARCHAR" />
+		<result column="GZDW" property="gzdw" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="BZ" property="bz" jdbcType="VARCHAR" />
+		<result column="ZW" property="zw" jdbcType="VARCHAR" />
+		<result column="E_MAIL" property="eMail" jdbcType="VARCHAR" />
+		<result column="TXDZ" property="txdz" jdbcType="VARCHAR" />
+		<result column="YZBM" property="yzbm" jdbcType="VARCHAR" />
+		<result column="PHONE" property="phone" jdbcType="VARCHAR" />
+		<result column="FAX" property="fax" jdbcType="VARCHAR" />
+		<result column="SJHM" property="sjhm" jdbcType="VARCHAR" />
+		<result column="BGDH" property="bgdh" jdbcType="VARCHAR" />
+		<result column="ZJLXSJ" property="zjlxsj" jdbcType="VARCHAR" />
+		<result column="HYZK" property="hyzk" jdbcType="VARCHAR" />
+		<result column="YJFLDZ" property="yjfldz" jdbcType="VARCHAR" />
+		<result column="QYID" property="qyid" jdbcType="INTEGER" />
+		<result column="ZYID" property="zyid" jdbcType="INTEGER" />
+		<result column="JTSRID" property="jtsrid" jdbcType="INTEGER" />
+		<result column="XLID" property="xlid" jdbcType="INTEGER" />
+		<result column="ZSCSJID" property="zscsjid" jdbcType="INTEGER" />
+		<result column="JTGJID" property="jtgjid" jdbcType="INTEGER" />
+		<result column="JTCYID" property="jtcyid" jdbcType="INTEGER" />
+		<result column="ZJLXID" property="zjlxid" jdbcType="INTEGER" />
+		<result column="YYAH" property="yyah" jdbcType="VARCHAR" />
+		<result column="DJR" property="djr" jdbcType="INTEGER" />
+		<result column="DJRMC" property="djrmc" jdbcType="VARCHAR" />
+		<result column="DJSJ" property="djsj" jdbcType="TIMESTAMP" />
+		<result column="HYK_NO_OLD" property="hykNoOld" jdbcType="VARCHAR" />
+		<result column="CANSMS" property="cansms" jdbcType="SMALLINT" />
+		<result column="GXR" property="gxr" jdbcType="INTEGER" />
+		<result column="GXRMC" property="gxrmc" jdbcType="VARCHAR" />
+		<result column="GXSJ" property="gxsj" jdbcType="TIMESTAMP" />
+		<result column="CXXX" property="cxxx" jdbcType="VARCHAR" />
+		<result column="CPH" property="cph" jdbcType="VARCHAR" />
+		<result column="LX_SMZQ" property="lxSmzq" jdbcType="INTEGER" />
+		<result column="ICQ" property="icq" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.yyabl.api.crm.biz.Domain.Hyk_Gkda"
+		extends="BaseResultMap">
+		<result column="TM" property="tm" jdbcType="VARBINARY" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		GKID, SEX, CSRQ, SFZBH, JTZZ, GZDW, PASSWORD, BZ, ZW, E_MAIL, TXDZ, YZBM,
+		PHONE,
+		FAX, SJHM, BGDH, ZJLXSJ, HYZK, YJFLDZ, QYID, ZYID, JTSRID, XLID, ZSCSJID,
+		JTGJID,
+		JTCYID, ZJLXID, YYAH, DJR, DJRMC, DJSJ, HYK_NO_OLD, CANSMS, GXR, GXRMC, GXSJ,
+		CXXX,
+		CPH, LX_SMZQ, ICQ
+	</sql>
+	<sql id="Blob_Column_List">
+		TM
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from BFCRM.HYK_GKDA
+		where GKID = #{gkid,jdbcType=INTEGER}
+	</select>
+	<select id="selectByIdNumber" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+			<include refid="Base_Column_List" />
+		from BFCRM.HYK_GKDA
+		where SFZBH = #{idNumber,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from BFCRM.HYK_GKDA
+		where GKID = #{gkid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Gkda">
+		insert into BFCRM.HYK_GKDA (GKID, SEX, CSRQ,
+		SFZBH, JTZZ, GZDW,
+		PASSWORD, BZ, ZW, E_MAIL,
+		TXDZ, YZBM, PHONE,
+		FAX, SJHM, BGDH, ZJLXSJ,
+		HYZK, YJFLDZ, QYID,
+		ZYID, JTSRID, XLID,
+		ZSCSJID, JTGJID, JTCYID,
+		ZJLXID, YYAH, DJR,
+		DJRMC, DJSJ, HYK_NO_OLD,
+		CANSMS, GXR, GXRMC,
+		GXSJ, CXXX, CPH,
+		LX_SMZQ, ICQ)
+		values (#{gkid,jdbcType=INTEGER}, #{sex,jdbcType=TINYINT},
+		#{csrq,jdbcType=TIMESTAMP},
+		#{sfzbh,jdbcType=VARCHAR}, #{jtzz,jdbcType=VARCHAR}, #{gzdw,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR}, #{bz,jdbcType=VARCHAR},
+		#{zw,jdbcType=VARCHAR}, #{eMail,jdbcType=VARCHAR},
+		#{txdz,jdbcType=VARCHAR}, #{yzbm,jdbcType=VARCHAR},
+		#{phone,jdbcType=VARCHAR},
+		#{fax,jdbcType=VARCHAR}, #{sjhm,jdbcType=VARCHAR}, #{bgdh,jdbcType=VARCHAR},
+		#{zjlxsj,jdbcType=VARCHAR},
+		#{hyzk,jdbcType=VARCHAR}, #{yjfldz,jdbcType=VARCHAR}, #{qyid,jdbcType=INTEGER},
+		#{zyid,jdbcType=INTEGER}, #{jtsrid,jdbcType=INTEGER},
+		#{xlid,jdbcType=INTEGER},
+		#{zscsjid,jdbcType=INTEGER}, #{jtgjid,jdbcType=INTEGER}, #{jtcyid,jdbcType=INTEGER},
+		#{zjlxid,jdbcType=INTEGER}, #{yyah,jdbcType=VARCHAR},
+		#{djr,jdbcType=INTEGER},
+		#{djrmc,jdbcType=VARCHAR}, #{djsj,jdbcType=TIMESTAMP}, #{hykNoOld,jdbcType=VARCHAR},
+		#{cansms,jdbcType=SMALLINT}, #{gxr,jdbcType=INTEGER},
+		#{gxrmc,jdbcType=VARCHAR},
+		#{gxsj,jdbcType=TIMESTAMP}, #{cxxx,jdbcType=VARCHAR}, #{cph,jdbcType=VARCHAR},
+		#{lxSmzq,jdbcType=INTEGER}, #{icq,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Gkda">
+		insert into BFCRM.HYK_GKDA
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="gkid != null">
+				GKID,
+			</if>
+			<if test="sex != null">
+				SEX,
+			</if>
+			<if test="csrq != null">
+				CSRQ,
+			</if>
+			<if test="sfzbh != null">
+				SFZBH,
+			</if>
+			<if test="jtzz != null">
+				JTZZ,
+			</if>
+			<if test="gzdw != null">
+				GZDW,
+			</if>
+			<if test="password != null">
+				PASSWORD,
+			</if>
+			<if test="bz != null">
+				BZ,
+			</if>
+			<if test="zw != null">
+				ZW,
+			</if>
+			<if test="eMail != null">
+				E_MAIL,
+			</if>
+			<if test="txdz != null">
+				TXDZ,
+			</if>
+			<if test="yzbm != null">
+				YZBM,
+			</if>
+			<if test="phone != null">
+				PHONE,
+			</if>
+			<if test="fax != null">
+				FAX,
+			</if>
+			<if test="sjhm != null">
+				SJHM,
+			</if>
+			<if test="bgdh != null">
+				BGDH,
+			</if>
+			<if test="zjlxsj != null">
+				ZJLXSJ,
+			</if>
+			<if test="hyzk != null">
+				HYZK,
+			</if>
+			<if test="yjfldz != null">
+				YJFLDZ,
+			</if>
+			<if test="qyid != null">
+				QYID,
+			</if>
+			<if test="zyid != null">
+				ZYID,
+			</if>
+			<if test="jtsrid != null">
+				JTSRID,
+			</if>
+			<if test="xlid != null">
+				XLID,
+			</if>
+			<if test="zscsjid != null">
+				ZSCSJID,
+			</if>
+			<if test="jtgjid != null">
+				JTGJID,
+			</if>
+			<if test="jtcyid != null">
+				JTCYID,
+			</if>
+			<if test="zjlxid != null">
+				ZJLXID,
+			</if>
+			<if test="yyah != null">
+				YYAH,
+			</if>
+			<if test="djr != null">
+				DJR,
+			</if>
+			<if test="djrmc != null">
+				DJRMC,
+			</if>
+			<if test="djsj != null">
+				DJSJ,
+			</if>
+			<if test="hykNoOld != null">
+				HYK_NO_OLD,
+			</if>
+			<if test="cansms != null">
+				CANSMS,
+			</if>
+			<if test="gxr != null">
+				GXR,
+			</if>
+			<if test="gxrmc != null">
+				GXRMC,
+			</if>
+			<if test="gxsj != null">
+				GXSJ,
+			</if>
+			<if test="cxxx != null">
+				CXXX,
+			</if>
+			<if test="cph != null">
+				CPH,
+			</if>
+			<if test="lxSmzq != null">
+				LX_SMZQ,
+			</if>
+			<if test="icq != null">
+				ICQ,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="gkid != null">
+				#{gkid,jdbcType=INTEGER},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=TINYINT},
+			</if>
+			<if test="csrq != null">
+				#{csrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="sfzbh != null">
+				#{sfzbh,jdbcType=VARCHAR},
+			</if>
+			<if test="jtzz != null">
+				#{jtzz,jdbcType=VARCHAR},
+			</if>
+			<if test="gzdw != null">
+				#{gzdw,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="bz != null">
+				#{bz,jdbcType=VARCHAR},
+			</if>
+			<if test="zw != null">
+				#{zw,jdbcType=VARCHAR},
+			</if>
+			<if test="eMail != null">
+				#{eMail,jdbcType=VARCHAR},
+			</if>
+			<if test="txdz != null">
+				#{txdz,jdbcType=VARCHAR},
+			</if>
+			<if test="yzbm != null">
+				#{yzbm,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="fax != null">
+				#{fax,jdbcType=VARCHAR},
+			</if>
+			<if test="sjhm != null">
+				#{sjhm,jdbcType=VARCHAR},
+			</if>
+			<if test="bgdh != null">
+				#{bgdh,jdbcType=VARCHAR},
+			</if>
+			<if test="zjlxsj != null">
+				#{zjlxsj,jdbcType=VARCHAR},
+			</if>
+			<if test="hyzk != null">
+				#{hyzk,jdbcType=VARCHAR},
+			</if>
+			<if test="yjfldz != null">
+				#{yjfldz,jdbcType=VARCHAR},
+			</if>
+			<if test="qyid != null">
+				#{qyid,jdbcType=INTEGER},
+			</if>
+			<if test="zyid != null">
+				#{zyid,jdbcType=INTEGER},
+			</if>
+			<if test="jtsrid != null">
+				#{jtsrid,jdbcType=INTEGER},
+			</if>
+			<if test="xlid != null">
+				#{xlid,jdbcType=INTEGER},
+			</if>
+			<if test="zscsjid != null">
+				#{zscsjid,jdbcType=INTEGER},
+			</if>
+			<if test="jtgjid != null">
+				#{jtgjid,jdbcType=INTEGER},
+			</if>
+			<if test="jtcyid != null">
+				#{jtcyid,jdbcType=INTEGER},
+			</if>
+			<if test="zjlxid != null">
+				#{zjlxid,jdbcType=INTEGER},
+			</if>
+			<if test="yyah != null">
+				#{yyah,jdbcType=VARCHAR},
+			</if>
+			<if test="djr != null">
+				#{djr,jdbcType=INTEGER},
+			</if>
+			<if test="djrmc != null">
+				#{djrmc,jdbcType=VARCHAR},
+			</if>
+			<if test="djsj != null">
+				#{djsj,jdbcType=TIMESTAMP},
+			</if>
+			<if test="hykNoOld != null">
+				#{hykNoOld,jdbcType=VARCHAR},
+			</if>
+			<if test="cansms != null">
+				#{cansms,jdbcType=SMALLINT},
+			</if>
+			<if test="gxr != null">
+				#{gxr,jdbcType=INTEGER},
+			</if>
+			<if test="gxrmc != null">
+				#{gxrmc,jdbcType=VARCHAR},
+			</if>
+			<if test="gxsj != null">
+				#{gxsj,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cxxx != null">
+				#{cxxx,jdbcType=VARCHAR},
+			</if>
+			<if test="cph != null">
+				#{cph,jdbcType=VARCHAR},
+			</if>
+			<if test="lxSmzq != null">
+				#{lxSmzq,jdbcType=INTEGER},
+			</if>
+			<if test="icq != null">
+				#{icq,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Gkda">
+		update BFCRM.HYK_GKDA
+		<set>
+			<if test="sex != null">
+				SEX = #{sex,jdbcType=TINYINT},
+			</if>
+			<if test="csrq != null">
+				CSRQ = #{csrq,jdbcType=TIMESTAMP},
+			</if>
+			<if test="sfzbh != null">
+				SFZBH = #{sfzbh,jdbcType=VARCHAR},
+			</if>
+			<if test="jtzz != null">
+				JTZZ = #{jtzz,jdbcType=VARCHAR},
+			</if>
+			<if test="gzdw != null">
+				GZDW = #{gzdw,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				PASSWORD = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="bz != null">
+				BZ = #{bz,jdbcType=VARCHAR},
+			</if>
+			<if test="zw != null">
+				ZW = #{zw,jdbcType=VARCHAR},
+			</if>
+			<if test="eMail != null">
+				E_MAIL = #{eMail,jdbcType=VARCHAR},
+			</if>
+			<if test="txdz != null">
+				TXDZ = #{txdz,jdbcType=VARCHAR},
+			</if>
+			<if test="yzbm != null">
+				YZBM = #{yzbm,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				PHONE = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="fax != null">
+				FAX = #{fax,jdbcType=VARCHAR},
+			</if>
+			<if test="sjhm != null">
+				SJHM = #{sjhm,jdbcType=VARCHAR},
+			</if>
+			<if test="bgdh != null">
+				BGDH = #{bgdh,jdbcType=VARCHAR},
+			</if>
+			<if test="zjlxsj != null">
+				ZJLXSJ = #{zjlxsj,jdbcType=VARCHAR},
+			</if>
+			<if test="hyzk != null">
+				HYZK = #{hyzk,jdbcType=VARCHAR},
+			</if>
+			<if test="yjfldz != null">
+				YJFLDZ = #{yjfldz,jdbcType=VARCHAR},
+			</if>
+			<if test="qyid != null">
+				QYID = #{qyid,jdbcType=INTEGER},
+			</if>
+			<if test="zyid != null">
+				ZYID = #{zyid,jdbcType=INTEGER},
+			</if>
+			<if test="jtsrid != null">
+				JTSRID = #{jtsrid,jdbcType=INTEGER},
+			</if>
+			<if test="xlid != null">
+				XLID = #{xlid,jdbcType=INTEGER},
+			</if>
+			<if test="zscsjid != null">
+				ZSCSJID = #{zscsjid,jdbcType=INTEGER},
+			</if>
+			<if test="jtgjid != null">
+				JTGJID = #{jtgjid,jdbcType=INTEGER},
+			</if>
+			<if test="jtcyid != null">
+				JTCYID = #{jtcyid,jdbcType=INTEGER},
+			</if>
+			<if test="zjlxid != null">
+				ZJLXID = #{zjlxid,jdbcType=INTEGER},
+			</if>
+			<if test="yyah != null">
+				YYAH = #{yyah,jdbcType=VARCHAR},
+			</if>
+			<if test="djr != null">
+				DJR = #{djr,jdbcType=INTEGER},
+			</if>
+			<if test="djrmc != null">
+				DJRMC = #{djrmc,jdbcType=VARCHAR},
+			</if>
+			<if test="djsj != null">
+				DJSJ = #{djsj,jdbcType=TIMESTAMP},
+			</if>
+			<if test="hykNoOld != null">
+				HYK_NO_OLD = #{hykNoOld,jdbcType=VARCHAR},
+			</if>
+			<if test="cansms != null">
+				CANSMS = #{cansms,jdbcType=SMALLINT},
+			</if>
+			<if test="gxr != null">
+				GXR = #{gxr,jdbcType=INTEGER},
+			</if>
+			<if test="gxrmc != null">
+				GXRMC = #{gxrmc,jdbcType=VARCHAR},
+			</if>
+			<if test="gxsj != null">
+				GXSJ = #{gxsj,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cxxx != null">
+				CXXX = #{cxxx,jdbcType=VARCHAR},
+			</if>
+			<if test="cph != null">
+				CPH = #{cph,jdbcType=VARCHAR},
+			</if>
+			<if test="lxSmzq != null">
+				LX_SMZQ = #{lxSmzq,jdbcType=INTEGER},
+			</if>
+			<if test="icq != null">
+				ICQ = #{icq,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where GKID = #{gkid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Gkda">
+		update BFCRM.HYK_GKDA
+		set SEX = #{sex,jdbcType=TINYINT},
+		CSRQ = #{csrq,jdbcType=TIMESTAMP},
+		SFZBH = #{sfzbh,jdbcType=VARCHAR},
+		JTZZ = #{jtzz,jdbcType=VARCHAR},
+		GZDW = #{gzdw,jdbcType=VARCHAR},
+		PASSWORD = #{password,jdbcType=VARCHAR},
+		BZ = #{bz,jdbcType=VARCHAR},
+		ZW = #{zw,jdbcType=VARCHAR},
+		E_MAIL = #{eMail,jdbcType=VARCHAR},
+		TXDZ = #{txdz,jdbcType=VARCHAR},
+		YZBM = #{yzbm,jdbcType=VARCHAR},
+		PHONE = #{phone,jdbcType=VARCHAR},
+		FAX = #{fax,jdbcType=VARCHAR},
+		SJHM = #{sjhm,jdbcType=VARCHAR},
+		BGDH = #{bgdh,jdbcType=VARCHAR},
+		ZJLXSJ = #{zjlxsj,jdbcType=VARCHAR},
+		HYZK = #{hyzk,jdbcType=VARCHAR},
+		YJFLDZ = #{yjfldz,jdbcType=VARCHAR},
+		QYID = #{qyid,jdbcType=INTEGER},
+		ZYID = #{zyid,jdbcType=INTEGER},
+		JTSRID = #{jtsrid,jdbcType=INTEGER},
+		XLID = #{xlid,jdbcType=INTEGER},
+		ZSCSJID = #{zscsjid,jdbcType=INTEGER},
+		JTGJID = #{jtgjid,jdbcType=INTEGER},
+		JTCYID = #{jtcyid,jdbcType=INTEGER},
+		ZJLXID = #{zjlxid,jdbcType=INTEGER},
+		YYAH = #{yyah,jdbcType=VARCHAR},
+		DJR = #{djr,jdbcType=INTEGER},
+		DJRMC = #{djrmc,jdbcType=VARCHAR},
+		DJSJ = #{djsj,jdbcType=TIMESTAMP},
+		HYK_NO_OLD = #{hykNoOld,jdbcType=VARCHAR},
+		CANSMS = #{cansms,jdbcType=SMALLINT},
+		GXR = #{gxr,jdbcType=INTEGER},
+		GXRMC = #{gxrmc,jdbcType=VARCHAR},
+		GXSJ = #{gxsj,jdbcType=TIMESTAMP},
+		CXXX = #{cxxx,jdbcType=VARCHAR},
+		CPH = #{cph,jdbcType=VARCHAR},
+		LX_SMZQ = #{lxSmzq,jdbcType=INTEGER},
+		ICQ = #{icq,jdbcType=VARCHAR},
+		TM = #{tm,jdbcType=VARBINARY}
+		where GKID = #{gkid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yyabl.api.crm.biz.Domain.Hyk_Gkda">
+		update BFCRM.HYK_GKDA
+		set SEX = #{sex,jdbcType=TINYINT},
+		CSRQ = #{csrq,jdbcType=TIMESTAMP},
+		SFZBH = #{sfzbh,jdbcType=VARCHAR},
+		JTZZ = #{jtzz,jdbcType=VARCHAR},
+		GZDW = #{gzdw,jdbcType=VARCHAR},
+		PASSWORD = #{password,jdbcType=VARCHAR},
+		BZ = #{bz,jdbcType=VARCHAR},
+		ZW = #{zw,jdbcType=VARCHAR},
+		E_MAIL = #{eMail,jdbcType=VARCHAR},
+		TXDZ = #{txdz,jdbcType=VARCHAR},
+		YZBM = #{yzbm,jdbcType=VARCHAR},
+		PHONE = #{phone,jdbcType=VARCHAR},
+		FAX = #{fax,jdbcType=VARCHAR},
+		SJHM = #{sjhm,jdbcType=VARCHAR},
+		BGDH = #{bgdh,jdbcType=VARCHAR},
+		ZJLXSJ = #{zjlxsj,jdbcType=VARCHAR},
+		HYZK = #{hyzk,jdbcType=VARCHAR},
+		YJFLDZ = #{yjfldz,jdbcType=VARCHAR},
+		QYID = #{qyid,jdbcType=INTEGER},
+		ZYID = #{zyid,jdbcType=INTEGER},
+		JTSRID = #{jtsrid,jdbcType=INTEGER},
+		XLID = #{xlid,jdbcType=INTEGER},
+		ZSCSJID = #{zscsjid,jdbcType=INTEGER},
+		JTGJID = #{jtgjid,jdbcType=INTEGER},
+		JTCYID = #{jtcyid,jdbcType=INTEGER},
+		ZJLXID = #{zjlxid,jdbcType=INTEGER},
+		YYAH = #{yyah,jdbcType=VARCHAR},
+		DJR = #{djr,jdbcType=INTEGER},
+		DJRMC = #{djrmc,jdbcType=VARCHAR},
+		DJSJ = #{djsj,jdbcType=TIMESTAMP},
+		HYK_NO_OLD = #{hykNoOld,jdbcType=VARCHAR},
+		CANSMS = #{cansms,jdbcType=SMALLINT},
+		GXR = #{gxr,jdbcType=INTEGER},
+		GXRMC = #{gxrmc,jdbcType=VARCHAR},
+		GXSJ = #{gxsj,jdbcType=TIMESTAMP},
+		CXXX = #{cxxx,jdbcType=VARCHAR},
+		CPH = #{cph,jdbcType=VARCHAR},
+		LX_SMZQ = #{lxSmzq,jdbcType=INTEGER},
+		ICQ = #{icq,jdbcType=VARCHAR}
+		where GKID = #{gkid,jdbcType=INTEGER}
+	</update>
+</mapper>
